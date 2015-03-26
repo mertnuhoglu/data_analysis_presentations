@@ -24,27 +24,6 @@ knit        : slidify::knit2slides
 
 --- .class #id 
 
-## Prezentasyon ve kodlar
-
-- Html5 slaytlar: [http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html)
-- Kaynak kodları: [https://github.com/mertnuhoglu/data_analysis_istanbulcoders](https://github.com/mertnuhoglu/data_analysis_istanbulcoders)
-- Araçlar (PowerPoint katilleri): 
-	- [slidify](http://ramnathv.github.io/slidify/)
-  - [knitr](http://yihui.name/knitr/)
-  - [RMarkdown](http://rmarkdown.rstudio.com/)
-
---- .class #id 
-
-## Linkler
-
-- [Veribilimi İstanbul](https://www.facebook.com/groups/465842350233183/)
-- [RStudio Webinars](http://www.rstudio.com/resources/webinars/)
-- [Functional Programming Design Patterns](http://fsharpforfunandprofit.com/fppatterns/)
-- [Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
-- [The Lambda Calculus for Absolute Dummies (like myself)](http://palmstroem.blogspot.com.tr/2012/05/lambda-calculus-for-absolute-dummies.html)
-
---- .class #id 
-
 ## Veri Bilimi Nedir?
 
 - Disiplinler arası bir alan
@@ -859,7 +838,7 @@ r %>% head
 ## 5   kw011            1.482
 ## 6   kw014            1.452
 ```
- 
+
 --- .class #id 
 
 ## Hangi sayfalar en iyi kelimelerin hedefi?
@@ -890,5 +869,39 @@ top_pages
 ```
 ## [1] "pg004" "pg025" "pg015"
 ```
+
+--- .class #id 
+
+## Fonksiyonel programlama burada nerede?
+
+- Functional sequence
+  - Functional:
+    - input: function
+    - output: data (vector)
+- Higher order functions
+  - input: function
+  - output: function
+- For loop yok
+
+--- .class #id 
+
+## Linkler
+
+- [Veribilimi İstanbul](https://www.facebook.com/groups/465842350233183/)
+- [RStudio Webinars](http://www.rstudio.com/resources/webinars/)
+- [Functional Programming Design Patterns](http://fsharpforfunandprofit.com/fppatterns/)
+- [Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
+- [The Lambda Calculus for Absolute Dummies (like myself)](http://palmstroem.blogspot.com.tr/2012/05/lambda-calculus-for-absolute-dummies.html)
+
+--- .class #id 
+
+## Prezentasyon ve kodlar
+
+- Html5 slaytlar: [http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html)
+- Kaynak kodları: [https://github.com/mertnuhoglu/data_analysis_istanbulcoders](https://github.com/mertnuhoglu/data_analysis_istanbulcoders)
+- Araçlar (PowerPoint katilleri): 
+	- [slidify](http://ramnathv.github.io/slidify/)
+  - [knitr](http://yihui.name/knitr/)
+  - [RMarkdown](http://rmarkdown.rstudio.com/)
 
 
