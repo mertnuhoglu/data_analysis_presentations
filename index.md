@@ -45,6 +45,12 @@ knit        : slidify::knit2slides
 
 --- .class #id 
 
+## Veri Bilimi Nedir?
+
+![Veri Bilimi Venn Şeması](assets/img/Venn-Diagram-of-Data-Scientist-Skills.png)
+
+--- .class #id 
+
 ## Eticaret: Conversion rate optimizasyonu
 
 - Blog sitesi: BallOrange.com 
