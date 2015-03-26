@@ -108,6 +108,25 @@
     <h2>Veri Bilimi Nedir?</h2>
   </hgroup>
   <article data-timings="">
+    <ul>
+<li>Disiplinler arası bir alan
+
+<ul>
+<li>Programlama</li>
+<li>İstatistik</li>
+<li>Alan uzmanlığı - analiz</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Veri Bilimi Nedir?</h2>
+  </hgroup>
+  <article data-timings="">
     <p><img src="assets/img/Venn-Diagram-of-Data-Scientist-Skills.png" alt="Veri Bilimi Venn Şeması"></p>
 
   </article>
@@ -224,6 +243,21 @@
 ## [1] &quot;campaign001&quot; &quot;campaign002&quot; &quot;campaign003&quot; &quot;campaign004&quot; &quot;campaign005&quot;
 ## [6] &quot;campaign006&quot;
 </code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Veri modeli</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>keyword-page: kp</li>
+<li>page-conversion: pc</li>
+<li>keyword-visit: kv</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -797,10 +831,255 @@ kv
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>How to generate such test data easily?</h2>
+    <h2>Bu anahtar kelimenin getirdiği trafik nedir?</h2>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">    setkey(kp, keyword)
+    kp3 = kv[keyword]
+</code></pre>
+
+<pre><code>## Error in `[.data.table`(kv, keyword): When i is a data.table (or character vector), x must be keyed (i.e. sorted, and, marked as sorted) so data.table knows which columns to join to and take advantage of x being sorted. Call setkey(x,...) first, see ?setkey.
+</code></pre>
+
+<pre><code class="r">  kp3
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;kp3&#39; not found
+</code></pre>
+
+<pre><code class="r">    page = kp[keyword]$page
+  page
+</code></pre>
+
+<pre><code>## [1] &quot;pg004&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Bu sayfanın dönüşüm oranı nedir?</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">    setkey(pc, page)
+    pc3 = pc[page]
+  pc3
+</code></pre>
+
+<pre><code>##     page conversion
+## 1: pg004      0.036
+</code></pre>
+
+<pre><code class="r">    conversion_rate = pc[page]$conversion
+  conversion
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;conversion&#39; not found
+</code></pre>
+
+<p>--- .class #id </p>
+
+<h2>Toplam dönüşüm miktarı (email sayısı) kaçtır?</h2>
+
+<pre><code class="r">    conversions = visits * conversion_rate
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;visits&#39; not found
+</code></pre>
+
+<pre><code class="r">conversions
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;conversions&#39; not found
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Yaklaşım: İmperatif yaklaşım</li>
+<li>Her anahtar kelime için yukarıdaki hesaplamayı yapalım
+
+<ul>
+<li>for loop
+
+<ul>
+<li>her keyword için page&#39;i çekeriz</li>
+</ul></li>
+<li>inner loop
+
+<ul>
+<li>her page için conversion rate&#39;leri çekeriz</li>
+<li>bu conversion rate&#39;lerle visit sayılarını çarparız</li>
+<li>tüm sayfalar için bu conversion sayılarını toplarız</li>
+</ul></li>
+</ul></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Hesaplamayı genelleştirme 2</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Yaklaşım: Deklaratif düşünme
+
+<ul>
+<li>Nasıl yapacağımızı değil ne yapacağımızı tarif etme</li>
+<li>Kümeler (sets) ve ilişkiler (relationships)</li>
+<li>SQL tarzı</li>
+</ul></li>
+<li>SQL tablosu = n değişken/küme arasında ilişki/bağıntı (mapping)
+
+<ul>
+<li>keyword-page: kp</li>
+<li>page-conversion: pc</li>
+<li>keyword-visit: kv</li>
+</ul></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Join işlemi</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Ortak değişkenleri/kümeleri olan ilişkileri/tabloları birleştirebiliriz (join)</li>
+<li>Örnek: 
+
+<ul>
+<li>keyword-page</li>
+<li>keyword-visit</li>
+</ul></li>
+<li>Sonuç:
+
+<ul>
+<li>keyword-page-visit</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Sembolik düşünme</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Nasıl birleştireceğimizi boşverin</li>
+<li>Sadece ne yapacağımızı düşünelim:</li>
+<li>keyword-page ile page-conversion tablolarını birleştirelim
+
+<ul>
+<li>keyword-page-conversion</li>
+</ul></li>
+<li>buna page-visit tablosunu ekleyelim
+
+<ul>
+<li>keyword-page-conversion-visit</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Sembolik düşünme</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>conversion_number = conversion x visit
+
+<ul>
+<li>keyword-page-conversion-visit-conversion_number</li>
+</ul></li>
+<li>gereksiz değişkenleri silelim:
+
+<ul>
+<li>keyword-conversion_number</li>
+</ul></li>
+<li>1 keyword için n tane satır vardır
+
+<ul>
+<li>aynı keyword&#39;e sahip satırları grupla (pivotlama/gruplama)</li>
+<li>her grup içindeki conversion_number&#39;larını topla: total_conversion</li>
+</ul></li>
+<li>tüm satırları total_conversion&#39;a göre sırala</li>
+<li>en üstteki 5 taneyi çek</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Bu işlemleri kodlayalım</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">    r = kp %&gt;%
+        inner_join(pc, by=&quot;page&quot;) %&gt;%
+        inner_join(kv, by=&quot;keyword&quot;) %&gt;%
+        mutate( conversion_number = visit * conversion ) %&gt;%
+        group_by(keyword) %&gt;%
+        summarise(total_conversion = sum(conversion_number)) %&gt;%
+        select(keyword, total_conversion) %&gt;%
+        arrange(total_conversion) 
+r %&gt;% head
+</code></pre>
+
+<pre><code>##   keyword total_conversion
+## 1   kw013            0.038
+## 2   kw007            0.245
+## 3   kw004            0.300
+## 4   kw010            0.440
+## 5   kw005            0.468
+## 6   kw012            0.624
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Sıralamayı tersine çevirelim</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">    r = r %&gt;%
+        arrange(desc(total_conversion))
+r %&gt;% head
+</code></pre>
+
+<pre><code>##   keyword total_conversion
+## 1   kw015            4.176
+## 2   kw003            2.808
+## 3   kw006            2.808
+## 4   kw002            1.677
+## 5   kw011            1.482
+## 6   kw014            1.452
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -835,49 +1114,49 @@ kv
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Eticaret: Conversion rate optimizasyonu'>
+        data-slide=5 title='Veri Bilimi Nedir?'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Conversion rate optimizasyonu 2'>
+        data-slide=6 title='Eticaret: Conversion rate optimizasyonu'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Test Data Generation'>
+        data-slide=7 title='Conversion rate optimizasyonu 2'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Generate test data'>
+        data-slide=8 title='Test Data Generation'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Generate test data 2'>
+        data-slide=9 title='Veri modeli'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Generate test data 3'>
+        data-slide=10 title='Generate test data'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='How to generate such test data easily?'>
+        data-slide=11 title='Generate test data 2'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='How to generate such test data easily?'>
+        data-slide=12 title='Generate test data 3'>
          12
       </a>
     </li>
@@ -925,13 +1204,13 @@ kv
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Test datatable'>
+        data-slide=20 title='How to generate such test data easily?'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='sample function'>
+        data-slide=21 title='How to generate such test data easily?'>
          21
       </a>
     </li>
@@ -943,32 +1222,92 @@ kv
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Random number generation'>
+        data-slide=23 title='sample function'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Generating test data - complete'>
+        data-slide=24 title='Test datatable'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Sorun'>
+        data-slide=25 title='Random number generation'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Örnek bir kelime için dönüşüm oranı kaçtır?'>
+        data-slide=26 title='Generating test data - complete'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='How to generate such test data easily?'>
+        data-slide=27 title='Sorun'>
          27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Örnek bir kelime için dönüşüm oranı kaçtır?'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Bu anahtar kelimenin getirdiği trafik nedir?'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Bu sayfanın dönüşüm oranı nedir?'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Hesaplamayı genelleştirme 2'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Join işlemi'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Sembolik düşünme'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Sembolik düşünme'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Bu işlemleri kodlayalım'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Sıralamayı tersine çevirelim'>
+         37
       </a>
     </li>
   </ul>

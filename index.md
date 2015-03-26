@@ -47,6 +47,15 @@ knit        : slidify::knit2slides
 
 ## Veri Bilimi Nedir?
 
+- Disiplinler arası bir alan
+  - Programlama
+  - İstatistik
+  - Alan uzmanlığı - analiz
+
+--- .class #id 
+
+## Veri Bilimi Nedir?
+
 ![Veri Bilimi Venn Şeması](assets/img/Venn-Diagram-of-Data-Scientist-Skills.png)
 
 --- .class #id 
@@ -132,6 +141,14 @@ knit        : slidify::knit2slides
 ## [1] "campaign001" "campaign002" "campaign003" "campaign004" "campaign005"
 ## [6] "campaign006"
 ```
+
+--- .class #id 
+
+## Veri modeli 
+
+- keyword-page: kp
+- page-conversion: pc
+- keyword-visit: kv
 
 --- .class #id 
 
@@ -674,7 +691,189 @@ visits
 
 --- .class #id 
 
-## How to generate such test data easily? 
+## Bu anahtar kelimenin getirdiği trafik nedir?
 
 
+```r
+	setkey(kp, keyword)
+	kp3 = kv[keyword]
+```
+
+```
+## Error in `[.data.table`(kv, keyword): When i is a data.table (or character vector), x must be keyed (i.e. sorted, and, marked as sorted) so data.table knows which columns to join to and take advantage of x being sorted. Call setkey(x,...) first, see ?setkey.
+```
+
+```r
+  kp3
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'kp3' not found
+```
+
+```r
+	page = kp[keyword]$page
+  page
+```
+
+```
+## [1] "pg004"
+```
+
+--- .class #id 
+
+## Bu sayfanın dönüşüm oranı nedir?
+
+
+```r
+	setkey(pc, page)
+	pc3 = pc[page]
+  pc3
+```
+
+```
+##     page conversion
+## 1: pg004      0.036
+```
+
+```r
+	conversion_rate = pc[page]$conversion
+  conversion
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'conversion' not found
+```
+ 
+--- .class #id 
+
+## Toplam dönüşüm miktarı (email sayısı) kaçtır?
+
+
+```r
+	conversions = visits * conversion_rate
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'visits' not found
+```
+
+```r
+conversions
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'conversions' not found
+```
+
+--- .class #id 
+
+## Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?
+
+1. Yaklaşım: İmperatif yaklaşım
+- Her anahtar kelime için yukarıdaki hesaplamayı yapalım
+   - for loop
+     - her keyword için page'i çekeriz
+   - inner loop
+     - her page için conversion rate'leri çekeriz
+     - bu conversion rate'lerle visit sayılarını çarparız
+     - tüm sayfalar için bu conversion sayılarını toplarız
+
+--- .class #id 
+
+## Hesaplamayı genelleştirme 2
+
+2. Yaklaşım: Deklaratif düşünme
+   - Nasıl yapacağımızı değil ne yapacağımızı tarif etme
+   - Kümeler (sets) ve ilişkiler (relationships)
+   - SQL tarzı
+- SQL tablosu = n değişken/küme arasında ilişki/bağıntı (mapping)
+	- keyword-page: kp
+	- page-conversion: pc
+	- keyword-visit: kv
+
+--- .class #id 
+
+## Join işlemi
+
+- Ortak değişkenleri/kümeleri olan ilişkileri/tabloları birleştirebiliriz (join)
+- Örnek: 
+   - keyword-page
+   - keyword-visit
+- Sonuç:
+   - keyword-page-visit
+
+--- .class #id 
+
+## Sembolik düşünme
+
+- Nasıl birleştireceğimizi boşverin
+- Sadece ne yapacağımızı düşünelim:
+- keyword-page ile page-conversion tablolarını birleştirelim
+  - keyword-page-conversion
+- buna page-visit tablosunu ekleyelim
+  - keyword-page-conversion-visit
+
+--- .class #id 
+
+## Sembolik düşünme
+
+- conversion_number = conversion x visit
+  - keyword-page-conversion-visit-conversion_number
+- gereksiz değişkenleri silelim:
+  - keyword-conversion_number
+- 1 keyword için n tane satır vardır
+  - aynı keyword'e sahip satırları grupla (pivotlama/gruplama)
+  - her grup içindeki conversion_number'larını topla: total_conversion
+- tüm satırları total_conversion'a göre sırala
+- en üstteki 5 taneyi çek
+
+--- .class #id 
+
+## Bu işlemleri kodlayalım
+
+
+```r
+	r = kp %>%
+		inner_join(pc, by="page") %>%
+		inner_join(kv, by="keyword") %>%
+		mutate( conversion_number = visit * conversion ) %>%
+		group_by(keyword) %>%
+		summarise(total_conversion = sum(conversion_number)) %>%
+		select(keyword, total_conversion) %>%
+		arrange(total_conversion) 
+r %>% head
+```
+
+```
+##   keyword total_conversion
+## 1   kw013            0.038
+## 2   kw007            0.245
+## 3   kw004            0.300
+## 4   kw010            0.440
+## 5   kw005            0.468
+## 6   kw012            0.624
+```
+
+--- .class #id 
+
+## Sıralamayı tersine çevirelim
+
+
+```r
+	r = r %>%
+		arrange(desc(total_conversion))
+r %>% head
+```
+
+```
+##   keyword total_conversion
+## 1   kw015            4.176
+## 2   kw003            2.808
+## 3   kw006            2.808
+## 4   kw002            1.677
+## 5   kw011            1.482
+## 6   kw014            1.452
+```
+ 
 
