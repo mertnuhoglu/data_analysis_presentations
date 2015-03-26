@@ -11,16 +11,307 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
+```{r load_packages, include=FALSE}
+source('test_data.R')
+```
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+## Giriş
+
+- Örneklere dayalı dil öğrenme
+	- Yabancı dil
+	- Gramer kurallarını zihin kendisi çıkartır
+		- Stephen Krashen'ın yabancı dil öğrenme teorisi:
+			[http://www.sk.com.br/sk-krash-english.html](http://www.sk.com.br/sk-krash-english.html)
+	  - Öğrenmek daha zevkli: zorlanma - kolaylık dengesi
 
 --- .class #id 
 
-## Slide 2
+## Prezentasyon ve kodlar
 
+- Html5 slaytlar: [http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html)
+- Kaynak kodları: [https://github.com/mertnuhoglu/data_analysis_istanbulcoders](https://github.com/mertnuhoglu/data_analysis_istanbulcoders)
+- Araçlar (PowerPoint katilleri): 
+	- [slidify](http://ramnathv.github.io/slidify/)
+  - [knitr](http://yihui.name/knitr/)
+  - [RMarkdown](http://rmarkdown.rstudio.com/)
 
+--- .class #id 
 
+## Linkler
+
+- [Veribilimi İstanbul](https://www.facebook.com/groups/465842350233183/)
+- [RStudio Webinars](http://www.rstudio.com/resources/webinars/)
+- [Functional Programming Design Patterns](http://fsharpforfunandprofit.com/fppatterns/)
+- [Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
+- [The Lambda Calculus for Absolute Dummies (like myself)](http://palmstroem.blogspot.com.tr/2012/05/lambda-calculus-for-absolute-dummies.html)
+
+--- .class #id 
+
+## Eticaret: Conversion rate optimizasyonu
+
+- Blog sitesi: BallOrange.com 
+- Conversion: Ziyaretçilerin email adresleri
+- Her blog yazısı için
+	- Trafik farklı
+	- Conversion oranı farklı
+- En değerli blog yazıları:
+	- Trafik x conversion oranı
+- Örnek:
+	- A sayfası:
+		- 1000 ziyaretçi x %5 dönüştürme = 50 email
+	- B sayfası:
+		- 500 ziyaretçi x %15 dönüştürme = 75 email
+
+--- .class #id 
+
+## Conversion rate optimizasyonu 2
+
+- Google Analytics'ten topladığımız veriler:
+
+	- Keyword - Visit: The number of visits per search keyword 
+	- Keyword - Page: To which blog page does a search keyword send the visitors
+	- Page - Conversion Rate: Ratio of visitors that leave their email addresses in each page
+
+--- .class #id 
+
+## Test Data Generation
+
+`ballorange_conversion_optimization()` in test_data.R
+
+```{r data_init, include=FALSE}
+	dn = read_data_naming()
+	data = generate_data %>%
+		Map(dn$base_name, dn$seq_end) %>%
+		setNames(dn$variable)
+```
+
+```{r }
+	 data
+```
+
+--- .class #id 
+
+## Generate test data
+
+```{r simulate_data}
+	set.seed(1)
+	n_kw = length(data$keyword)
+	n_pg = length(data$page)
+	kv = data.table(
+		keyword = data$keyword %>% sample,
+		visit = (runif(n_kw) * 100) %>% ceiling)
+	kp = data.table(
+		keyword = kv$keyword %>% sample_with_replace(n_pg),
+		page = data$page %>% sample(n_pg))
+	pc = data.table(
+		page = kp$page %>% sample(n_pg),
+		conversion = (runif(n_pg) * 0.05) %>% sample(n_pg) %>% round(3))
+```
+
+--- .class #id 
+
+## Generate test data 2
+
+```{r }
+head(kv)
+head(kp)
+```
+
+--- .class #id 
+
+## Generate test data 3
+
+```{r }
+head(pc)
+pc %>% head
+```
+
+--- .class #id 
+
+## How to generate such test data easily?
+
+```{r }
+dn = read_data_naming()
+dn
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+generate_data("page", 10)
+```
+ 
+```{r }
+Map( generate_data, "page", 10)
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+Map( generate_data, c("page", "keyword"), 10)
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+Map( generate_data, c("page", "keyword"), c(10, 20))
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+generate_data %>% 
+   Map( c("page", "keyword"), c(10, 20) )
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+dn$base_name
+dn$seq_end
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+generate_data %>%
+		Map(dn$base_name, dn$seq_end)
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+data = generate_data %>%
+		Map(dn$base_name, dn$seq_end) %>%
+		setNames(dn$variable)
+data
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+data %>% str
+```
+
+--- .class #id 
+
+## Test datatable
+
+```{r }
+	n_kw = length(data$keyword)
+	kp = data.table(
+		keyword = kv$keyword %>% sample,
+		page = data$page %>% sample(n_kw))
+kp
+```
+
+--- .class #id 
+
+## sample function
+
+```{r }
+set.seed(1)
+sample(1:10, 3)
+set.seed(1)
+1:10 %>% sample(3)
+```
+
+```{r }
+sample(c("ali", "veli", "can", "cem"), 3)
+```
+
+--- .class #id 
+
+## Test datatable 
+
+```{r }
+	kv = data.table(
+		keyword = data$keyword %>% sample,
+		visit = (runif(n_kw) * 100) %>% ceiling)
+kv
+```
+
+--- .class #id 
+
+## Random number generation
+
+```{r }
+runif(10)
+```
+ 
+```{r }
+runif(10) * 100
+```
+
+--- .class #id 
+
+## Generating test data - complete
+
+```{r }
+	dn = read_data_naming()
+	data = generate_data %>%
+		Map(dn$base_name, dn$seq_end) %>%
+		setNames(dn$variable)
+	
+	set.seed(1)
+	n_kw = length(data$keyword)
+	kv = data.table(
+		keyword = data$keyword %>% sample,
+		visit = (runif(n_kw) * 100) %>% ceiling)
+	kp = data.table(
+		keyword = kv$keyword %>% sample,
+		page = data$page %>% sample(n_kw))
+	pc = data.table(
+		page = kp$page %>% sample,
+		conversion = (runif(n_kw) * 0.05) %>% sample(n_kw) %>% round(3))
+```
+
+--- .class #id 
+
+## Sorun 
+
+- En çok email adresi sağlayan 5 anahtar kelimeyi (keyword) bul
+
+--- .class #id 
+
+## Örnek bir kelime için dönüşüm oranı kaçtır?
+
+- "kw003" kelimesi için ziyaret sayısı kaçtır?
+
+```{r }
+	keyword = 'kw003'
+	setkey(kv, keyword)
+	kv3 = kv[keyword]
+  kv3
+```
+
+- sadece ziyaret sayısını çekelim
+
+```{r }
+visits = kv[keyword]$visit
+visits
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+```
 

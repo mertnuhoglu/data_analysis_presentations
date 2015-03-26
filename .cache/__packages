@@ -1,0 +1,16 @@
+base
+Defaults
+slidify
+pryr
+gtools
+lubridate
+data.table
+pipeR
+plyr
+dplyr
+tidyr
+magrittr
+rlist
+XML
+reshape2
+rjson
