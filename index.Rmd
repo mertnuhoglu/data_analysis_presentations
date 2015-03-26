@@ -12,7 +12,57 @@ knit        : slidify::knit2slides
 ---
 
 ```{r load_packages, include=FALSE}
-source('test_data.R')
+  source('test_data.R')
+	dn = read_data_naming()
+	data = generate_data %>%
+		Map(dn$base_name, dn$seq_end) %>%
+		setNames(dn$variable)
+	
+	# test data
+	set.seed(1)
+	n_kw = length(data$keyword)
+	n_pg = length(data$page)
+	kv = data.table(
+		keyword = data$keyword %>% sample,
+		visit = (runif(n_kw) * 100) %>% ceiling)
+	kp = data.table(
+		keyword = kv$keyword %>% sample_with_replace(n_pg),
+		page = data$page %>% sample(n_pg))
+	pc = data.table(
+		page = kp$page %>% sample(n_pg),
+		conversion = (runif(n_pg) * 0.05) %>% sample(n_pg) %>% round(3))
+
+	# calculate conversion number for just a single keyword
+	keyword = 'kw003'
+	setkey(kv, keyword)
+	visits = kv[keyword]$visit
+	setkey(kp, keyword)
+	page = kp[keyword]$page
+	setkey(pc, page)
+	conversion_rate = pc[page]$conversion
+	conversions = visits * conversion_rate
+
+	# calculate conversion numbers for all keywords
+	r = kp %>%
+		inner_join(pc, by="page") %>%
+		inner_join(kv, by="keyword") %>%
+		mutate( conversion_number = visit * conversion ) %>%
+		group_by(keyword) %>%
+		summarise(total_conversion = sum(conversion_number)) %>%
+		select(keyword, total_conversion) %>%
+		arrange(total_conversion) 
+	
+	r = r %>%
+		arrange(desc(total_conversion))
+	top_keywords = r$keyword[1:3]
+
+	top_kp = kp %>%
+		filter(keyword %in% top_keywords)
+	# or filter using datatable subsetting (equivalent)
+	setkey(kp, keyword)
+	top_kp = kp[top_keywords]
+
+	top_pages = top_kp$page
 ```
 
 ## Giriş
@@ -327,6 +377,7 @@ runif(10) * 100
 - sadece ziyaret sayısını çekelim
 
 ```{r }
+setkey(kv, keyword)
 visits = kv[keyword]$visit
 visits
 ```
@@ -336,6 +387,7 @@ visits
 ## Bu anahtar kelimenin getirdiği trafik nedir?
 
 ```{r }
+  setkey(kv, keyword)
 	setkey(kp, keyword)
 	kp3 = kv[keyword]
   kp3
@@ -348,19 +400,21 @@ visits
 ## Bu sayfanın dönüşüm oranı nedir?
 
 ```{r }
-	setkey(pc, page)
-	pc3 = pc[page]
-  pc3
-	conversion_rate = pc[page]$conversion
-  conversion
+setkey(pc, page)
+pc3 = pc[page]
+pc3
+conversion_rate = pc3$conversion
+conversion_rate
 ```
- 
+
 --- .class #id 
 
 ## Toplam dönüşüm miktarı (email sayısı) kaçtır?
 
 ```{r }
-	conversions = visits * conversion_rate
+setkey(kv, keyword)
+visits = kv[keyword]$visit
+conversions = visits * conversion_rate
 conversions
 ```
 
@@ -452,4 +506,20 @@ r %>% head
 r %>% head
 ```
  
+--- .class #id 
+
+## Hangi sayfalar en iyi kelimelerin hedefi?
+
+- En iyi 3 kelimeyi çıkartalım (filtreleyelim)
+- Bu kelimelerin trafik getirdiği sayfalar neler?
+
+```{r }
+top_keywords = r$keyword[1:3]
+top_kp = kp %>%
+  filter(keyword %in% top_keywords)
+top_kp %>% head
+top_pages = top_kp$page
+top_pages
+```
+
 

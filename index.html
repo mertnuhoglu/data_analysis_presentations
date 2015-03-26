@@ -813,16 +813,12 @@ kv
 <li>sadece ziyaret sayısını çekelim</li>
 </ul>
 
-<pre><code class="r">visits = kv[keyword]$visit
+<pre><code class="r">setkey(kv, keyword)
+visits = kv[keyword]$visit
+visits
 </code></pre>
 
-<pre><code>## Error in `[.data.table`(kv, keyword): When i is a data.table (or character vector), x must be keyed (i.e. sorted, and, marked as sorted) so data.table knows which columns to join to and take advantage of x being sorted. Call setkey(x,...) first, see ?setkey.
-</code></pre>
-
-<pre><code class="r">visits
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;visits&#39; not found
+<pre><code>## [1] 78
 </code></pre>
 
   </article>
@@ -834,17 +830,14 @@ kv
     <h2>Bu anahtar kelimenin getirdiği trafik nedir?</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">    setkey(kp, keyword)
+    <pre><code class="r">  setkey(kv, keyword)
+    setkey(kp, keyword)
     kp3 = kv[keyword]
+  kp3
 </code></pre>
 
-<pre><code>## Error in `[.data.table`(kv, keyword): When i is a data.table (or character vector), x must be keyed (i.e. sorted, and, marked as sorted) so data.table knows which columns to join to and take advantage of x being sorted. Call setkey(x,...) first, see ?setkey.
-</code></pre>
-
-<pre><code class="r">  kp3
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;kp3&#39; not found
+<pre><code>##    keyword visit
+## 1:   kw003    78
 </code></pre>
 
 <pre><code class="r">    page = kp[keyword]$page
@@ -863,36 +856,38 @@ kv
     <h2>Bu sayfanın dönüşüm oranı nedir?</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">    setkey(pc, page)
-    pc3 = pc[page]
-  pc3
+    <pre><code class="r">setkey(pc, page)
+pc3 = pc[page]
+pc3
 </code></pre>
 
 <pre><code>##     page conversion
 ## 1: pg004      0.036
 </code></pre>
 
-<pre><code class="r">    conversion_rate = pc[page]$conversion
-  conversion
+<pre><code class="r">conversion_rate = pc3$conversion
+conversion_rate
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;conversion&#39; not found
+<pre><code>## [1] 0.036
 </code></pre>
 
-<p>--- .class #id </p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<h2>Toplam dönüşüm miktarı (email sayısı) kaçtır?</h2>
-
-<pre><code class="r">    conversions = visits * conversion_rate
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Toplam dönüşüm miktarı (email sayısı) kaçtır?</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">setkey(kv, keyword)
+visits = kv[keyword]$visit
+conversions = visits * conversion_rate
+conversions
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;visits&#39; not found
-</code></pre>
-
-<pre><code class="r">conversions
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;conversions&#39; not found
+<pre><code>## [1] 2.808
 </code></pre>
 
   </article>
@@ -1078,6 +1073,34 @@ r %&gt;% head
 ## 4   kw002            1.677
 ## 5   kw011            1.482
 ## 6   kw014            1.452
+</code></pre>
+
+<p>--- .class #id </p>
+
+<h2>Hangi sayfalar en iyi kelimelerin hedefi?</h2>
+
+<ul>
+<li>En iyi 3 kelimeyi çıkartalım (filtreleyelim)</li>
+<li>Bu kelimelerin trafik getirdiği sayfalar neler?</li>
+</ul>
+
+<pre><code class="r">top_keywords = r$keyword[1:3]
+top_kp = kp %&gt;%
+  filter(keyword %in% top_keywords)
+top_kp %&gt;% head
+</code></pre>
+
+<pre><code>##    keyword  page
+## 1:   kw003 pg004
+## 2:   kw006 pg025
+## 3:   kw015 pg015
+</code></pre>
+
+<pre><code class="r">top_pages = top_kp$page
+top_pages
+</code></pre>
+
+<pre><code>## [1] &quot;pg004&quot; &quot;pg025&quot; &quot;pg015&quot;
 </code></pre>
 
   </article>
@@ -1270,25 +1293,25 @@ r %&gt;% head
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?'>
+        data-slide=31 title='Toplam dönüşüm miktarı (email sayısı) kaçtır?'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Hesaplamayı genelleştirme 2'>
+        data-slide=32 title='Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Join işlemi'>
+        data-slide=33 title='Hesaplamayı genelleştirme 2'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Sembolik düşünme'>
+        data-slide=34 title='Join işlemi'>
          34
       </a>
     </li>
@@ -1300,14 +1323,20 @@ r %&gt;% head
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Bu işlemleri kodlayalım'>
+        data-slide=36 title='Sembolik düşünme'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Sıralamayı tersine çevirelim'>
+        data-slide=37 title='Bu işlemleri kodlayalım'>
          37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Sıralamayı tersine çevirelim'>
+         38
       </a>
     </li>
   </ul>

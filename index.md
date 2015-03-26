@@ -674,19 +674,13 @@ runif(10) * 100
 
 
 ```r
+setkey(kv, keyword)
 visits = kv[keyword]$visit
-```
-
-```
-## Error in `[.data.table`(kv, keyword): When i is a data.table (or character vector), x must be keyed (i.e. sorted, and, marked as sorted) so data.table knows which columns to join to and take advantage of x being sorted. Call setkey(x,...) first, see ?setkey.
-```
-
-```r
 visits
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'visits' not found
+## [1] 78
 ```
 
 --- .class #id 
@@ -695,20 +689,15 @@ visits
 
 
 ```r
+  setkey(kv, keyword)
 	setkey(kp, keyword)
 	kp3 = kv[keyword]
-```
-
-```
-## Error in `[.data.table`(kv, keyword): When i is a data.table (or character vector), x must be keyed (i.e. sorted, and, marked as sorted) so data.table knows which columns to join to and take advantage of x being sorted. Call setkey(x,...) first, see ?setkey.
-```
-
-```r
   kp3
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'kp3' not found
+##    keyword visit
+## 1:   kw003    78
 ```
 
 ```r
@@ -726,9 +715,9 @@ visits
 
 
 ```r
-	setkey(pc, page)
-	pc3 = pc[page]
-  pc3
+setkey(pc, page)
+pc3 = pc[page]
+pc3
 ```
 
 ```
@@ -737,33 +726,28 @@ visits
 ```
 
 ```r
-	conversion_rate = pc[page]$conversion
-  conversion
+conversion_rate = pc3$conversion
+conversion_rate
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'conversion' not found
+## [1] 0.036
 ```
- 
+
 --- .class #id 
 
 ## Toplam dönüşüm miktarı (email sayısı) kaçtır?
 
 
 ```r
-	conversions = visits * conversion_rate
-```
-
-```
-## Error in eval(expr, envir, enclos): object 'visits' not found
-```
-
-```r
+setkey(kv, keyword)
+visits = kv[keyword]$visit
+conversions = visits * conversion_rate
 conversions
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'conversions' not found
+## [1] 2.808
 ```
 
 --- .class #id 
@@ -876,4 +860,35 @@ r %>% head
 ## 6   kw014            1.452
 ```
  
+--- .class #id 
+
+## Hangi sayfalar en iyi kelimelerin hedefi?
+
+- En iyi 3 kelimeyi çıkartalım (filtreleyelim)
+- Bu kelimelerin trafik getirdiği sayfalar neler?
+
+
+```r
+top_keywords = r$keyword[1:3]
+top_kp = kp %>%
+  filter(keyword %in% top_keywords)
+top_kp %>% head
+```
+
+```
+##    keyword  page
+## 1:   kw003 pg004
+## 2:   kw006 pg025
+## 3:   kw015 pg015
+```
+
+```r
+top_pages = top_kp$page
+top_pages
+```
+
+```
+## [1] "pg004" "pg025" "pg015"
+```
+
 
