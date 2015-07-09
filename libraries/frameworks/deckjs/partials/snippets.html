@@ -40,6 +40,12 @@ $('ul.build li').addClass('slide')
 <!-- Initialize the deck -->
 <script>
 $(function() {
+  $.extend(true, $.deck.defaults, {
+  automatic: {
+    startRunning: false,    // true or false
+    cycle: false,           // true or false
+    slideDuration: 10000 // duration in milliseconds
+  }})
 	$.deck('.slide');
 });
 </script>
