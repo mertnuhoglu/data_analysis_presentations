@@ -1,0 +1,14 @@
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	// required only if the automatic extension is enabled.
+	$.extend(true, $.deck.defaults, {
+	automatic: {
+		startRunning: true,    // true or false
+		cycle: false,           // true or false
+		slideDuration: 1000 // duration in milliseconds
+	}})
+	$.deck('.slide');
+});
+</script>
+

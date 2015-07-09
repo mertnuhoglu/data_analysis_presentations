@@ -1,52 +1,47 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  
+<html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <title>Data Analysis Applications using R</title>
-  <meta charset="utf-8">
-  <meta name="description" content="Data Analysis Applications using R">
-  <meta name="author" content="Mert Nuhoglu">
-  <meta name="generator" content="slidify" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
-    media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
-
-  
-  <!-- Grab CDN jQuery, fall back to local if offline -->
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="libraries/frameworks/io2012/js/slides" 
-    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
-  </script>
-  
-  
+	<title>Data Analysis Applications using R</title>
+	<meta name="description" content="Data Analysis Applications using R">
+	<meta name="author" content="Mert Nuhoglu">
+	<meta name="generator" content="slidify" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Required stylesheet -->
+	<link rel="stylesheet" href="libraries/frameworks/deckjs/core/deck.core.css">
+	<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/status/deck.status.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/automatic/deck.automatic.css">
+<!-- Style theme. More available in /themes/style/  -->
+	<link rel="stylesheet" href="libraries/frameworks/deckjs/themes/style/web-2.0.css">
+	
+	<!-- Transition theme. More available in /themes/transition/  -->
+	<link rel="stylesheet" href="libraries/frameworks/deckjs/themes/transition/horizontal-slide.css">
+	<script src="libraries/frameworks/deckjs/modernizr.custom.js"></script>
+	
+	<!-- LOAD STYLE SHEETS -->
+	<link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_light.css">
+	
+	  <link rel="stylesheet" href = "assets/css/ribbons.css">
 
 </head>
-<body style="opacity: 0">
-  <slides class="layout-widescreen">
-    
-    <!-- LOGO SLIDE -->
-        <slide class="title-slide segue nobackground">
-  <hgroup class="auto-fadein">
-    <h1>Data Analysis Applications using R</h1>
-    <h2>IstanbulCoders</h2>
-    <p>Mert Nuhoglu<br/></p>
-  </hgroup>
-  <article></article>  
-</slide>
-    
 
-    <!-- SLIDES -->
-    <slide class="" id="slide-1" style="background:;">
-  <hgroup>
-    <h2>Giriş</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+<body class="deck-container">
+
+  <!-- Begin slides -->
+  <section class="slide " id="slide-1">
+  <h2>Giriş</h2>
+  <ul>
 <li>Örneklere dayalı dil öğrenme
 - Yabancı dil
 
@@ -61,16 +56,10 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veri Bilimi Nedir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Veri Bilimi Nedir?</h2>
+  <ul>
 <li>Disiplinler arası bir alan
 
 <ul>
@@ -80,27 +69,15 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+</section>
+<section class="slide class" id="id">
+  <h2>Veri Bilimi Nedir?</h2>
+  <p><img src="assets/img/Venn-Diagram-of-Data-Scientist-Skills.png" alt="Veri Bilimi Venn Şeması"></p>
 
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veri Bilimi Nedir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="assets/img/Venn-Diagram-of-Data-Scientist-Skills.png" alt="Veri Bilimi Venn Şeması"></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Eticaret: Conversion rate optimizasyonu</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Eticaret: Conversion rate optimizasyonu</h2>
+  <ul>
 <li>Blog sitesi: BallOrange.com </li>
 <li>Conversion: Ziyaretçilerin email adresleri</li>
 <li>Her blog yazısı için
@@ -130,16 +107,10 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Conversion rate optimizasyonu 2</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Conversion rate optimizasyonu 2</h2>
+  <ul>
 <li><p>Google Analytics&#39;ten topladığımız veriler:</p>
 
 <ul>
@@ -149,16 +120,10 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Test Data Generation</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><code>ballorange_conversion_optimization()</code> in test_data.R</p>
+</section>
+<section class="slide class" id="id">
+  <h2>Test Data Generation</h2>
+  <p><code>ballorange_conversion_optimization()</code> in test_data.R</p>
 
 <pre><code class="r">     data
 </code></pre>
@@ -206,31 +171,19 @@
 ## [6] &quot;campaign006&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veri modeli</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Veri modeli</h2>
+  <ul>
 <li>keyword-page: kp</li>
 <li>page-conversion: pc</li>
 <li>keyword-visit: kv</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Generate test data</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    set.seed(1)
+</section>
+<section class="slide class" id="id">
+  <h2>Generate test data</h2>
+  <pre><code class="r">    set.seed(1)
     n_kw = length(data$keyword)
     n_pg = length(data$page)
     kv = data.table(
@@ -244,16 +197,10 @@
         conversion = (runif(n_pg) * 0.05) %&gt;% sample(n_pg) %&gt;% round(3))
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Generate test data 2</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">head(kv)
+</section>
+<section class="slide class" id="id">
+  <h2>Generate test data 2</h2>
+  <pre><code class="r">head(kv)
 </code></pre>
 
 <pre><code>##    keyword visit
@@ -277,16 +224,10 @@
 ## 6:   kw002 pg010
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Generate test data 3</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">head(pc)
+</section>
+<section class="slide class" id="id">
+  <h2>Generate test data 3</h2>
+  <pre><code class="r">head(pc)
 </code></pre>
 
 <pre><code>##     page conversion
@@ -310,16 +251,10 @@
 ## 6: pg004      0.005
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">dn = read_data_naming()
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">dn = read_data_naming()
 dn
 </code></pre>
 
@@ -336,16 +271,10 @@ dn
 ## 10: campaign  campaign       6
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">generate_data(&quot;page&quot;, 10)
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">generate_data(&quot;page&quot;, 10)
 </code></pre>
 
 <pre><code>##  [1] &quot;page001&quot; &quot;page002&quot; &quot;page003&quot; &quot;page004&quot; &quot;page005&quot; &quot;page006&quot; &quot;page007&quot;
@@ -360,16 +289,10 @@ dn
 ##  [8] &quot;page008&quot; &quot;page009&quot; &quot;page010&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">Map( generate_data, c(&quot;page&quot;, &quot;keyword&quot;), 10)
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">Map( generate_data, c(&quot;page&quot;, &quot;keyword&quot;), 10)
 </code></pre>
 
 <pre><code>## $page
@@ -381,16 +304,10 @@ dn
 ##  [6] &quot;keyword006&quot; &quot;keyword007&quot; &quot;keyword008&quot; &quot;keyword009&quot; &quot;keyword010&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">Map( generate_data, c(&quot;page&quot;, &quot;keyword&quot;), c(10, 20))
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">Map( generate_data, c(&quot;page&quot;, &quot;keyword&quot;), c(10, 20))
 </code></pre>
 
 <pre><code>## $page
@@ -404,16 +321,10 @@ dn
 ## [16] &quot;keyword016&quot; &quot;keyword017&quot; &quot;keyword018&quot; &quot;keyword019&quot; &quot;keyword020&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">generate_data %&gt;% 
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">generate_data %&gt;% 
    Map( c(&quot;page&quot;, &quot;keyword&quot;), c(10, 20) )
 </code></pre>
 
@@ -428,16 +339,10 @@ dn
 ## [16] &quot;keyword016&quot; &quot;keyword017&quot; &quot;keyword018&quot; &quot;keyword019&quot; &quot;keyword020&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">dn$base_name
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">dn$base_name
 </code></pre>
 
 <pre><code>##  [1] &quot;p&quot;        &quot;c&quot;        &quot;g&quot;        &quot;s&quot;        &quot;r&quot;        &quot;kw&quot;      
@@ -450,16 +355,10 @@ dn
 <pre><code>##  [1] 10 30  3  6  4 15 50 20 10  6
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">generate_data %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">generate_data %&gt;%
         Map(dn$base_name, dn$seq_end)
 </code></pre>
 
@@ -506,16 +405,10 @@ dn
 ## [6] &quot;campaign006&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">data = generate_data %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">data = generate_data %&gt;%
         Map(dn$base_name, dn$seq_end) %&gt;%
         setNames(dn$variable)
 data
@@ -564,16 +457,10 @@ data
 ## [6] &quot;campaign006&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>How to generate such test data easily?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">data %&gt;% str
+</section>
+<section class="slide class" id="id">
+  <h2>How to generate such test data easily?</h2>
+  <pre><code class="r">data %&gt;% str
 </code></pre>
 
 <pre><code>## List of 10
@@ -589,16 +476,10 @@ data
 ##  $ campaign: chr [1:6] &quot;campaign001&quot; &quot;campaign002&quot; &quot;campaign003&quot; &quot;campaign004&quot; ...
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Test datatable</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    n_kw = length(data$keyword)
+</section>
+<section class="slide class" id="id">
+  <h2>Test datatable</h2>
+  <pre><code class="r">    n_kw = length(data$keyword)
     kp = data.table(
         keyword = kv$keyword %&gt;% sample,
         page = data$page %&gt;% sample(n_kw))
@@ -623,16 +504,10 @@ kp
 ## 15:   kw012 pg015
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>sample function</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">set.seed(1)
+</section>
+<section class="slide class" id="id">
+  <h2>sample function</h2>
+  <pre><code class="r">set.seed(1)
 sample(1:10, 3)
 </code></pre>
 
@@ -652,16 +527,10 @@ sample(1:10, 3)
 <pre><code>## [1] &quot;cem&quot;  &quot;ali&quot;  &quot;veli&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Test datatable</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    kv = data.table(
+</section>
+<section class="slide class" id="id">
+  <h2>Test datatable</h2>
+  <pre><code class="r">    kv = data.table(
         keyword = data$keyword %&gt;% sample,
         visit = (runif(n_kw) * 100) %&gt;% ceiling)
 kv
@@ -685,16 +554,10 @@ kv
 ## 15:   kw012    67
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Random number generation</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">runif(10)
+</section>
+<section class="slide class" id="id">
+  <h2>Random number generation</h2>
+  <pre><code class="r">runif(10)
 </code></pre>
 
 <pre><code>##  [1] 0.7942399 0.1079436 0.7237109 0.4112744 0.8209463 0.6470602 0.7829328
@@ -708,16 +571,10 @@ kv
 ##  [8] 24.479728  7.067905  9.946616
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Generating test data - complete</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    dn = read_data_naming()
+</section>
+<section class="slide class" id="id">
+  <h2>Generating test data - complete</h2>
+  <pre><code class="r">    dn = read_data_naming()
     data = generate_data %&gt;%
         Map(dn$base_name, dn$seq_end) %&gt;%
         setNames(dn$variable)
@@ -735,29 +592,17 @@ kv
         conversion = (runif(n_kw) * 0.05) %&gt;% sample(n_kw) %&gt;% round(3))
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Sorun</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Sorun</h2>
+  <ul>
 <li>En çok email adresi sağlayan 5 anahtar kelimeyi (keyword) bul</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Örnek bir kelime için dönüşüm oranı kaçtır?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Örnek bir kelime için dönüşüm oranı kaçtır?</h2>
+  <ul>
 <li>&quot;kw003&quot; kelimesi için ziyaret sayısı kaçtır?</li>
 </ul>
 
@@ -783,16 +628,10 @@ visits
 <pre><code>## [1] 78
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu anahtar kelimenin getirdiği trafik nedir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">  setkey(kv, keyword)
+</section>
+<section class="slide class" id="id">
+  <h2>Bu anahtar kelimenin getirdiği trafik nedir?</h2>
+  <pre><code class="r">  setkey(kv, keyword)
     setkey(kp, keyword)
     kp3 = kv[keyword]
   kp3
@@ -809,16 +648,10 @@ visits
 <pre><code>## [1] &quot;pg004&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu sayfanın dönüşüm oranı nedir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">setkey(pc, page)
+</section>
+<section class="slide class" id="id">
+  <h2>Bu sayfanın dönüşüm oranı nedir?</h2>
+  <pre><code class="r">setkey(pc, page)
 pc3 = pc[page]
 pc3
 </code></pre>
@@ -834,16 +667,10 @@ conversion_rate
 <pre><code>## [1] 0.036
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Toplam dönüşüm miktarı (email sayısı) kaçtır?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">setkey(kv, keyword)
+</section>
+<section class="slide class" id="id">
+  <h2>Toplam dönüşüm miktarı (email sayısı) kaçtır?</h2>
+  <pre><code class="r">setkey(kv, keyword)
 visits = kv[keyword]$visit
 conversions = visits * conversion_rate
 conversions
@@ -852,16 +679,10 @@ conversions
 <pre><code>## [1] 2.808
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ol>
+</section>
+<section class="slide class" id="id">
+  <h2>Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?</h2>
+  <ol>
 <li>Yaklaşım: İmperatif yaklaşım</li>
 <li>Her anahtar kelime için yukarıdaki hesaplamayı yapalım
 
@@ -881,16 +702,10 @@ conversions
 </ul></li>
 </ol>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Hesaplamayı genelleştirme 2</h2>
-  </hgroup>
-  <article data-timings="">
-    <ol>
+</section>
+<section class="slide class" id="id">
+  <h2>Hesaplamayı genelleştirme 2</h2>
+  <ol>
 <li>Yaklaşım: Deklaratif düşünme
 
 <ul>
@@ -907,16 +722,10 @@ conversions
 </ul></li>
 </ol>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Join işlemi</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Join işlemi</h2>
+  <ul>
 <li>Ortak değişkenleri/kümeleri olan ilişkileri/tabloları birleştirebiliriz (join)</li>
 <li>Örnek: 
 
@@ -931,16 +740,10 @@ conversions
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Sembolik düşünme</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Sembolik düşünme</h2>
+  <ul>
 <li>Nasıl birleştireceğimizi boşverin</li>
 <li>Sadece ne yapacağımızı düşünelim:</li>
 <li>keyword-page ile page-conversion tablolarını birleştirelim
@@ -955,16 +758,10 @@ conversions
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Sembolik düşünme</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Sembolik düşünme</h2>
+  <ul>
 <li>conversion_number = conversion x visit
 
 <ul>
@@ -985,16 +782,10 @@ conversions
 <li>en üstteki 5 taneyi çek</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu işlemleri kodlayalım</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    r = kp %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Bu işlemleri kodlayalım</h2>
+  <pre><code class="r">    r = kp %&gt;%
         inner_join(pc, by=&quot;page&quot;) %&gt;%
         inner_join(kv, by=&quot;keyword&quot;) %&gt;%
         mutate( conversion_number = visit * conversion ) %&gt;%
@@ -1014,16 +805,10 @@ r %&gt;% head
 ## 6   kw012            0.624
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Sıralamayı tersine çevirelim</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    r = r %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Sıralamayı tersine çevirelim</h2>
+  <pre><code class="r">    r = r %&gt;%
         arrange(desc(total_conversion))
 r %&gt;% head
 </code></pre>
@@ -1037,16 +822,10 @@ r %&gt;% head
 ## 6   kw014            1.452
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Hangi sayfalar en iyi kelimelerin hedefi?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Hangi sayfalar en iyi kelimelerin hedefi?</h2>
+  <ul>
 <li>En iyi 3 kelimeyi çıkartalım (filtreleyelim)</li>
 <li>Bu kelimelerin trafik getirdiği sayfalar neler?</li>
 </ul>
@@ -1070,16 +849,10 @@ top_pages
 <pre><code>## [1] &quot;pg004&quot; &quot;pg025&quot; &quot;pg015&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Fonksiyonel programlama burada nerede?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Fonksiyonel programlama burada nerede?</h2>
+  <ul>
 <li>Functional sequence
 
 <ul>
@@ -1096,16 +869,10 @@ top_pages
 <li>For loop yok</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Linkler</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Linkler</h2>
+  <ul>
 <li><a href="https://www.facebook.com/groups/465842350233183/">Veribilimi İstanbul</a></li>
 <li><a href="http://www.rstudio.com/resources/webinars/">RStudio Webinars</a></li>
 <li><a href="http://fsharpforfunandprofit.com/fppatterns/">Functional Programming Design Patterns</a></li>
@@ -1113,16 +880,10 @@ top_pages
 <li><a href="http://palmstroem.blogspot.com.tr/2012/05/lambda-calculus-for-absolute-dummies.html">The Lambda Calculus for Absolute Dummies (like myself)</a></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Prezentasyon ve kodlar</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Prezentasyon ve kodlar</h2>
+  <ul>
 <li>Html5 slaytlar: <a href="http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html">http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html</a></li>
 <li>Kaynak kodları: <a href="https://github.com/mertnuhoglu/data_analysis_istanbulcoders">https://github.com/mertnuhoglu/data_analysis_istanbulcoders</a></li>
 <li>Araçlar (PowerPoint katilleri): 
@@ -1134,267 +895,60 @@ top_pages
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-    <slide class="backdrop"></slide>
-  </slides>
-  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
-    <ul>
-      <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Giriş'>
-         1
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Veri Bilimi Nedir?'>
-         2
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Veri Bilimi Nedir?'>
-         3
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Eticaret: Conversion rate optimizasyonu'>
-         4
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Conversion rate optimizasyonu 2'>
-         5
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Test Data Generation'>
-         6
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Veri modeli'>
-         7
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Generate test data'>
-         8
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Generate test data 2'>
-         9
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Generate test data 3'>
-         10
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='How to generate such test data easily?'>
-         11
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='How to generate such test data easily?'>
-         12
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='How to generate such test data easily?'>
-         13
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='How to generate such test data easily?'>
-         14
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='How to generate such test data easily?'>
-         15
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='How to generate such test data easily?'>
-         16
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='How to generate such test data easily?'>
-         17
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='How to generate such test data easily?'>
-         18
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='How to generate such test data easily?'>
-         19
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Test datatable'>
-         20
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='sample function'>
-         21
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Test datatable'>
-         22
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Random number generation'>
-         23
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Generating test data - complete'>
-         24
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Sorun'>
-         25
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Örnek bir kelime için dönüşüm oranı kaçtır?'>
-         26
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Bu anahtar kelimenin getirdiği trafik nedir?'>
-         27
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Bu sayfanın dönüşüm oranı nedir?'>
-         28
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Toplam dönüşüm miktarı (email sayısı) kaçtır?'>
-         29
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?'>
-         30
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Hesaplamayı genelleştirme 2'>
-         31
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Join işlemi'>
-         32
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Sembolik düşünme'>
-         33
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Sembolik düşünme'>
-         34
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Bu işlemleri kodlayalım'>
-         35
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Sıralamayı tersine çevirelim'>
-         36
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Hangi sayfalar en iyi kelimelerin hedefi?'>
-         37
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Fonksiyonel programlama burada nerede?'>
-         38
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Linkler'>
-         39
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Prezentasyon ve kodlar'>
-         40
-      </a>
-    </li>
-  </ul>
-  </div>  <!--[if IE]>
-    <script 
-      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
-    </script>
-    <script>CFInstall.check({mode: 'overlay'});</script>
-  <![endif]-->
+</section>
+	<div class='deck-automatic-link' title="Play/Pause">Play/Pause</div>
 </body>
-  <!-- Load Javascripts for Widgets -->
+  <!-- deck.navigation snippet -->
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
-   
-  </html>
+  <!-- deck.status snippet -->
+  <p class="deck-status">
+  <span class="deck-status-current"></span>
+    /
+  <span class="deck-status-total"></span>
+  </p>
+  
+  <!-- deck.goto snippet -->
+  <form action="." method="get" class="goto-form">
+  	<label for="goto-slide">Go to slide:</label>
+  	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  	<datalist id="goto-datalist"></datalist>
+  	<input type="submit" value="Go">
+  </form>
+  
+  <!-- deck.hash snippet -->
+  <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+  
+  
+  <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/frameworks/deckjs/jquery-1.7.min.js"><\/script>')</script>
+  
+  <!-- Add Slide Class to Build Elements -->
+  <script type='text/javascript'>
+  $('ol.build li').addClass('slide')
+  $('ul.build li').addClass('slide')
+  </script>
+  
+  <!-- Deck Core and extensions -->
+  <script src="libraries/frameworks/deckjs/core/deck.core.js"></script>
+  <script src="libraries/frameworks/deckjs/extensions/goto/deck.goto.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/hash/deck.hash.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/menu/deck.menu.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/navigation/deck.navigation.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/scale/deck.scale.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/status/deck.status.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/automatic/deck.automatic.js"></script>
+<!-- Initialize the deck -->
+  <script>
+  $(function() {
+  	$.deck('.slide');
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>

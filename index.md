@@ -3,9 +3,12 @@ title       : Data Analysis Applications using R
 subtitle    : IstanbulCoders
 author      : Mert Nuhoglu
 job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+framework   : deckjs        # {io2012, html5slides, shower, dzslides, ...}
+deckjs:
+  theme: web-2.0
+  extensions: [goto, hash, menu, navigation, scale, status, automatic]
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : solarized_light # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
