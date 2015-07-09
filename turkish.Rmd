@@ -1,5 +1,5 @@
 ---
-title       : Data Analysis Applications using R
+title       : R ile Veri Analizi Uygulamaları
 subtitle    : IstanbulCoders
 author      : Mert Nuhoglu
 job         : 
@@ -68,52 +68,52 @@ knit        : slidify::knit2slides
 	top_pages = top_kp$page
 ```
 
-## Introduction
+## Giriş
 
-- Learning a language based on examples
-	- Foreign language
-	- Mind extracts the grammer rules by itself
-		- Foreign language learning theory of Stephen Krashen:
+- Örneklere dayalı dil öğrenme
+	- Yabancı dil
+	- Gramer kurallarını zihin kendisi çıkartır
+		- Stephen Krashen'ın yabancı dil öğrenme teorisi:
 			[http://www.sk.com.br/sk-krash-english.html](http://www.sk.com.br/sk-krash-english.html)
-	  - Learning is more fun: balance between challenging - difficulty
+	  - Öğrenmek daha zevkli: zorlanma - kolaylık dengesi
 
 --- .class #id 
 
-## What is data science?
+## Veri Bilimi Nedir?
 
-- Interdisciplinary field
-  - Programming
-  - Statistics
-  - Domain expertise - analysis
-
---- .class #id 
-
-## What is data science?
-
-![Venn Diagram for Data Science](assets/img/Venn-Diagram-of-Data-Scientist-Skills.png)
+- Disiplinler arası bir alan
+  - Programlama
+  - İstatistik
+  - Alan uzmanlığı - analiz
 
 --- .class #id 
 
-## Ecommerce: Conversion rate optimization
+## Veri Bilimi Nedir?
 
-- Ecommerce site: BallOrange.com 
-- Conversion: Collecting the email addresses of visitors of the blog
-- For all blog posts
-	- Traffic varies
-	- Conversion ratio varies
-- The value of blog posts:
-	- Traffic x conversion ratio
-- Example:
-	- Page A:
-		- 1000 visitors x %5 conversion = 50 emails
-	- Page B:
-		- 500 visitors x %15 conversion = 75 emails
+![Veri Bilimi Venn Şeması](assets/img/Venn-Diagram-of-Data-Scientist-Skills.png)
 
 --- .class #id 
 
-## Conversion rate optimization 2
+## Eticaret: Conversion rate optimizasyonu
 
-- Data collected from Google Analytics:
+- Blog sitesi: BallOrange.com 
+- Conversion: Ziyaretçilerin email adresleri
+- Her blog yazısı için
+	- Trafik farklı
+	- Conversion oranı farklı
+- En değerli blog yazıları:
+	- Trafik x conversion oranı
+- Örnek:
+	- A sayfası:
+		- 1000 ziyaretçi x %5 dönüştürme = 50 email
+	- B sayfası:
+		- 500 ziyaretçi x %15 dönüştürme = 75 email
+
+--- .class #id 
+
+## Conversion rate optimizasyonu 2
+
+- Google Analytics'ten topladığımız veriler:
 
 	- Keyword - Visit: The number of visits per search keyword 
 	- Keyword - Page: To which blog page does a search keyword send the visitors
@@ -138,7 +138,7 @@ knit        : slidify::knit2slides
 
 --- .class #id 
 
-## Data model
+## Veri modeli 
 
 - keyword-page: kp
 - page-conversion: pc
@@ -341,13 +341,13 @@ runif(10) * 100
 
 ## Sorun 
 
-- Find 5 keywords that let us collect the most email addresses
+- En çok email adresi sağlayan 5 anahtar kelimeyi (keyword) bul
 
 --- .class #id 
 
-## What is the conversion ratio for some keyword?
+## Örnek bir kelime için dönüşüm oranı kaçtır?
 
-- How many visitors for keyword "kw003"?
+- "kw003" kelimesi için ziyaret sayısı kaçtır?
 
 ```{r }
 	keyword = 'kw003'
@@ -356,7 +356,7 @@ runif(10) * 100
   kv3
 ```
 
-- Let's just get the visitors amount
+- sadece ziyaret sayısını çekelim
 
 ```{r }
 setkey(kv, keyword)
@@ -366,7 +366,7 @@ visits
 
 --- .class #id 
 
-## How much traffic does this keyword bring to which page?
+## Bu anahtar kelimenin getirdiği trafik nedir?
 
 ```{r }
   setkey(kv, keyword)
@@ -379,7 +379,7 @@ visits
 
 --- .class #id 
 
-## How much is the conversion ration of that page?
+## Bu sayfanın dönüşüm oranı nedir?
 
 ```{r }
 setkey(pc, page)
@@ -391,7 +391,7 @@ conversion_rate
 
 --- .class #id 
 
-## What is the amount of total conversions (number of collected emails)?
+## Toplam dönüşüm miktarı (email sayısı) kaçtır?
 
 ```{r }
 setkey(kv, keyword)
@@ -402,69 +402,69 @@ conversions
 
 --- .class #id 
 
-## How to generalize this calculation for all keywords and pages?
+## Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?
 
-1. Approach: Imperative approach
-- Let's do the above calculation for each keyword
-   - for loop of keywords
-     - get the pages of that keyword
-   - inner loop for pages
-		 - get the conversion ration of the page
-		 - multiply conversion ratios with visitors amounts
-		 - sum up the conversion amounts for all the pages belonging to the same keyword
+1. Yaklaşım: İmperatif yaklaşım
+- Her anahtar kelime için yukarıdaki hesaplamayı yapalım
+   - for loop
+     - her keyword için page'i çekeriz
+   - inner loop
+     - her page için conversion rate'leri çekeriz
+     - bu conversion rate'lerle visit sayılarını çarparız
+     - tüm sayfalar için bu conversion sayılarını toplarız
 
 --- .class #id 
 
-## Generalization of the calculation 2
+## Hesaplamayı genelleştirme 2
 
-2. Approach: Declarative approach
-	 - Describe what to do instead of how to do it
-	 - Sets and relationships
-	 - SQL style
-- SQL table = a mapping between n variables/sets
+2. Yaklaşım: Deklaratif düşünme
+   - Nasıl yapacağımızı değil ne yapacağımızı tarif etme
+   - Kümeler (sets) ve ilişkiler (relationships)
+   - SQL tarzı
+- SQL tablosu = n değişken/küme arasında ilişki/bağıntı (mapping)
 	- keyword-page: kp
 	- page-conversion: pc
 	- keyword-visit: kv
 
 --- .class #id 
 
-## Join operation
+## Join işlemi
 
-- Join the mappings/tables that have common variables/sets
-- Example: 
+- Ortak değişkenleri/kümeleri olan ilişkileri/tabloları birleştirebiliriz (join)
+- Örnek: 
    - keyword-page
    - keyword-visit
-- Result:
+- Sonuç:
    - keyword-page-visit
 
 --- .class #id 
 
-## Symbolic thinking
+## Sembolik düşünme
 
-- Ignore how we are going to join
-- Focus into what we will do
-- Let's join the tables keyword-page and page-conversion
+- Nasıl birleştireceğimizi boşverin
+- Sadece ne yapacağımızı düşünelim:
+- keyword-page ile page-conversion tablolarını birleştirelim
   - keyword-page-conversion
-- Add page-visit table to that
+- buna page-visit tablosunu ekleyelim
   - keyword-page-conversion-visit
 
 --- .class #id 
 
-## Symbolic thinking
+## Sembolik düşünme
 
 - conversion_number = conversion x visit
   - keyword-page-conversion-visit-conversion_number
-- remove unnecessary variables:
+- gereksiz değişkenleri silelim:
   - keyword-conversion_number
-- there are n rows for each keyword
-	- group the rows that have the same keyword (pivoting/grouping)
-	- sum conversion_number in each group: total_conversion
-- order all the rows by total_conversion
-- get the top 5
+- 1 keyword için n tane satır vardır
+  - aynı keyword'e sahip satırları grupla (pivotlama/gruplama)
+  - her grup içindeki conversion_number'larını topla: total_conversion
+- tüm satırları total_conversion'a göre sırala
+- en üstteki 5 taneyi çek
 
 --- .class #id 
 
-## Let's code this procedure
+## Bu işlemleri kodlayalım
 
 ```{r }
 	r = kp %>%
@@ -480,7 +480,7 @@ r %>% head
 
 --- .class #id 
 
-## Reverse the ordering
+## Sıralamayı tersine çevirelim
 
 ```{r }
 	r = r %>%
@@ -490,10 +490,10 @@ r %>% head
 
 --- .class #id 
 
-## What pages are the targets of the best keywords?
+## Hangi sayfalar en iyi kelimelerin hedefi?
 
-- Get the best 3 keywords (filtering)
-- What are the pages these keywords provide traffic?
+- En iyi 3 kelimeyi çıkartalım (filtreleyelim)
+- Bu kelimelerin trafik getirdiği sayfalar neler?
 
 ```{r }
 top_keywords = r$keyword[1:3]
@@ -506,7 +506,7 @@ top_pages
 
 --- .class #id 
 
-## Functional programming in these codes?
+## Fonksiyonel programlama burada nerede?
 
 - Functional sequence
   - Functional:
@@ -515,13 +515,13 @@ top_pages
 - Higher order functions
   - input: function
   - output: function
-- There is no for loop 
+- For loop yok
 
 --- .class #id 
 
-## Links
+## Linkler
 
-- [Data Science Istanbul](https://www.facebook.com/groups/465842350233183/)
+- [Veribilimi İstanbul](https://www.facebook.com/groups/465842350233183/)
 - [RStudio Webinars](http://www.rstudio.com/resources/webinars/)
 - [Functional Programming Design Patterns](http://fsharpforfunandprofit.com/fppatterns/)
 - [Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
@@ -529,11 +529,11 @@ top_pages
 
 --- .class #id 
 
-## Presentation and codes
+## Prezentasyon ve kodlar
 
-- Html5 slides: [http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html)
-- Source codes: [https://github.com/mertnuhoglu/data_analysis_istanbulcoders](https://github.com/mertnuhoglu/data_analysis_istanbulcoders)
-- Tools (PowerPoint killers): 
+- Html5 slaytlar: [http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html)
+- Kaynak kodları: [https://github.com/mertnuhoglu/data_analysis_istanbulcoders](https://github.com/mertnuhoglu/data_analysis_istanbulcoders)
+- Araçlar (PowerPoint katilleri): 
 	- [slidify](http://ramnathv.github.io/slidify/)
   - [knitr](http://yihui.name/knitr/)
   - [RMarkdown](http://rmarkdown.rstudio.com/)
