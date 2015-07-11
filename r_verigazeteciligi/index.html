@@ -1,52 +1,47 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  
+<html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <title>R ile Veri Analizi</title>
-  <meta charset="utf-8">
-  <meta name="description" content="R ile Veri Analizi">
-  <meta name="author" content="Mert Nuhoglu">
-  <meta name="generator" content="slidify" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
-    media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
-
-  
-  <!-- Grab CDN jQuery, fall back to local if offline -->
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="libraries/frameworks/io2012/js/slides" 
-    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
-  </script>
-  
-  
+	<title>R ile Veri Analizi</title>
+	<meta name="description" content="R ile Veri Analizi">
+	<meta name="author" content="Mert Nuhoglu">
+	<meta name="generator" content="slidify" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Required stylesheet -->
+	<link rel="stylesheet" href="libraries/frameworks/deckjs/core/deck.core.css">
+	<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/status/deck.status.css">
+<link rel="stylesheet" href="libraries/frameworks/deckjs/extensions/automatic/deck.automatic.css">
+<!-- Style theme. More available in /themes/style/  -->
+	<link rel="stylesheet" href="libraries/frameworks/deckjs/themes/style/web-2.0.css">
+	
+	<!-- Transition theme. More available in /themes/transition/  -->
+	<link rel="stylesheet" href="libraries/frameworks/deckjs/themes/transition/horizontal-slide.css">
+	<script src="libraries/frameworks/deckjs/modernizr.custom.js"></script>
+	
+	<!-- LOAD STYLE SHEETS -->
+	<link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_light.css">
+	
+	  <link rel="stylesheet" href = "assets/css/ribbons.css">
 
 </head>
-<body style="opacity: 0">
-  <slides class="layout-widescreen">
-    
-    <!-- LOGO SLIDE -->
-        <slide class="title-slide segue nobackground">
-  <hgroup class="auto-fadein">
-    <h1>R ile Veri Analizi</h1>
-    <h2>Veri Gazeteciliği Atölye Programı</h2>
-    <p>Mert Nuhoglu<br/></p>
-  </hgroup>
-  <article></article>  
-</slide>
-    
 
-    <!-- SLIDES -->
-    <slide class="" id="slide-1" style="background:;">
-  <hgroup>
-    <h2>Giriş</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+<body class="deck-container">
+
+  <!-- Begin slides -->
+  <section class="slide " id="slide-1">
+  <h2>Giriş</h2>
+  <ul>
 <li>Örneklere dayalı dil öğrenme
 - Yabancı dil
 
@@ -61,16 +56,10 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veri Bilimi Nedir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Veri Bilimi Nedir?</h2>
+  <ul>
 <li>Disiplinler arası bir alan
 
 <ul>
@@ -80,54 +69,48 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+</section>
+<section class="slide class" id="id">
+  <h2>Veri Bilimi Nedir?</h2>
+  <p><img src="assets/img/Venn-Diagram-of-Data-Scientist-Skills.png" alt="Veri Bilimi Venn Şeması"></p>
 
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veri Bilimi Nedir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="assets/img/Venn-Diagram-of-Data-Scientist-Skills.png" alt="Veri Bilimi Venn Şeması"></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>New York Uçuş Verisi</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>New York Uçuş Verisi</h2>
+  <ul>
 <li>Veri kaynağı
 
 <ul>
 <li><a href="http://datascience.la/hadley-wickhams-dplyr-tutorial-at-user-2014-part-1/">http://datascience.la/hadley-wickhams-dplyr-tutorial-at-user-2014-part-1/</a></li>
 <li>csv dosyaları</li>
-<li><a href="https://github.com/mertnuhoglu/r_verigazeteciligi">https://github.com/mertnuhoglu/r_verigazeteciligi</a> </li>
+<li><a href="https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi">https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi</a> </li>
 </ul></li>
 <li>Verileri yükleme</li>
 </ul>
 
 <pre><code class="r">     library(data.table)
-     flights = fread(&quot;flights.csv&quot;)
+</code></pre>
+
+<pre><code>## data.table 1.9.4  For help type: ?data.table
+## *** NB: by=.EACHI is now explicit. See README to restore previous behaviour.
+## 
+## Attaching package: &#39;data.table&#39;
+## 
+## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     between, last
+</code></pre>
+
+<pre><code class="r">     flights = fread(&quot;flights.csv&quot;)
      airports = fread(&quot;airports.csv&quot;)
      planes = fread(&quot;planes.csv&quot;)
      weather = fread(&quot;weather.csv&quot;)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Verileri Gözden Geçirme</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     str(flights)
+</section>
+<section class="slide class" id="id">
+  <h2>Verileri Gözden Geçirme</h2>
+  <pre><code class="r">     str(flights)
 </code></pre>
 
 <pre><code>## Classes &#39;data.table&#39; and &#39;data.frame&#39;:   227496 obs. of  14 variables:
@@ -148,16 +131,10 @@
 ##  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Verileri Gözden Geçirme (Alt.)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>     library(dplyr)
+</section>
+<section class="slide class" id="id">
+  <h2>Verileri Gözden Geçirme (Alt.)</h2>
+  <pre><code>     library(dplyr)
 </code></pre>
 
 <pre><code class="r">     tbl_df(flights)
@@ -181,16 +158,10 @@
 ##   (int), time (int), dist (int)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Diğer Veriler</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     tbl_df(weather)
+</section>
+<section class="slide class" id="id">
+  <h2>Diğer Veriler</h2>
+  <pre><code class="r">     tbl_df(weather)
 </code></pre>
 
 <pre><code>## Source: local data frame [8,723 x 14]
@@ -211,16 +182,10 @@
 ##   precip (dbl), conditions (chr), events (chr)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Diğer Veriler</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     tbl_df(planes)
+</section>
+<section class="slide class" id="id">
+  <h2>Diğer Veriler</h2>
+  <pre><code class="r">     tbl_df(planes)
 </code></pre>
 
 <pre><code>## Source: local data frame [2,853 x 9]
@@ -240,16 +205,10 @@
 ## Variables not shown: engine (chr), type (chr)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Diğer Veriler</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     tbl_df(airports)
+</section>
+<section class="slide class" id="id">
+  <h2>Diğer Veriler</h2>
+  <pre><code class="r">     tbl_df(airports)
 </code></pre>
 
 <pre><code>## Source: local data frame [3,376 x 7]
@@ -269,16 +228,10 @@
 ## Variables not shown: long (dbl)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Row Index (Satır No)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights[3]
+</section>
+<section class="slide class" id="id">
+  <h2>Row Index (Satır No)</h2>
+  <pre><code class="r">     flights[3]
 </code></pre>
 
 <pre><code>##                   date hour minute  dep  arr dep_delay arr_delay carrier
@@ -296,16 +249,10 @@
 ## 1:    428  DFW N492AA         0   44  224
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Head (Baş Kısım)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     head(flights)
+</section>
+<section class="slide class" id="id">
+  <h2>Head (Baş Kısım)</h2>
+  <pre><code class="r">     head(flights)
 </code></pre>
 
 <pre><code>##                   date hour minute  dep  arr dep_delay arr_delay carrier
@@ -324,16 +271,10 @@
 ## 6:    428  DFW N262AA         0   45  224
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Head (Baş Kısım) (Alt.)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights[1:5]
+</section>
+<section class="slide class" id="id">
+  <h2>Head (Baş Kısım) (Alt.)</h2>
+  <pre><code class="r">     flights[1:5]
 </code></pre>
 
 <pre><code>##                   date hour minute  dep  arr dep_delay arr_delay carrier
@@ -350,16 +291,10 @@
 ## 5:    428  DFW N492AA         0   44  224
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Range (Aralık)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights[30:32]
+</section>
+<section class="slide class" id="id">
+  <h2>Range (Aralık)</h2>
+  <pre><code class="r">     flights[30:32]
 </code></pre>
 
 <pre><code>##                   date hour minute  dep  arr dep_delay arr_delay carrier
@@ -372,16 +307,10 @@
 ## 3:    460  DFW N520AA         0   41  224
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tail (Son Kısım)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     tail(flights)
+</section>
+<section class="slide class" id="id">
+  <h2>Tail (Son Kısım)</h2>
+  <pre><code class="r">     tail(flights)
 </code></pre>
 
 <pre><code>##                   date hour minute  dep  arr dep_delay arr_delay carrier
@@ -400,42 +329,24 @@
 ## 6:   1597  TUL N745SW         0   59  453
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>RStudio</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>    setwd(&quot;/Users/mertnuhoglu/projects/dewey/r_verigazeteciligi&quot;)
+</section>
+<section class="slide class" id="id">
+  <h2>RStudio</h2>
+  <pre><code>    setwd(&quot;/Users/mertnuhoglu/projects/dewey/r_verigazeteciligi&quot;)
     library(data.table)
     flights = fread(&quot;flights.csv&quot;)
     View(flights)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+</section>
+<section class="slide class" id="id">
+  <h2>RStudio</h2>
+  <p><img src="assets/img/rstudio.png" alt="RStudio CSV tablosu"></p>
 
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>RStudio</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="assets/img/rstudio.png" alt="RStudio CSV tablosu"></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Columns (Kolonlar)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     names(flights)
+</section>
+<section class="slide class" id="id">
+  <h2>Columns (Kolonlar)</h2>
+  <pre><code class="r">     names(flights)
 </code></pre>
 
 <pre><code>##  [1] &quot;date&quot;      &quot;hour&quot;      &quot;minute&quot;    &quot;dep&quot;       &quot;arr&quot;      
@@ -464,16 +375,10 @@
 ##  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Satır ve Kolon</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights[5]$flight
+</section>
+<section class="slide class" id="id">
+  <h2>Satır ve Kolon</h2>
+  <pre><code class="r">     flights[5]$flight
 </code></pre>
 
 <pre><code>## [1] 428
@@ -485,16 +390,10 @@
 <pre><code>## [1] 428
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Filter (Sorgulama)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     filter(flights, dest == &quot;SFO&quot;)
+</section>
+<section class="slide class" id="id">
+  <h2>Filter (Sorgulama)</h2>
+  <pre><code class="r">     filter(flights, dest == &quot;SFO&quot;)
 </code></pre>
 
 <pre><code>##                      date hour minute  dep  arr dep_delay arr_delay
@@ -505,10 +404,6 @@
 ##    5: 2011-01-31 12:00:00   21     43 2143 2338        50        24
 ##   ---                                                              
 ## 2814: 2011-12-27 12:00:00   NA     NA   NA   NA        NA        NA
-## 2815: 2011-12-28 12:00:00    9      6  906 1125         1        -7
-## 2816: 2011-12-29 12:00:00    9     41  941 1152        36        20
-## 2817: 2011-12-30 12:00:00    9     25  925 1142        20        10
-## 2818: 2011-12-31 12:00:00    9      5  905 1108         0       -24
 ##       carrier flight dest  plane cancelled time dist
 ##    1:      CO    170  SFO N35407         0  225 1635
 ##    2:      CO    270  SFO N37420         0  228 1635
@@ -517,22 +412,13 @@
 ##    5:      CO    770  SFO N37281         0  224 1635
 ##   ---                                               
 ## 2814:      UA    855  SFO                1   NA 1635
-## 2815:      UA    855  SFO N669UA         0  222 1635
-## 2816:      UA    855  SFO N664UA         0  225 1635
-## 2817:      UA    855  SFO N539UA         0  226 1635
-## 2818:      UA    855  SFO N665UA         0  213 1635
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 4 rows ]
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Filter (Sorgulama) (Alt.)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Filter (Sorgulama) (Alt.)</h2>
+  <pre><code class="r">     flights %&gt;%
             filter(dest == &quot;SFO&quot;) 
 </code></pre>
 
@@ -544,10 +430,6 @@
 ##    5: 2011-01-31 12:00:00   21     43 2143 2338        50        24
 ##   ---                                                              
 ## 2814: 2011-12-27 12:00:00   NA     NA   NA   NA        NA        NA
-## 2815: 2011-12-28 12:00:00    9      6  906 1125         1        -7
-## 2816: 2011-12-29 12:00:00    9     41  941 1152        36        20
-## 2817: 2011-12-30 12:00:00    9     25  925 1142        20        10
-## 2818: 2011-12-31 12:00:00    9      5  905 1108         0       -24
 ##       carrier flight dest  plane cancelled time dist
 ##    1:      CO    170  SFO N35407         0  225 1635
 ##    2:      CO    270  SFO N37420         0  228 1635
@@ -556,22 +438,13 @@
 ##    5:      CO    770  SFO N37281         0  224 1635
 ##   ---                                               
 ## 2814:      UA    855  SFO                1   NA 1635
-## 2815:      UA    855  SFO N669UA         0  222 1635
-## 2816:      UA    855  SFO N664UA         0  225 1635
-## 2817:      UA    855  SFO N539UA         0  226 1635
-## 2818:      UA    855  SFO N665UA         0  213 1635
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 4 rows ]
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Filter (Sorgulama) (Alt.)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Filter (Sorgulama) (Alt.)</h2>
+  <pre><code class="r">     flights %&gt;%
             filter(dest == &quot;SFO&quot;) %&gt;%
             filter(time &lt;= 220)
 </code></pre>
@@ -584,10 +457,6 @@
 ##    5: 2011-01-27 12:00:00    8     57  857 1053         7       -26
 ##   ---                                                              
 ## 1249: 2011-12-23 12:00:00    9     20  920 1132        15         0
-## 1250: 2011-12-24 12:00:00    9      2  902 1109        -3       -23
-## 1251: 2011-12-25 12:00:00    9      5  905 1101         0       -31
-## 1252: 2011-12-26 12:00:00    9     25  925 1132        20         0
-## 1253: 2011-12-31 12:00:00    9      5  905 1108         0       -24
 ##       carrier flight dest  plane cancelled time dist
 ##    1:      CO    570  SFO N73406         0  217 1635
 ##    2:      CO    370  SFO N12238         0  212 1635
@@ -596,22 +465,13 @@
 ##    5:      CO    170  SFO N71411         0  212 1635
 ##   ---                                               
 ## 1249:      UA    855  SFO N677UA         0  213 1635
-## 1250:      UA    855  SFO N672UA         0  202 1635
-## 1251:      UA    855  SFO N668UA         0  206 1635
-## 1252:      UA    855  SFO N673UA         0  215 1635
-## 1253:      UA    855  SFO N665UA         0  213 1635
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 4 rows ]
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Filter (Sorgulama) (Alt.)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Filter (Sorgulama) (Alt.)</h2>
+  <pre><code class="r">     flights %&gt;%
             filter(dest == &quot;SFO&quot;) %&gt;%
             filter(time &lt;= 220) %&gt;%
             filter(date &gt; &quot;2011-12-23&quot;) %&gt;%
@@ -626,18 +486,6 @@
 ##  5: 2011-12-24 12:00:00   17     49 1749 1945        12       -26      CO
 ##  6: 2011-12-24 12:00:00   16     33 1633 1834        23       -10      CO
 ##  7: 2011-12-24 12:00:00   12      9 1209 1346        54        -3      CO
-##  8: 2011-12-24 12:00:00   21     17 2117 2258         2       -51      CO
-##  9: 2011-12-24 12:00:00   14     31 1431 1613         1       -51      CO
-## 10: 2011-12-23 12:00:00   21      7 2107 2300       137       102      CO
-## 11: 2011-12-23 12:00:00   17     50 1750 1956        15        -9      CO
-## 12: 2011-12-23 12:00:00   16     11 1611 1813         1       -25      CO
-## 13: 2011-12-23 12:00:00   21     27 2127 2318        12       -21      CO
-## 14: 2011-12-24 12:00:00    7     26  726  928        -4       -29      UA
-## 15: 2011-12-25 12:00:00    7     28  728  923        -2       -34      UA
-## 16: 2011-12-24 12:00:00   19      3 1903 2048        13       -31      UA
-## 17: 2011-12-23 12:00:00    9     20  920 1132        15         0      UA
-## 18: 2011-12-24 12:00:00    9      2  902 1109        -3       -23      UA
-## 19: 2011-12-25 12:00:00    9      5  905 1101         0       -31      UA
 ##     flight dest  plane cancelled time dist
 ##  1:   1181  SFO N75435         0  206 1635
 ##  2:   1669  SFO N37408         0  207 1635
@@ -646,30 +494,13 @@
 ##  5:   1181  SFO N14231         0  214 1635
 ##  6:   1240  SFO N24202         0  213 1635
 ##  7:   1669  SFO N73406         0  201 1635
-##  8:   1712  SFO N74856         0  200 1635
-##  9:   1737  SFO N73860         0  204 1635
-## 10:   1033  SFO N37267         0  211 1635
-## 11:   1181  SFO N77867         0  218 1635
-## 12:   1240  SFO N34222         0  217 1635
-## 13:   1712  SFO N57863         0  213 1635
-## 14:    567  SFO N498UA         0  214 1635
-## 15:    567  SFO N490UA         0  210 1635
-## 16:    576  SFO N483UA         0  205 1635
-## 17:    855  SFO N677UA         0  213 1635
-## 18:    855  SFO N672UA         0  202 1635
-## 19:    855  SFO N668UA         0  206 1635
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 12 rows ]
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Group By (Gruplama)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Group By (Gruplama)</h2>
+  <pre><code class="r">     flights %&gt;%
             group_by(date) %&gt;%
             summarize(
                  dep = mean(dep_delay, na.rm = T),
@@ -693,16 +524,10 @@
 ## ..                 ...       ...       ...
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>NA (Not Available) Veriler</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     x = c(4, 5, 7)
+</section>
+<section class="slide class" id="id">
+  <h2>NA (Not Available) Veriler</h2>
+  <pre><code class="r">     x = c(4, 5, 7)
      sum(x)
 </code></pre>
 
@@ -723,16 +548,10 @@
 <pre><code>## [1] 16
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>sum (toplama) (Alt: Pipe kullanarak)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     x = c(4, 5, 7)
+</section>
+<section class="slide class" id="id">
+  <h2>sum (toplama) (Alt: Pipe kullanarak)</h2>
+  <pre><code class="r">     x = c(4, 5, 7)
      x %&gt;% 
             sum()
 </code></pre>
@@ -756,16 +575,10 @@
 <pre><code>## [1] 16
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>sum (toplama) (Alt: Pipe kullanarak)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     x = c(4, 5, 7, NA)
+</section>
+<section class="slide class" id="id">
+  <h2>sum (toplama) (Alt: Pipe kullanarak)</h2>
+  <pre><code class="r">     x = c(4, 5, 7, NA)
      x %&gt;% 
             is.na
 </code></pre>
@@ -781,29 +594,17 @@
 <pre><code>## [1] FALSE FALSE FALSE  TRUE
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Help (Yardım)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>     ?is.na
+</section>
+<section class="slide class" id="id">
+  <h2>Help (Yardım)</h2>
+  <pre><code>     ?is.na
      ?sum
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Subsetting</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     x = c(4, 5, 7)
+</section>
+<section class="slide class" id="id">
+  <h2>Subsetting</h2>
+  <pre><code class="r">     x = c(4, 5, 7)
      x &gt; 5
 </code></pre>
 
@@ -822,16 +623,10 @@
 <pre><code>## [1] 7
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Subsetting ve logical operatörler</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     x = c(4, 5, 7, 9, 11)
+</section>
+<section class="slide class" id="id">
+  <h2>Subsetting ve logical operatörler</h2>
+  <pre><code class="r">     x = c(4, 5, 7, 9, 11)
      x &gt; 5 &amp; x &lt; 10
 </code></pre>
 
@@ -850,16 +645,10 @@
 <pre><code>## [1] 7 9
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>is.na ile subsetting</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>is.na ile subsetting</h2>
+  <ul>
 <li>Kaç tane NA değer var?</li>
 </ul>
 
@@ -882,16 +671,10 @@
 <pre><code>## [1] 1
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>is.na + pipes</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     sum( is.na( x ) )
+</section>
+<section class="slide class" id="id">
+  <h2>is.na + pipes</h2>
+  <pre><code class="r">     sum( is.na( x ) )
 </code></pre>
 
 <pre><code>## [1] 1
@@ -905,16 +688,10 @@
 <pre><code>## [1] 1
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>is.na ile subsetting</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>is.na ile subsetting</h2>
+  <ul>
 <li>NA&#39;leri nasıl filtreleriz?</li>
 </ul>
 
@@ -940,16 +717,10 @@
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>is.na ile subsetting</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>is.na ile subsetting</h2>
+  <ul>
 <li>NA&#39;leri nasıl filtreleriz?</li>
 </ul>
 
@@ -972,32 +743,20 @@
 <pre><code>## [1] 4 5 7
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Fonksiyonları nereden bulacağız?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Fonksiyonları nereden bulacağız?</h2>
+  <ul>
 <li>Let me google that for you</li>
 </ul>
 
 <pre><code>     http://lmgtfy.com/?q=r+mean+of+numbers
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Library&#39;lerin (kütüphane) kapsamları</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Library&#39;lerin (kütüphane) kapsamları</h2>
+  <ul>
 <li><p><a href="http://lmgtfy.com/?q=r+dplyr">http://lmgtfy.com/?q=r+dplyr</a></p></li>
 <li><p>Dahili kütüphaneler için:</p>
 
@@ -1006,16 +765,10 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Operatörlerle ilgili yardım?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Operatörlerle ilgili yardım?</h2>
+  <ul>
 <li>Her şey bir fonksiyon</li>
 </ul>
 
@@ -1023,16 +776,10 @@
      ?&quot;%&gt;%&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Group By (Gruplama)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Group By (Gruplama)</h2>
+  <pre><code class="r">     flights %&gt;%
             group_by(date) %&gt;%
             summarize(
                  dep = mean(dep_delay, na.rm = T),
@@ -1058,16 +805,10 @@
 ## ..                 ...       ...       ...       ...           ...
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Boş verileri (NA) filtreleme</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">     flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Boş verileri (NA) filtreleme</h2>
+  <pre><code class="r">     flights %&gt;%
             group_by(date) %&gt;%
             filter(!is.na(dep_delay)) %&gt;%
             filter(!is.na(arr_delay)) %&gt;%
@@ -1095,16 +836,10 @@
 ## ..                 ...       ...       ...       ...           ...
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Imposter syndrome (Kandırmaca ezikliği)</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Imposter syndrome (Kandırmaca ezikliği)</h2>
+  <ul>
 <li>Kimse her şeyi tam olarak anlayamaz</li>
 <li>Yetersizlik hissi her zaman burada
 
@@ -1116,32 +851,20 @@
 <li>Nasıl düzelteceğiz?</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Kendi başımıza nasıl düzelteceğiz?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Kendi başımıza nasıl düzelteceğiz?</h2>
+  <ul>
 <li><p><a href="http://stackoverflow.com">http://stackoverflow.com</a></p></li>
 <li><p>Sorularınıza en fazla 5 dakika içinde yanıt</p></li>
 <li><p>Ne kadar çok sorarsanız, o kadar çok öğrenirsiniz</p></li>
 <li><p>Soruyu yazarken, yanıtı bulursunuz</p></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Nasıl soru sormalı?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Nasıl soru sormalı?</h2>
+  <ul>
 <li>Minimalist</li>
 <li>Yanlış:
 
@@ -1157,16 +880,10 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Stackoverflow&#39;daki sorular</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Stackoverflow&#39;daki sorular</h2>
+  <ul>
 <li>Tüm R soruları
 
 <ul>
@@ -1184,16 +901,10 @@
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Karmaşık içiçe işlemler</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    hourly_delay &lt;- filter(
+</section>
+<section class="slide class" id="id">
+  <h2>Karmaşık içiçe işlemler</h2>
+  <pre><code class="r">    hourly_delay &lt;- filter(
         summarise(
             group_by(
                 filter(flights, !is.na(dep_delay)), 
@@ -1222,16 +933,10 @@
 ## ..                 ...  ...       ... ..
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Pipeline ile sadeleştirme</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">hourly_delay &lt;- flights %&gt;% 
+</section>
+<section class="slide class" id="id">
+  <h2>Pipeline ile sadeleştirme</h2>
+  <pre><code class="r">hourly_delay &lt;- flights %&gt;% 
     filter(!is.na(dep_delay)) %&gt;%
     group_by(date, hour) %&gt;%
     summarise(
@@ -1259,16 +964,10 @@ hourly_delay
 ## ..                 ...  ...       ... ..
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Problem</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Problem</h2>
+  <ul>
 <li>Ortalama varış gecikmesi en fazla olan uçuş destinasyonları nelerdir?</li>
 </ul>
 
@@ -1294,16 +993,10 @@ hourly_delay
 ## ..  ...       ...  ...
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Problem</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Problem</h2>
+  <ul>
 <li>Havalimanı, sefer no ve destinasyona göre, tüm uçuşları grupladığımızda, 365 adet uçuş olan kombinasyonlar hangileridir?</li>
 </ul>
 
@@ -1326,16 +1019,10 @@ hourly_delay
 ## 7      MQ   3859  ORD 365
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Aynı problem alternatif çözüm</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">flights %&gt;% 
+</section>
+<section class="slide class" id="id">
+  <h2>Aynı problem alternatif çözüm</h2>
+  <pre><code class="r">flights %&gt;% 
   group_by(carrier, flight, dest) %&gt;% 
   filter(n() == 365)
 </code></pre>
@@ -1359,16 +1046,10 @@ hourly_delay
 ##   (int), time (int), dist (int)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Uçuş süresine bağlı olarak gecikmeler nasıl?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Uçuş süresine bağlı olarak gecikmeler nasıl?</h2>
+  <ul>
 <li>Uçuş sürelerini hesapla. Bunlara göre tüm uçuşları gruplandır. Her gruptaki ortalama gecikmeyi ve toplam uçuş sayısını göster.</li>
 </ul>
 
@@ -1396,32 +1077,20 @@ per_hour
 ## ..      ...       ... ...
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm kayıtları csv olarak kaydet</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>install.packages(&quot;readr&quot;)
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm kayıtları csv olarak kaydet</h2>
+  <pre><code>install.packages(&quot;readr&quot;)
 </code></pre>
 
 <pre><code>library(&quot;readr&quot;)
 write_csv(per_hour, &quot;per_hour.csv&quot;)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>30&#39;dan fazla uçuş yapan uçaklar hangileridir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>30&#39;dan fazla uçuş yapan uçaklar hangileridir?</h2>
+  <pre><code class="r">flights %&gt;%
   filter(!is.na(arr_delay)) %&gt;%
   group_by(plane) %&gt;%
     summarise(n = n()) %&gt;%
@@ -1444,16 +1113,10 @@ write_csv(per_hour, &quot;per_hour.csv&quot;)
 ## ..    ... ...
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>30&#39;dan fazla uçuş yapan uçaklara ait uçuşlar hangileridir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">planes = flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>30&#39;dan fazla uçuş yapan uçaklara ait uçuşlar hangileridir?</h2>
+  <pre><code class="r">planes = flights %&gt;%
   filter(!is.na(arr_delay)) %&gt;%
   group_by(plane) %&gt;%
   filter(n() &gt; 30) 
@@ -1479,16 +1142,10 @@ planes
 ##   (int), time (int), dist (int)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu uçuşların arasında 5 dk&#39;dan daha az varış gecikmesi olanlar hangileri?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">planes %&gt;% filter(arr_delay &lt; 5)
+</section>
+<section class="slide class" id="id">
+  <h2>Bu uçuşların arasında 5 dk&#39;dan daha az varış gecikmesi olanlar hangileri?</h2>
+  <pre><code class="r">planes %&gt;% filter(arr_delay &lt; 5)
 </code></pre>
 
 <pre><code>## Source: local data table [128,610 x 14]
@@ -1510,16 +1167,10 @@ planes
 ##   (int), time (int), dist (int)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>select (kolonları seçme)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">names(airports)
+</section>
+<section class="slide class" id="id">
+  <h2>select (kolonları seçme)</h2>
+  <pre><code class="r">names(airports)
 </code></pre>
 
 <pre><code>## [1] &quot;iata&quot;    &quot;airport&quot; &quot;city&quot;    &quot;state&quot;   &quot;country&quot; &quot;lat&quot;     &quot;long&quot;
@@ -1544,16 +1195,10 @@ location
 ## 3376:  ZZV      Zanesville Municipal 39.94446  -81.89211
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Destinasyonlara göre en çok varış gecikmeli uçuşlar</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Destinasyonlara göre en çok varış gecikmeli uçuşlar</h2>
+  <pre><code class="r">flights %&gt;%
   group_by(dest) %&gt;%
   summarise(arr_delay = mean(arr_delay, na.rm = TRUE), n = n()) %&gt;%
   arrange(desc(arr_delay)) 
@@ -1575,16 +1220,10 @@ location
 ## ..  ...       ...  ...
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu uçuşların destinasyonlarının lokasyon koordinatları?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">delays &lt;- flights %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Bu uçuşların destinasyonlarının lokasyon koordinatları?</h2>
+  <pre><code class="r">delays &lt;- flights %&gt;%
   group_by(dest) %&gt;%
   summarise(arr_delay = mean(arr_delay, na.rm = TRUE), n = n()) %&gt;%
   arrange(desc(arr_delay)) %&gt;%
@@ -1609,16 +1248,10 @@ delays
 ## Variables not shown: long (dbl)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Koordinatları harita üzerinde gösterme</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">library(&quot;ggplot2&quot;)
+</section>
+<section class="slide class" id="id">
+  <h2>Koordinatları harita üzerinde gösterme</h2>
+  <pre><code class="r">library(&quot;ggplot2&quot;)
 ggplot(delays, aes(long, lat)) + 
   borders(&quot;state&quot;) + 
   geom_point(aes(colour = arr_delay), size = 5, alpha = 0.9) + 
@@ -1628,16 +1261,10 @@ ggplot(delays, aes(long, lat)) +
 
 <p><img src="assets/fig/unnamed-chunk-51-1.png" alt="plot of chunk unnamed-chunk-51"> </p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bunların arasında erken varan uçuşlar hangileri?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">delays %&gt;% filter(arr_delay &lt; 0)
+</section>
+<section class="slide class" id="id">
+  <h2>Bunların arasında erken varan uçuşlar hangileri?</h2>
+  <pre><code class="r">delays %&gt;% filter(arr_delay &lt; 0)
 </code></pre>
 
 <pre><code>## Source: local data table [3 x 6]
@@ -1648,16 +1275,10 @@ ggplot(delays, aes(long, lat)) +
 ## 3  MTJ  -0.4506173 164 Montrose Regional 38.50887 -107.8938
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Erken varan uçuşların haritadaki destinasyonları</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">early_ones = delays %&gt;% filter(arr_delay &lt; 0)
+</section>
+<section class="slide class" id="id">
+  <h2>Erken varan uçuşların haritadaki destinasyonları</h2>
+  <pre><code class="r">early_ones = delays %&gt;% filter(arr_delay &lt; 0)
 ggplot(early_ones, aes(long, lat)) + 
   borders(&quot;state&quot;) + 
   geom_point(aes(colour = arr_delay), size = 5, alpha = 0.9) + 
@@ -1667,76 +1288,46 @@ ggplot(early_ones, aes(long, lat)) +
 
 <p><img src="assets/fig/unnamed-chunk-53-1.png" alt="plot of chunk unnamed-chunk-53"> </p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Seçim Verilerini Toplamak</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Seçim Verilerini Toplamak</h2>
+  <ul>
 <li>Veriler hazır bir şekilde bulunmuyor</li>
 <li>Kendimiz indirip temizlemeliyiz</li>
 <li><a href="http://www.memurlar.net/secim">http://www.memurlar.net/secim</a></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veri nerede?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Veri nerede?</h2>
+  <ul>
 <li>Web sayfasında görünüyor</li>
 </ul>
 
 <p><img src="assets/img/ss-1.png" alt=""></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Sayfanın kaynak kodu</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Sayfanın kaynak kodu</h2>
+  <ul>
 <li>Chrome: Inspect element</li>
 </ul>
 
 <p><img src="assets/img/2015-06-03_09-26-33.png" alt=""></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veri nerede?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Veri nerede?</h2>
+  <ul>
 <li>Chrome: inspect element</li>
 </ul>
 
 <p><img src="assets/img/ss-2.png" alt=""></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Hangi web sayfalarını indirmeliyiz?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Hangi web sayfalarını indirmeliyiz?</h2>
+  <ul>
 <li><a href="http://www.memurlar.net/secim/genel/default.aspx?City=tr-01">http://www.memurlar.net/secim/genel/default.aspx?City=tr-01</a></li>
 <li><a href="http://www.memurlar.net/secim/genel/default.aspx?City=tr-81">http://www.memurlar.net/secim/genel/default.aspx?City=tr-81</a></li>
 </ul>
@@ -1748,16 +1339,10 @@ ggplot(early_ones, aes(long, lat)) +
 <pre><code>## [1] &quot;http://www.memurlar.net/secim/genel/default.aspx?City=tr-1&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Url&#39;yi indirmek</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    i = 1
+</section>
+<section class="slide class" id="id">
+  <h2>Url&#39;yi indirmek</h2>
+  <pre><code class="r">    i = 1
     url = sprintf( &quot;http://www.memurlar.net/secim/genel/default.aspx?City=tr-%s&quot;, 1)
     filename = sprintf(&quot;memurlarnet/%02s.html&quot;, i)
     url
@@ -1775,16 +1360,10 @@ ggplot(early_ones, aes(long, lat)) +
 <pre><code>    download.file( url, destfile = filename, method=&quot;wget&quot; )
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>İndirilmiş dosyayı inceleyelim</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="assets/img/ss-3.png" alt=""></p>
+</section>
+<section class="slide class" id="id">
+  <h2>İndirilmiş dosyayı inceleyelim</h2>
+  <p><img src="assets/img/ss-3.png" alt=""></p>
 
 <ul>
 <li>&quot;chartResult2011&quot; kelimesini aratalım</li>
@@ -1796,47 +1375,29 @@ ggplot(early_ones, aes(long, lat)) +
 <li>İçerik boş</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veriler nerede?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Veriler nerede?</h2>
+  <ul>
 <li>Muhtemelen javascript ile veriler gömülüyor</li>
 <li>Chrome &gt; Inspector &gt; Sources</li>
 </ul>
 
 <p><img src="assets/img/ss-6.png" alt=""></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Javascript dosyasının url&#39;si nedir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="assets/img/2015-06-03_10-07-04.png" alt=""></p>
+</section>
+<section class="slide class" id="id">
+  <h2>Javascript dosyasının url&#39;si nedir?</h2>
+  <p><img src="assets/img/2015-06-03_10-07-04.png" alt=""></p>
 
 <ul>
 <li><a href="http://www.memurlar.net/secim/data/genel/tr-06.js">http://www.memurlar.net/secim/data/genel/tr-06.js</a></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm url&#39;leri oluşturalım</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    for (i in 1:81) {
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm url&#39;leri oluşturalım</h2>
+  <pre><code class="r">    for (i in 1:81) {
         url = sprintf( &quot;http://www.memurlar.net/secim/data/genel/tr-%02s.js&quot;, i)
     }
     url
@@ -1845,32 +1406,20 @@ ggplot(early_ones, aes(long, lat)) +
 <pre><code>## [1] &quot;http://www.memurlar.net/secim/data/genel/tr-81.js&quot;
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm url&#39;leri indirelim</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>    for (i in 1:81) {
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm url&#39;leri indirelim</h2>
+  <pre><code>    for (i in 1:81) {
         url = sprintf( &quot;http://www.memurlar.net/secim/data/genel/tr-%02s.js&quot;, i)
         filename = sprintf(&quot;memurlarnet/%02s.json&quot;, i)
         download.file( url, destfile = filename, method=&quot;wget&quot; )
     }
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veriyi okuma</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>    package.install(&quot;rlist&quot;)
+</section>
+<section class="slide class" id="id">
+  <h2>Veriyi okuma</h2>
+  <pre><code>    package.install(&quot;rlist&quot;)
     library(&quot;rlist&quot;)
 </code></pre>
 
@@ -1879,20 +1428,14 @@ ggplot(early_ones, aes(long, lat)) +
 </code></pre>
 
 <pre><code>## Error in parseJSON(txt): lexical error: invalid char in json text.
-##                                        var secimVerisi = [ {     &quot;ilce&quot;:
+##                                        memurlarnet/raw/01.json
 ##                      (right here) ------^
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Hatanın nedeni?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Hatanın nedeni?</h2>
+  <ul>
 <li>json dosyasının içeriği:</li>
 </ul>
 
@@ -1909,32 +1452,20 @@ ggplot(early_ones, aes(long, lat)) +
     {
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu tür hataların nedenini nasıl bulacağız?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Bu tür hataların nedenini nasıl bulacağız?</h2>
+  <ul>
 <li>Bu tür hataları stackoverflow&#39;da sorup çözün</li>
 <li>Bu hatayı sorsanız, en fazla 3 dakika içinde yanıt alırsınız</li>
 <li>Ancak okunabilirlik açısından tüm dosya içeriğini değil, küçük bir kısmını koyun</li>
 <li>İsterseniz, yukarıdaki hatayı sorun ve test edin.</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veri temizleme</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Veri temizleme</h2>
+  <ul>
 <li>Tüm dosyaları açın</li>
 <li>İlk satırı silin</li>
 <li>Yerine şunu ekleyin:</li>
@@ -1950,16 +1481,10 @@ ggplot(early_ones, aes(long, lat)) +
 <pre><code>}
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu işlemler nasıl otomatikleştirilir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Bu işlemler nasıl otomatikleştirilir?</h2>
+  <ul>
 <li>Seçenekler:
 
 <ul>
@@ -1978,16 +1503,10 @@ ggplot(early_ones, aes(long, lat)) +
 &quot; &gt; clean/01.json
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Bu scripti nasıl yazacaksınız?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Bu scripti nasıl yazacaksınız?</h2>
+  <ul>
 <li>Stackoverflow&#39;dakilere yazdırın
 
 <ul>
@@ -1998,16 +1517,10 @@ ggplot(early_ones, aes(long, lat)) +
 <li>Döndüğünüzde yanıt gelmemişse, hesap sorun: @mertnuhoglu</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>shell ve R</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>shell ve R</h2>
+  <ul>
 <li>Terminal = komut satırı = command prompt = shell = kabuk = ?</li>
 <li>R içinden shell scriptlerini çağırabiliriz</li>
 </ul>
@@ -2024,16 +1537,10 @@ ggplot(early_ones, aes(long, lat)) +
 <pre><code>    system(cmd)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm dosyalar için shell scripti çağrısı</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>clean_memurlarnet_json_files = function() {
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm dosyalar için shell scripti çağrısı</h2>
+  <pre><code>clean_memurlarnet_json_files = function() {
     for (i in 1:81) {
         filename = sprintf(&quot;memurlarnet/raw/%02s.json&quot;, i)
         cmd = sprintf(&quot;./clean_memurlarnet_json.sh %s&quot;, filename)
@@ -2042,32 +1549,22 @@ ggplot(early_ones, aes(long, lat)) +
 }
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Dosyadaki veriyi yükleme</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    filename = sprintf(&quot;memurlarnet/clean/%02s.json&quot;, 1)
+</section>
+<section class="slide class" id="id">
+  <h2>Dosyadaki veriyi yükleme</h2>
+  <pre><code class="r">    filename = sprintf(&quot;memurlarnet/clean/%02s.json&quot;, 1)
     data = list.load(filename)
 </code></pre>
 
-<pre><code>## Warning: The json string is not valid UTF-8. Assuming native encoding.
+<pre><code>## Error in parseJSON(txt): lexical error: invalid char in json text.
+##                                        memurlarnet/clean/01.json
+##                      (right here) ------^
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Verinin yapısı (şekli) nedir?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>    str(data)
+</section>
+<section class="slide class" id="id">
+  <h2>Verinin yapısı (şekli) nedir?</h2>
+  <pre><code>    str(data)
 </code></pre>
 
 <ul>
@@ -2083,37 +1580,26 @@ ggplot(early_ones, aes(long, lat)) +
 
 <p><img src="assets/img/ss-7.png" alt=""></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>2. Kademe</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="assets/img/ss-8.png" alt=""></p>
+</section>
+<section class="slide class" id="id">
+  <h2>2. Kademe</h2>
+  <p><img src="assets/img/ss-8.png" alt=""></p>
 
 <ul>
 <li>yil = 2011 olan kayıtları nasıl çekebiliriz?</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Veriyi keşfetmek (data exploration)</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>    data %&gt;% str
+</section>
+<section class="slide class" id="id">
+  <h2>Veriyi keşfetmek (data exploration)</h2>
+  <pre><code>    data %&gt;% str
 </code></pre>
 
 <pre><code class="r">    names(data)
 </code></pre>
 
-<pre><code>## [1] &quot;secim&quot;
+<pre><code>##  [1] &quot;product&quot;  &quot;company&quot;  &quot;category&quot; &quot;salesman&quot; &quot;region&quot;   &quot;keyword&quot; 
+##  [7] &quot;page&quot;     &quot;customer&quot; &quot;location&quot; &quot;campaign&quot;
 </code></pre>
 
 <pre><code class="r">    data$secim %&gt;% names
@@ -2125,7 +1611,7 @@ ggplot(early_ones, aes(long, lat)) +
 <pre><code class="r">    data$secim %&gt;% length
 </code></pre>
 
-<pre><code>## [1] 88
+<pre><code>## [1] 0
 </code></pre>
 
 <ul>
@@ -2136,67 +1622,41 @@ ggplot(early_ones, aes(long, lat)) +
 </ul></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Seçim yılına göre verileri çekelim</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">d2011 = data$secim %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Seçim yılına göre verileri çekelim</h2>
+  <pre><code class="r">d2011 = data$secim %&gt;%
     list.filter(&quot;2011&quot; %in% yil)
 length(d2011)
 </code></pre>
 
-<pre><code>## [1] 15
+<pre><code>## [1] 0
 </code></pre>
 
 <ul>
 <li>2011 yılına ait 15 farklı ilçenin verisi var</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>İlçe verisi</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">d2011[[1]] %&gt;% names
+</section>
+<section class="slide class" id="id">
+  <h2>İlçe verisi</h2>
+  <pre><code class="r">d2011[[1]] %&gt;% names
 </code></pre>
 
-<pre><code>## [1] &quot;ilce&quot;       &quot;yil&quot;        &quot;sandik&quot;     &quot;secmen&quot;     &quot;oykullanan&quot;
-## [6] &quot;gecerlioy&quot;  &quot;partiler&quot;
+<pre><code>## NULL
 </code></pre>
 
 <ul>
 <li>Bir ilçe verisindeki değişkenler (kolonlar)</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Hangi ilçeler var?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">list.select(d2011, ilce) %&gt;% unlist
+</section>
+<section class="slide class" id="id">
+  <h2>Hangi ilçeler var?</h2>
+  <pre><code class="r">list.select(d2011, ilce) %&gt;% unlist
 </code></pre>
 
-<pre><code>##             ilce             ilce             ilce             ilce 
-##         &quot;Seyhan&quot;  &quot;Y&lt;fc&gt;re&lt;f0&gt;ir&quot;      &quot;Alada&lt;f0&gt;&quot;         &quot;Ceyhan&quot; 
-##             ilce             ilce             ilce             ilce 
-##    &quot;&lt;c7&gt;ukurova&quot;           &quot;Feke&quot; &quot;&lt;dd&gt;mamo&lt;f0&gt;lu&quot;   &quot;Karaisal&lt;fd&gt;&quot; 
-##             ilce             ilce             ilce             ilce 
-##     &quot;Karata&lt;fe&gt;&quot;          &quot;Kozan&quot;     &quot;Pozant&lt;fd&gt;&quot;      &quot;Saimbeyli&quot; 
-##             ilce             ilce             ilce 
-##  &quot;Sar&lt;fd&gt;&lt;e7&gt;am&quot;     &quot;Tufanbeyli&quot;  &quot;Yumurtal&lt;fd&gt;k&quot;
+<pre><code>## NULL
 </code></pre>
 
 <ul>
@@ -2213,16 +1673,10 @@ length(d2011)
 
 <p><img src="assets/img/ss-9.png" alt=""></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Unicode&#39;a dönüştürme</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Unicode&#39;a dönüştürme</h2>
+  <ul>
 <li>Unicode tüm alfabeleri destekleyen evrensel encoding</li>
 <li>Nasıl dönüştürülür?</li>
 <li>Sayısız seçenek var:
@@ -2241,36 +1695,31 @@ length(d2011)
 
 <pre><code class="r">    filename = sprintf(&quot;memurlarnet/clean/%02su.json&quot;, 1)
     data = list.load(filename)
-    d2011 = data$secim %&gt;%
+</code></pre>
+
+<pre><code>## Error in parseJSON(txt): lexical error: invalid char in json text.
+##                                        memurlarnet/clean/01u.json
+##                      (right here) ------^
+</code></pre>
+
+<pre><code class="r">    d2011 = data$secim %&gt;%
         list.filter(&quot;2011&quot; %in% yil)
     d2011[[1]] %&gt;% names
 </code></pre>
 
-<pre><code>## [1] &quot;ilce&quot;       &quot;yil&quot;        &quot;sandik&quot;     &quot;secmen&quot;     &quot;oykullanan&quot;
-## [6] &quot;gecerlioy&quot;  &quot;partiler&quot;
+<pre><code>## NULL
 </code></pre>
 
 <pre><code class="r">    list.select(d2011, ilce) %&gt;% unlist
 </code></pre>
 
-<pre><code>##         ilce         ilce         ilce         ilce         ilce 
-##     &quot;Seyhan&quot;    &quot;Yüreğir&quot;     &quot;Aladağ&quot;     &quot;Ceyhan&quot;   &quot;Çukurova&quot; 
-##         ilce         ilce         ilce         ilce         ilce 
-##       &quot;Feke&quot;   &quot;İmamoğlu&quot;  &quot;Karaisalı&quot;    &quot;Karataş&quot;      &quot;Kozan&quot; 
-##         ilce         ilce         ilce         ilce         ilce 
-##    &quot;Pozantı&quot;  &quot;Saimbeyli&quot;    &quot;Sarıçam&quot; &quot;Tufanbeyli&quot; &quot;Yumurtalık&quot;
+<pre><code>## NULL
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tabloya dönüştürme</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Tabloya dönüştürme</h2>
+  <ul>
 <li>Tüm ilçe verilerini tek bir tabloda birleştirelim</li>
 </ul>
 
@@ -2280,58 +1729,25 @@ length(d2011)
 df
 </code></pre>
 
-<pre><code>##           ilce  yil sandik secmen oykullanan gecerlioy
-##  1:     Seyhan 2011   1670 482157     407851    397828
-##  2:    Yüreğir 2011    961 269449     225279    219153
-##  3:     Aladağ 2011     55  11920      10602     10345
-##  4:     Ceyhan 2011    422 105790      91781     89820
-##  5:   Çukurova 2011    859 249574     216202    212932
-##  6:       Feke 2011     69  13064      11006     10578
-##  7:   İmamoğlu 2011     82  20518      17770     17360
-##  8:  Karaisalı 2011     91  16323      14501     14176
-##  9:    Karataş 2011     74  14989      13165     13026
-## 10:      Kozan 2011    346  87173      74856     73144
-## 11:    Pozantı 2011     65  14353      12780     12501
-## 12:  Saimbeyli 2011     56  11657       9280      8992
-## 13:    Sarıçam 2011    295  78749      68975     67401
-## 14: Tufanbeyli 2011     68  12971      10506     10240
-## 15: Yumurtalık 2011     61  13025      11447     11168
+<pre><code>## Null data.table (0 rows and 0 cols)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm yıllara ait veriler için yapalım</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">df = data$secim %&gt;% 
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm yıllara ait veriler için yapalım</h2>
+  <pre><code class="r">df = data$secim %&gt;% 
     list.select(ilce, yil, sandik, secmen, oykullanan, gecerlioy) %&gt;%
     rbindlist
 head(df)
 </code></pre>
 
-<pre><code>##      ilce  yil sandik secmen oykullanan gecerlioy
-## 1: Seyhan 2011   1670 482157     407851    397828
-## 2: Seyhan 2007   1870 570517     440323    428998
-## 3: Seyhan 2002   2043 562664     412516    396148
-## 4: Seyhan 1999   2736 488810     394815    377190
-## 5: Seyhan 1995   1502 436945     355731    342748
-## 6: Seyhan 1991   1180 354377     275152    265319
+<pre><code>## Null data.table (0 rows and 0 cols)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm şehirlere ait dosyaları toplayıp yapalım</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    filenames = sprintf(&quot;memurlarnet/clean/%02s.json&quot;, 1:81)
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm şehirlere ait dosyaları toplayıp yapalım</h2>
+  <pre><code class="r">    filenames = sprintf(&quot;memurlarnet/clean/%02s.json&quot;, 1:81)
     head(filenames)
 </code></pre>
 
@@ -2340,192 +1756,26 @@ head(df)
 ## [5] &quot;memurlarnet/clean/05.json&quot; &quot;memurlarnet/clean/06.json&quot;
 </code></pre>
 
-<pre><code class="r">    dl = llply(filenames, list.load, .progress = &quot;text&quot;)
-</code></pre>
-
 <pre><code>## 
   |                                                                       
   |                                                                 |   0%
-  |                                                                       
-  |=                                                                |   1%
-  |                                                                       
-  |==                                                               |   2%
-  |                                                                       
-  |==                                                               |   4%
-  |                                                                       
-  |===                                                              |   5%
-  |                                                                       
-  |====                                                             |   6%
-  |                                                                       
-  |=====                                                            |   7%
-  |                                                                       
-  |======                                                           |   9%
-  |                                                                       
-  |======                                                           |  10%
-  |                                                                       
-  |=======                                                          |  11%
-  |                                                                       
-  |========                                                         |  12%
-  |                                                                       
-  |=========                                                        |  14%
-  |                                                                       
-  |==========                                                       |  15%
-  |                                                                       
-  |==========                                                       |  16%
-  |                                                                       
-  |===========                                                      |  17%
-  |                                                                       
-  |============                                                     |  19%
-  |                                                                       
-  |=============                                                    |  20%
-  |                                                                       
-  |==============                                                   |  21%
-  |                                                                       
-  |==============                                                   |  22%
-  |                                                                       
-  |===============                                                  |  23%
-  |                                                                       
-  |================                                                 |  25%
-  |                                                                       
-  |=================                                                |  26%
-  |                                                                       
-  |==================                                               |  27%
-  |                                                                       
-  |==================                                               |  28%
-  |                                                                       
-  |===================                                              |  30%
-  |                                                                       
-  |====================                                             |  31%
-  |                                                                       
-  |=====================                                            |  32%
-  |                                                                       
-  |======================                                           |  33%
-  |                                                                       
-  |======================                                           |  35%
-  |                                                                       
-  |=======================                                          |  36%
-  |                                                                       
-  |========================                                         |  37%
-  |                                                                       
-  |=========================                                        |  38%
-  |                                                                       
-  |==========================                                       |  40%
-  |                                                                       
-  |==========================                                       |  41%
-  |                                                                       
-  |===========================                                      |  42%
-  |                                                                       
-  |============================                                     |  43%
-  |                                                                       
-  |=============================                                    |  44%
-  |                                                                       
-  |==============================                                   |  46%
-  |                                                                       
-  |==============================                                   |  47%
-  |                                                                       
-  |===============================                                  |  48%
-  |                                                                       
-  |================================                                 |  49%
-  |                                                                       
-  |=================================                                |  51%
-  |                                                                       
-  |==================================                               |  52%
-  |                                                                       
-  |===================================                              |  53%
-  |                                                                       
-  |===================================                              |  54%
-  |                                                                       
-  |====================================                             |  56%
-  |                                                                       
-  |=====================================                            |  57%
-  |                                                                       
-  |======================================                           |  58%
-  |                                                                       
-  |=======================================                          |  59%
-  |                                                                       
-  |=======================================                          |  60%
-  |                                                                       
-  |========================================                         |  62%
-  |                                                                       
-  |=========================================                        |  63%
-  |                                                                       
-  |==========================================                       |  64%
-  |                                                                       
-  |===========================================                      |  65%
-  |                                                                       
-  |===========================================                      |  67%
-  |                                                                       
-  |============================================                     |  68%
-  |                                                                       
-  |=============================================                    |  69%
-  |                                                                       
-  |==============================================                   |  70%
-  |                                                                       
-  |===============================================                  |  72%
-  |                                                                       
-  |===============================================                  |  73%
-  |                                                                       
-  |================================================                 |  74%
-  |                                                                       
-  |=================================================                |  75%
-  |                                                                       
-  |==================================================               |  77%
-  |                                                                       
-  |===================================================              |  78%
-  |                                                                       
-  |===================================================              |  79%
-  |                                                                       
-  |====================================================             |  80%
-  |                                                                       
-  |=====================================================            |  81%
-  |                                                                       
-  |======================================================           |  83%
-  |                                                                       
-  |=======================================================          |  84%
-  |                                                                       
-  |=======================================================          |  85%
-  |                                                                       
-  |========================================================         |  86%
-  |                                                                       
-  |=========================================================        |  88%
-  |                                                                       
-  |==========================================================       |  89%
-  |                                                                       
-  |===========================================================      |  90%
-  |                                                                       
-  |===========================================================      |  91%
-  |                                                                       
-  |============================================================     |  93%
-  |                                                                       
-  |=============================================================    |  94%
-  |                                                                       
-  |==============================================================   |  95%
-  |                                                                       
-  |===============================================================  |  96%
-  |                                                                       
-  |===============================================================  |  98%
-  |                                                                       
-  |================================================================ |  99%
-  |                                                                       
-  |=================================================================| 100%
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): lexical error: invalid char in json text.
+##                                        memurlarnet/clean/01.json
+##                      (right here) ------^
 </code></pre>
 
 <pre><code class="r">    length(dl)
 </code></pre>
 
-<pre><code>## [1] 81
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;dl&#39; not found
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Her bir ile ait listeyi tabloya çevirelim</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Her bir ile ait listeyi tabloya çevirelim</h2>
+  <ul>
 <li>Tek bir ile ait listeyi tabloya çevirmek nasıl?</li>
 </ul>
 
@@ -2535,77 +1785,57 @@ head(df)
         head
 </code></pre>
 
-<pre><code>##      ilce  yil sandik secmen oykullanan gecerlioy
-## 1: Seyhan 2011   1670 482157     407851    397828
-## 2: Seyhan 2007   1870 570517     440323    428998
-## 3: Seyhan 2002   2043 562664     412516    396148
-## 4: Seyhan 1999   2736 488810     394815    377190
-## 5: Seyhan 1995   1502 436945     355731    342748
-## 6: Seyhan 1991   1180 354377     275152    265319
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;dl&#39; not found
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm iller için bu işlemi uygulama</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    dt = dl %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm iller için bu işlemi uygulama</h2>
+  <pre><code class="r">    dt = dl %&gt;%
         lapply(
             . %&gt;% `[[`(&#39;secim&#39;) %&gt;%
             list.select(ilce, yil, sandik, secmen, oykullanan, gecerlioy) %&gt;%
             rbindlist
         ) %&gt;%
         rbindlist
-    tail(dt)
 </code></pre>
 
-<pre><code>##        ilce  yil sandik secmen oykullanan gecerlioy
-## 1: Kaynaşlı 2011     64  14580      13244     12990
-## 2: Kaynaşlı 2007     50  12992      11723     11504
-## 3: Kaynaşlı 2002     58  11927      10487     10185
-## 4:  Yığılca 2011     64  12202      11169     10897
-## 5:  Yığılca 2007     56  13316      12061     11779
-## 6:  Yığılca 2002     69  13339      11725     11325
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;dl&#39; not found
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+<pre><code class="r">    tail(dt)
+</code></pre>
 
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Partilerin oy verilerini nasıl çekeceğiz?</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+<pre><code>##                                             
+## 1 function (x, df, ncp, log = FALSE)        
+## 2 {                                         
+## 3     if (missing(ncp))                     
+## 4         .External(C_dt, x, df, log)       
+## 5     else .External(C_dnt, x, df, ncp, log)
+## 6 }
+</code></pre>
+
+</section>
+<section class="slide class" id="id">
+  <h2>Partilerin oy verilerini nasıl çekeceğiz?</h2>
+  <ul>
 <li>Şu ana değin hep tek kademeli verileri işledik</li>
 <li>Parti oyları bir alt kademede saklı</li>
 </ul>
 
 <p><img src="assets/img/ss-10.png" alt=""></p>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Partilerin oy verilerini çekme</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Partilerin oy verilerini çekme</h2>
+  <ul>
 <li>Önce tek bir il için yapalım</li>
 </ul>
 
 <pre><code class="r">    d2011[[1]] %&gt;% names
 </code></pre>
 
-<pre><code>## [1] &quot;ilce&quot;       &quot;yil&quot;        &quot;sandik&quot;     &quot;secmen&quot;     &quot;oykullanan&quot;
-## [6] &quot;gecerlioy&quot;  &quot;partiler&quot;
+<pre><code>## NULL
 </code></pre>
 
 <pre><code class="r">    pl = d2011 %&gt;% 
@@ -2613,7 +1843,7 @@ head(df)
     length(pl)
 </code></pre>
 
-<pre><code>## [1] 15
+<pre><code>## [1] 0
 </code></pre>
 
 <ul>
@@ -2624,159 +1854,29 @@ head(df)
 <pre><code class="r">pl[[1]][[1]] %&gt;% str
 </code></pre>
 
-<pre><code>## List of 39
-##  $ :List of 2
-##   ..$ Parti: chr &quot;AK Parti&quot;
-##   ..$ Oy   : int 130863
-##  $ :List of 2
-##   ..$ Parti: chr &quot;ANAP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;ATP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;BBP&quot;
-##   ..$ Oy   : int 2421
-##  $ :List of 2
-##   ..$ Parti: chr &quot;BP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;BTP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;CHP&quot;
-##   ..$ Oy   : int 137511
-##  $ :List of 2
-##   ..$ Parti: chr &quot;DBP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;DEHAP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;DEPAR&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;DP&quot;
-##   ..$ Oy   : int 1907
-##  $ :List of 2
-##   ..$ Parti: chr &quot;DSP&quot;
-##   ..$ Oy   : int 755
-##  $ :List of 2
-##   ..$ Parti: chr &quot;DTP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;DYP&quot;
-##   ..$ Oy   : int 539
-##  $ :List of 2
-##   ..$ Parti: chr &quot;EMEP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;FP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;Genç Parti&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;HADEP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;HEPAR&quot;
-##   ..$ Oy   : int 699
-##  $ :List of 2
-##   ..$ Parti: chr &quot;Has Parti&quot;
-##   ..$ Oy   : int 1269
-##  $ :List of 2
-##   ..$ Parti: chr &quot;HYP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;İP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;LDP&quot;
-##   ..$ Oy   : int 114
-##  $ :List of 2
-##   ..$ Parti: chr &quot;MHP&quot;
-##   ..$ Oy   : int 60289
-##  $ :List of 2
-##   ..$ Parti: chr &quot;MMP&quot;
-##   ..$ Oy   : int 250
-##  $ :List of 2
-##   ..$ Parti: chr &quot;Millet Partisi&quot;
-##   ..$ Oy   : int 715
-##  $ :List of 2
-##   ..$ Parti: chr &quot;ÖDP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;RP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;Saadet Partisi&quot;
-##   ..$ Oy   : int 4261
-##  $ :List of 2
-##   ..$ Parti: chr &quot;SHP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;SİP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;SP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;TKP&quot;
-##   ..$ Oy   : int 517
-##  $ :List of 2
-##   ..$ Parti: chr &quot;YDH&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;YDP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;Yeni Parti&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;YP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;YTP&quot;
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr &quot;BĞMZ&quot;
-##   ..$ Oy   : int 55718
+<pre><code>## Error in pl[[1]]: subscript out of bounds
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tek bir ilçedeki verileri tabloya çevirmek</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    pt_ilce = pl[[1]][[1]] %&gt;%
+</section>
+<section class="slide class" id="id">
+  <h2>Tek bir ilçedeki verileri tabloya çevirmek</h2>
+  <pre><code class="r">    pt_ilce = pl[[1]][[1]] %&gt;%
         rbindlist
-    head(pt_ilce)
 </code></pre>
 
-<pre><code>##       Parti     Oy
-## 1: AK Parti 130863
-## 2:     ANAP      0
-## 3:      ATP      0
-## 4:      BBP   2421
-## 5:       BP      0
-## 6:      BTP      0
+<pre><code>## Error in pl[[1]]: subscript out of bounds
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+<pre><code class="r">    head(pt_ilce)
+</code></pre>
 
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm ilçeler için bunu yapalım</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    pt_ilceler = llply(pl, 
+<pre><code>## Error in head(pt_ilce): object &#39;pt_ilce&#39; not found
+</code></pre>
+
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm ilçeler için bunu yapalım</h2>
+  <pre><code class="r">    pt_ilceler = llply(pl, 
             . %&gt;%
             `[[`(&#39;partiler&#39;) %&gt;%
             rbindlist
@@ -2784,19 +1884,13 @@ head(df)
     length(pt_ilceler)
 </code></pre>
 
-<pre><code>## [1] 15
+<pre><code>## [1] 0
 </code></pre>
 
 <pre><code class="r">    head(pt_ilceler[[1]])
 </code></pre>
 
-<pre><code>##       Parti     Oy
-## 1: AK Parti 130863
-## 2:     ANAP      0
-## 3:      ATP      0
-## 4:      BBP   2421
-## 5:       BP      0
-## 6:      BTP      0
+<pre><code>## Error in pt_ilceler[[1]]: subscript out of bounds
 </code></pre>
 
 <ul>
@@ -2804,16 +1898,10 @@ head(df)
 <li>Tüm list elementlerini birleştirelim</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Tüm ilçelerin tablolarını birleştirme</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm ilçelerin tablolarını birleştirme</h2>
+  <ul>
 <li>Aşağıdaki sorun ne?</li>
 </ul>
 
@@ -2826,58 +1914,80 @@ head(df)
     nrow(pt)
 </code></pre>
 
-<pre><code>## [1] 585
+<pre><code>## [1] 0
 </code></pre>
 
 <pre><code class="r">    tail(pt)
 </code></pre>
 
-<pre><code>##         Parti Oy
-## 1:        YDH  0
-## 2:        YDP  0
-## 3: Yeni Parti  0
-## 4:         YP  0
-## 5:        YTP  0
-## 6:       BĞMZ 40
+<pre><code>## Null data.table (0 rows and 0 cols)
 </code></pre>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Sorun: hangi veri hangi ilçeye ait?</h2>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">    pt_ilceler[[1]]$ilce = &#39;Saimbeyli&#39;
-    head(pt_ilceler[[1]])
+</section>
+<section class="slide class" id="id">
+  <h2>Sorun: hangi veri hangi ilçeye ait?</h2>
+  <pre><code class="r">    pt_ilceler[[1]]$ilce = &#39;Saimbeyli&#39;
 </code></pre>
 
-<pre><code>##       Parti     Oy      ilce
-## 1: AK Parti 130863 Saimbeyli
-## 2:     ANAP      0 Saimbeyli
-## 3:      ATP      0 Saimbeyli
-## 4:      BBP   2421 Saimbeyli
-## 5:       BP      0 Saimbeyli
-## 6:      BTP      0 Saimbeyli
+<pre><code>## Error in `*tmp*`[[1]]: subscript out of bounds
+</code></pre>
+
+<pre><code class="r">    head(pt_ilceler[[1]])
+</code></pre>
+
+<pre><code>## Error in pt_ilceler[[1]]: subscript out of bounds
 </code></pre>
 
 <ul>
 <li>Bunu tüm ilçelerde yapmalıyız</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+</section>
+<section class="slide class" id="id">
+  <h2>Tüm ilçelerin listelerinin boyutlarına göre veri ekleme</h2>
+  <pre><code class="r">    row_counts = llply(pt_ilceler, nrow)
+    ilceler = d2011 %&gt;% 
+        list.select(ilce) %&gt;%
+        unlist
+    rep(ilceler, row_counts) %&gt;% str
+</code></pre>
 
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Linkler</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Html5 slaytlar ve kaynak kodları: <a href="https://github.com/mertnuhoglu/r_verigazeteciligi">https://github.com/mertnuhoglu/r_verigazeteciligi</a>
+<pre><code>##  NULL
+</code></pre>
+
+</section>
+<section class="slide class" id="id">
+  <h2>İlçe ve yıl verilerini birleştirilmiş tabloya ekleme</h2>
+  <pre><code class="r">    row_counts = llply(pt_ilceler, nrow)
+    ilceler = d2011 %&gt;% 
+        list.select(ilce) %&gt;%
+        unlist
+    yillar = d2011 %&gt;% 
+        list.select(yil) %&gt;%
+        unlist
+    pt$ilce = rep(ilceler, row_counts)
+</code></pre>
+
+<pre><code>## Error in `[&lt;-.data.table`(x, j = name, value = value): Cannot use := to add columns to a null data.table (no columns), currently. You can use := to add (empty) columns to a 0-row data.table (1 or more empty columns), though.
+</code></pre>
+
+<pre><code class="r">    pt$yil = rep(yillar, row_counts)
+</code></pre>
+
+<pre><code>## Error in `[&lt;-.data.table`(x, j = name, value = value): Cannot use := to add columns to a null data.table (no columns), currently. You can use := to add (empty) columns to a 0-row data.table (1 or more empty columns), though.
+</code></pre>
+
+<pre><code class="r">    head(pt)
+</code></pre>
+
+<pre><code>## Null data.table (0 rows and 0 cols)
+</code></pre>
+
+</section>
+<section class="slide class" id="id">
+  <h2>Linkler</h2>
+  <ul>
+<li>Html5 slaytlar ve kaynak kodları: <a href="https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi">https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi</a>
 
 <ul>
 <li><a href="https://dl.dropboxusercontent.com/u/103580364/r_verigazeteciligi/index.html#1">https://dl.dropboxusercontent.com/u/103580364/r_verigazeteciligi/index.html#1</a></li>
@@ -2890,611 +2000,69 @@ head(df)
 <li><a href="http://twitter.com/mertnuhoglu">http://twitter.com/mertnuhoglu</a></li>
 <li><a href="mailto:mert.nuhoglu@gmail.com">mert.nuhoglu@gmail.com</a></li>
 </ul></li>
+<li><a href="https://github.com/mertnuhoglu/secim_verileri">Seçim verileri toparlama projesi</a></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-    <slide class="backdrop"></slide>
-  </slides>
-  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
-    <ul>
-      <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Giriş'>
-         1
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Veri Bilimi Nedir?'>
-         2
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Veri Bilimi Nedir?'>
-         3
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='New York Uçuş Verisi'>
-         4
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Verileri Gözden Geçirme'>
-         5
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Verileri Gözden Geçirme (Alt.)'>
-         6
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Diğer Veriler'>
-         7
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Diğer Veriler'>
-         8
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Diğer Veriler'>
-         9
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Row Index (Satır No)'>
-         10
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Head (Baş Kısım)'>
-         11
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Head (Baş Kısım) (Alt.)'>
-         12
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Range (Aralık)'>
-         13
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Tail (Son Kısım)'>
-         14
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='RStudio'>
-         15
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='RStudio'>
-         16
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Columns (Kolonlar)'>
-         17
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Satır ve Kolon'>
-         18
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Filter (Sorgulama)'>
-         19
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Filter (Sorgulama) (Alt.)'>
-         20
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Filter (Sorgulama) (Alt.)'>
-         21
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Filter (Sorgulama) (Alt.)'>
-         22
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Group By (Gruplama)'>
-         23
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='NA (Not Available) Veriler'>
-         24
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='sum (toplama) (Alt: Pipe kullanarak)'>
-         25
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='sum (toplama) (Alt: Pipe kullanarak)'>
-         26
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Help (Yardım)'>
-         27
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Subsetting'>
-         28
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Subsetting ve logical operatörler'>
-         29
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='is.na ile subsetting'>
-         30
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='is.na + pipes'>
-         31
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='is.na ile subsetting'>
-         32
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='is.na ile subsetting'>
-         33
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Fonksiyonları nereden bulacağız?'>
-         34
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Library&#39;lerin (kütüphane) kapsamları'>
-         35
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Operatörlerle ilgili yardım?'>
-         36
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Group By (Gruplama)'>
-         37
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Boş verileri (NA) filtreleme'>
-         38
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Imposter syndrome (Kandırmaca ezikliği)'>
-         39
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Kendi başımıza nasıl düzelteceğiz?'>
-         40
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Nasıl soru sormalı?'>
-         41
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Stackoverflow&#39;daki sorular'>
-         42
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Karmaşık içiçe işlemler'>
-         43
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Pipeline ile sadeleştirme'>
-         44
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='Problem'>
-         45
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='Problem'>
-         46
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='Aynı problem alternatif çözüm'>
-         47
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Uçuş süresine bağlı olarak gecikmeler nasıl?'>
-         48
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Tüm kayıtları csv olarak kaydet'>
-         49
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='30&#39;dan fazla uçuş yapan uçaklar hangileridir?'>
-         50
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='30&#39;dan fazla uçuş yapan uçaklara ait uçuşlar hangileridir?'>
-         51
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='Bu uçuşların arasında 5 dk&#39;dan daha az varış gecikmesi olanlar hangileri?'>
-         52
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='select (kolonları seçme)'>
-         53
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=54 title='Destinasyonlara göre en çok varış gecikmeli uçuşlar'>
-         54
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=55 title='Bu uçuşların destinasyonlarının lokasyon koordinatları?'>
-         55
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=56 title='Koordinatları harita üzerinde gösterme'>
-         56
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=57 title='Bunların arasında erken varan uçuşlar hangileri?'>
-         57
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=58 title='Erken varan uçuşların haritadaki destinasyonları'>
-         58
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=59 title='Seçim Verilerini Toplamak'>
-         59
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=60 title='Veri nerede?'>
-         60
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=61 title='Sayfanın kaynak kodu'>
-         61
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=62 title='Veri nerede?'>
-         62
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=63 title='Hangi web sayfalarını indirmeliyiz?'>
-         63
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=64 title='Url&#39;yi indirmek'>
-         64
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=65 title='İndirilmiş dosyayı inceleyelim'>
-         65
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=66 title='Veriler nerede?'>
-         66
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=67 title='Javascript dosyasının url&#39;si nedir?'>
-         67
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=68 title='Tüm url&#39;leri oluşturalım'>
-         68
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=69 title='Tüm url&#39;leri indirelim'>
-         69
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=70 title='Veriyi okuma'>
-         70
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=71 title='Hatanın nedeni?'>
-         71
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=72 title='Bu tür hataların nedenini nasıl bulacağız?'>
-         72
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=73 title='Veri temizleme'>
-         73
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=74 title='Bu işlemler nasıl otomatikleştirilir?'>
-         74
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=75 title='Bu scripti nasıl yazacaksınız?'>
-         75
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=76 title='shell ve R'>
-         76
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=77 title='Tüm dosyalar için shell scripti çağrısı'>
-         77
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=78 title='Dosyadaki veriyi yükleme'>
-         78
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=79 title='Verinin yapısı (şekli) nedir?'>
-         79
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=80 title='2. Kademe'>
-         80
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=81 title='Veriyi keşfetmek (data exploration)'>
-         81
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=82 title='Seçim yılına göre verileri çekelim'>
-         82
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=83 title='İlçe verisi'>
-         83
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=84 title='Hangi ilçeler var?'>
-         84
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=85 title='Unicode&#39;a dönüştürme'>
-         85
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=86 title='Tabloya dönüştürme'>
-         86
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=87 title='Tüm yıllara ait veriler için yapalım'>
-         87
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=88 title='Tüm şehirlere ait dosyaları toplayıp yapalım'>
-         88
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=89 title='Her bir ile ait listeyi tabloya çevirelim'>
-         89
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=90 title='Tüm iller için bu işlemi uygulama'>
-         90
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=91 title='Partilerin oy verilerini nasıl çekeceğiz?'>
-         91
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=92 title='Partilerin oy verilerini çekme'>
-         92
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=93 title='Tek bir ilçedeki verileri tabloya çevirmek'>
-         93
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=94 title='Tüm ilçeler için bunu yapalım'>
-         94
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=95 title='Tüm ilçelerin tablolarını birleştirme'>
-         95
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=96 title='Sorun: hangi veri hangi ilçeye ait?'>
-         96
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=97 title='Linkler'>
-         97
-      </a>
-    </li>
-  </ul>
-  </div>  <!--[if IE]>
-    <script 
-      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
-    </script>
-    <script>CFInstall.check({mode: 'overlay'});</script>
-  <![endif]-->
+</section>
+	<div class='deck-automatic-link' title="Play/Pause">Play/Pause</div>
 </body>
-  <!-- Load Javascripts for Widgets -->
+  <!-- deck.navigation snippet -->
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
-   
-  </html>
+  <!-- deck.status snippet -->
+  <p class="deck-status">
+  <span class="deck-status-current"></span>
+    /
+  <span class="deck-status-total"></span>
+  </p>
+  
+  <!-- deck.goto snippet -->
+  <form action="." method="get" class="goto-form">
+  	<label for="goto-slide">Go to slide:</label>
+  	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  	<datalist id="goto-datalist"></datalist>
+  	<input type="submit" value="Go">
+  </form>
+  
+  <!-- deck.hash snippet -->
+  <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+  
+  
+  <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/frameworks/deckjs/jquery-1.7.min.js"><\/script>')</script>
+  
+  <!-- Add Slide Class to Build Elements -->
+  <script type='text/javascript'>
+  $('ol.build li').addClass('slide')
+  $('ul.build li').addClass('slide')
+  </script>
+  
+  <!-- Deck Core and extensions -->
+  <script src="libraries/frameworks/deckjs/core/deck.core.js"></script>
+  <script src="libraries/frameworks/deckjs/extensions/goto/deck.goto.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/hash/deck.hash.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/menu/deck.menu.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/navigation/deck.navigation.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/scale/deck.scale.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/status/deck.status.js"></script>
+<script src="libraries/frameworks/deckjs/extensions/automatic/deck.automatic.js"></script>
+<!-- Initialize the deck -->
+  <script>
+  $(function() {
+    $.extend(true, $.deck.defaults, {
+    automatic: {
+      startRunning: false,    // true or false
+      cycle: false,           // true or false
+      slideDuration: 10000 // duration in milliseconds
+    }})
+  	$.deck('.slide');
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>

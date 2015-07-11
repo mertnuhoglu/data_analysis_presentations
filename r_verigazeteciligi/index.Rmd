@@ -3,9 +3,12 @@ title       : R ile Veri Analizi
 subtitle    : Veri Gazeteciliği Atölye Programı
 author      : Mert Nuhoglu
 job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+framework   : deckjs        # {io2012, html5slides, shower, dzslides, ...}
+deckjs:
+  theme: web-2.0
+  extensions: [goto, hash, menu, navigation, scale, status, automatic]
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : solarized_light # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
@@ -46,7 +49,7 @@ knit        : slidify::knit2slides
 - Veri kaynağı
 	- [http://datascience.la/hadley-wickhams-dplyr-tutorial-at-user-2014-part-1/](http://datascience.la/hadley-wickhams-dplyr-tutorial-at-user-2014-part-1/)
 	- csv dosyaları
-	- [https://github.com/mertnuhoglu/r_verigazeteciligi](https://github.com/mertnuhoglu/r_verigazeteciligi) 
+	- [https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi](https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi) 
 - Verileri yükleme
 
 ```{r }
@@ -1242,7 +1245,7 @@ pl[[1]][[1]] %>% str
 
 ## Linkler
 
-- Html5 slaytlar ve kaynak kodları: https://github.com/mertnuhoglu/r_verigazeteciligi
+- Html5 slaytlar ve kaynak kodları: https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi
  - https://dl.dropboxusercontent.com/u/103580364/r_verigazeteciligi/index.html#1
 - [Veribilimi İstanbul](https://www.facebook.com/groups/465842350233183/)
 - [RStudio Webinars](http://www.rstudio.com/resources/webinars/)

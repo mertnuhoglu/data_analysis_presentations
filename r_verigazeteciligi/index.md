@@ -3,9 +3,12 @@ title       : R ile Veri Analizi
 subtitle    : Veri Gazeteciliği Atölye Programı
 author      : Mert Nuhoglu
 job         : 
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+framework   : deckjs        # {io2012, html5slides, shower, dzslides, ...}
+deckjs:
+  theme: web-2.0
+  extensions: [goto, hash, menu, navigation, scale, status, automatic]
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      # 
+hitheme     : solarized_light # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
@@ -44,12 +47,26 @@ knit        : slidify::knit2slides
 - Veri kaynağı
 	- [http://datascience.la/hadley-wickhams-dplyr-tutorial-at-user-2014-part-1/](http://datascience.la/hadley-wickhams-dplyr-tutorial-at-user-2014-part-1/)
 	- csv dosyaları
-	- [https://github.com/mertnuhoglu/r_verigazeteciligi](https://github.com/mertnuhoglu/r_verigazeteciligi) 
+	- [https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi](https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi) 
 - Verileri yükleme
 
 
 ```r
 	 library(data.table)
+```
+
+```
+## data.table 1.9.4  For help type: ?data.table
+## *** NB: by=.EACHI is now explicit. See README to restore previous behaviour.
+## 
+## Attaching package: 'data.table'
+## 
+## The following objects are masked from 'package:dplyr':
+## 
+##     between, last
+```
+
+```r
 	 flights = fread("flights.csv")
 	 airports = fread("airports.csv")
 	 planes = fread("planes.csv")
@@ -418,10 +435,6 @@ knit        : slidify::knit2slides
 ##    5: 2011-01-31 12:00:00   21     43 2143 2338        50        24
 ##   ---                                                              
 ## 2814: 2011-12-27 12:00:00   NA     NA   NA   NA        NA        NA
-## 2815: 2011-12-28 12:00:00    9      6  906 1125         1        -7
-## 2816: 2011-12-29 12:00:00    9     41  941 1152        36        20
-## 2817: 2011-12-30 12:00:00    9     25  925 1142        20        10
-## 2818: 2011-12-31 12:00:00    9      5  905 1108         0       -24
 ##       carrier flight dest  plane cancelled time dist
 ##    1:      CO    170  SFO N35407         0  225 1635
 ##    2:      CO    270  SFO N37420         0  228 1635
@@ -430,10 +443,7 @@ knit        : slidify::knit2slides
 ##    5:      CO    770  SFO N37281         0  224 1635
 ##   ---                                               
 ## 2814:      UA    855  SFO                1   NA 1635
-## 2815:      UA    855  SFO N669UA         0  222 1635
-## 2816:      UA    855  SFO N664UA         0  225 1635
-## 2817:      UA    855  SFO N539UA         0  226 1635
-## 2818:      UA    855  SFO N665UA         0  213 1635
+##  [ reached getOption("max.print") -- omitted 4 rows ]
 ```
 
 --- .class #id 
@@ -455,10 +465,6 @@ knit        : slidify::knit2slides
 ##    5: 2011-01-31 12:00:00   21     43 2143 2338        50        24
 ##   ---                                                              
 ## 2814: 2011-12-27 12:00:00   NA     NA   NA   NA        NA        NA
-## 2815: 2011-12-28 12:00:00    9      6  906 1125         1        -7
-## 2816: 2011-12-29 12:00:00    9     41  941 1152        36        20
-## 2817: 2011-12-30 12:00:00    9     25  925 1142        20        10
-## 2818: 2011-12-31 12:00:00    9      5  905 1108         0       -24
 ##       carrier flight dest  plane cancelled time dist
 ##    1:      CO    170  SFO N35407         0  225 1635
 ##    2:      CO    270  SFO N37420         0  228 1635
@@ -467,10 +473,7 @@ knit        : slidify::knit2slides
 ##    5:      CO    770  SFO N37281         0  224 1635
 ##   ---                                               
 ## 2814:      UA    855  SFO                1   NA 1635
-## 2815:      UA    855  SFO N669UA         0  222 1635
-## 2816:      UA    855  SFO N664UA         0  225 1635
-## 2817:      UA    855  SFO N539UA         0  226 1635
-## 2818:      UA    855  SFO N665UA         0  213 1635
+##  [ reached getOption("max.print") -- omitted 4 rows ]
 ```
 
 --- .class #id 
@@ -493,10 +496,6 @@ knit        : slidify::knit2slides
 ##    5: 2011-01-27 12:00:00    8     57  857 1053         7       -26
 ##   ---                                                              
 ## 1249: 2011-12-23 12:00:00    9     20  920 1132        15         0
-## 1250: 2011-12-24 12:00:00    9      2  902 1109        -3       -23
-## 1251: 2011-12-25 12:00:00    9      5  905 1101         0       -31
-## 1252: 2011-12-26 12:00:00    9     25  925 1132        20         0
-## 1253: 2011-12-31 12:00:00    9      5  905 1108         0       -24
 ##       carrier flight dest  plane cancelled time dist
 ##    1:      CO    570  SFO N73406         0  217 1635
 ##    2:      CO    370  SFO N12238         0  212 1635
@@ -505,10 +504,7 @@ knit        : slidify::knit2slides
 ##    5:      CO    170  SFO N71411         0  212 1635
 ##   ---                                               
 ## 1249:      UA    855  SFO N677UA         0  213 1635
-## 1250:      UA    855  SFO N672UA         0  202 1635
-## 1251:      UA    855  SFO N668UA         0  206 1635
-## 1252:      UA    855  SFO N673UA         0  215 1635
-## 1253:      UA    855  SFO N665UA         0  213 1635
+##  [ reached getOption("max.print") -- omitted 4 rows ]
 ```
 
 --- .class #id 
@@ -533,18 +529,6 @@ knit        : slidify::knit2slides
 ##  5: 2011-12-24 12:00:00   17     49 1749 1945        12       -26      CO
 ##  6: 2011-12-24 12:00:00   16     33 1633 1834        23       -10      CO
 ##  7: 2011-12-24 12:00:00   12      9 1209 1346        54        -3      CO
-##  8: 2011-12-24 12:00:00   21     17 2117 2258         2       -51      CO
-##  9: 2011-12-24 12:00:00   14     31 1431 1613         1       -51      CO
-## 10: 2011-12-23 12:00:00   21      7 2107 2300       137       102      CO
-## 11: 2011-12-23 12:00:00   17     50 1750 1956        15        -9      CO
-## 12: 2011-12-23 12:00:00   16     11 1611 1813         1       -25      CO
-## 13: 2011-12-23 12:00:00   21     27 2127 2318        12       -21      CO
-## 14: 2011-12-24 12:00:00    7     26  726  928        -4       -29      UA
-## 15: 2011-12-25 12:00:00    7     28  728  923        -2       -34      UA
-## 16: 2011-12-24 12:00:00   19      3 1903 2048        13       -31      UA
-## 17: 2011-12-23 12:00:00    9     20  920 1132        15         0      UA
-## 18: 2011-12-24 12:00:00    9      2  902 1109        -3       -23      UA
-## 19: 2011-12-25 12:00:00    9      5  905 1101         0       -31      UA
 ##     flight dest  plane cancelled time dist
 ##  1:   1181  SFO N75435         0  206 1635
 ##  2:   1669  SFO N37408         0  207 1635
@@ -553,18 +537,7 @@ knit        : slidify::knit2slides
 ##  5:   1181  SFO N14231         0  214 1635
 ##  6:   1240  SFO N24202         0  213 1635
 ##  7:   1669  SFO N73406         0  201 1635
-##  8:   1712  SFO N74856         0  200 1635
-##  9:   1737  SFO N73860         0  204 1635
-## 10:   1033  SFO N37267         0  211 1635
-## 11:   1181  SFO N77867         0  218 1635
-## 12:   1240  SFO N34222         0  217 1635
-## 13:   1712  SFO N57863         0  213 1635
-## 14:    567  SFO N498UA         0  214 1635
-## 15:    567  SFO N490UA         0  210 1635
-## 16:    576  SFO N483UA         0  205 1635
-## 17:    855  SFO N677UA         0  213 1635
-## 18:    855  SFO N672UA         0  202 1635
-## 19:    855  SFO N668UA         0  206 1635
+##  [ reached getOption("max.print") -- omitted 12 rows ]
 ```
 
 --- .class #id 
@@ -1631,7 +1604,7 @@ ggplot(early_ones, aes(long, lat)) +
 
 ```
 ## Error in parseJSON(txt): lexical error: invalid char in json text.
-##                                        var secimVerisi = [ {  	"ilce":
+##                                        memurlarnet/raw/01.json
 ##                      (right here) ------^
 ```
 
@@ -1759,7 +1732,9 @@ clean_memurlarnet_json_files = function() {
 ```
 
 ```
-## Warning: The json string is not valid UTF-8. Assuming native encoding.
+## Error in parseJSON(txt): lexical error: invalid char in json text.
+##                                        memurlarnet/clean/01.json
+##                      (right here) ------^
 ```
 
 --- .class #id 
@@ -1801,7 +1776,8 @@ clean_memurlarnet_json_files = function() {
 ```
 
 ```
-## [1] "secim"
+##  [1] "product"  "company"  "category" "salesman" "region"   "keyword" 
+##  [7] "page"     "customer" "location" "campaign"
 ```
 
 ```r
@@ -1817,7 +1793,7 @@ clean_memurlarnet_json_files = function() {
 ```
 
 ```
-## [1] 88
+## [1] 0
 ```
 
 - 1. seviyede 88 kayıt var: 
@@ -1835,7 +1811,7 @@ length(d2011)
 ```
 
 ```
-## [1] 15
+## [1] 0
 ```
 
 - 2011 yılına ait 15 farklı ilçenin verisi var
@@ -1850,8 +1826,7 @@ d2011[[1]] %>% names
 ```
 
 ```
-## [1] "ilce"       "yil"        "sandik"     "secmen"     "oykullanan"
-## [6] "gecerlioy"  "partiler"
+## NULL
 ```
 
 - Bir ilçe verisindeki değişkenler (kolonlar)
@@ -1866,14 +1841,7 @@ list.select(d2011, ilce) %>% unlist
 ```
 
 ```
-##             ilce             ilce             ilce             ilce 
-##         "Seyhan"  "Y<fc>re<f0>ir"      "Alada<f0>"         "Ceyhan" 
-##             ilce             ilce             ilce             ilce 
-##    "<c7>ukurova"           "Feke" "<dd>mamo<f0>lu"   "Karaisal<fd>" 
-##             ilce             ilce             ilce             ilce 
-##     "Karata<fe>"          "Kozan"     "Pozant<fd>"      "Saimbeyli" 
-##             ilce             ilce             ilce 
-##  "Sar<fd><e7>am"     "Tufanbeyli"  "Yumurtal<fd>k"
+## NULL
 ```
 
 - Türkçe karakterler bozuk çıkıyor
@@ -1903,14 +1871,22 @@ list.select(d2011, ilce) %>% unlist
 ```r
 	filename = sprintf("memurlarnet/clean/%02su.json", 1)
 	data = list.load(filename)
+```
+
+```
+## Error in parseJSON(txt): lexical error: invalid char in json text.
+##                                        memurlarnet/clean/01u.json
+##                      (right here) ------^
+```
+
+```r
 	d2011 = data$secim %>%
 		list.filter("2011" %in% yil)
 	d2011[[1]] %>% names
 ```
 
 ```
-## [1] "ilce"       "yil"        "sandik"     "secmen"     "oykullanan"
-## [6] "gecerlioy"  "partiler"
+## NULL
 ```
 
 ```r
@@ -1918,12 +1894,7 @@ list.select(d2011, ilce) %>% unlist
 ```
 
 ```
-##         ilce         ilce         ilce         ilce         ilce 
-##     "Seyhan"    "Yüreğir"     "Aladağ"     "Ceyhan"   "Çukurova" 
-##         ilce         ilce         ilce         ilce         ilce 
-##       "Feke"   "İmamoğlu"  "Karaisalı"    "Karataş"      "Kozan" 
-##         ilce         ilce         ilce         ilce         ilce 
-##    "Pozantı"  "Saimbeyli"    "Sarıçam" "Tufanbeyli" "Yumurtalık"
+## NULL
 ```
 
 --- .class #id 
@@ -1941,22 +1912,7 @@ df
 ```
 
 ```
-##           ilce  yil sandik secmen oykullanan gecerlioy
-##  1:     Seyhan 2011   1670 482157     407851    397828
-##  2:    Yüreğir 2011    961 269449     225279    219153
-##  3:     Aladağ 2011     55  11920      10602     10345
-##  4:     Ceyhan 2011    422 105790      91781     89820
-##  5:   Çukurova 2011    859 249574     216202    212932
-##  6:       Feke 2011     69  13064      11006     10578
-##  7:   İmamoğlu 2011     82  20518      17770     17360
-##  8:  Karaisalı 2011     91  16323      14501     14176
-##  9:    Karataş 2011     74  14989      13165     13026
-## 10:      Kozan 2011    346  87173      74856     73144
-## 11:    Pozantı 2011     65  14353      12780     12501
-## 12:  Saimbeyli 2011     56  11657       9280      8992
-## 13:    Sarıçam 2011    295  78749      68975     67401
-## 14: Tufanbeyli 2011     68  12971      10506     10240
-## 15: Yumurtalık 2011     61  13025      11447     11168
+## Null data.table (0 rows and 0 cols)
 ```
 
 --- .class #id 
@@ -1972,13 +1928,7 @@ head(df)
 ```
 
 ```
-##      ilce  yil sandik secmen oykullanan gecerlioy
-## 1: Seyhan 2011   1670 482157     407851    397828
-## 2: Seyhan 2007   1870 570517     440323    428998
-## 3: Seyhan 2002   2043 562664     412516    396148
-## 4: Seyhan 1999   2736 488810     394815    377190
-## 5: Seyhan 1995   1502 436945     355731    342748
-## 6: Seyhan 1991   1180 354377     275152    265319
+## Null data.table (0 rows and 0 cols)
 ```
 
 --- .class #id 
@@ -1997,20 +1947,24 @@ head(df)
 ## [5] "memurlarnet/clean/05.json" "memurlarnet/clean/06.json"
 ```
 
-```r
-	dl = llply(filenames, list.load, .progress = "text")
+
+```
+##   |                                                                         |                                                                 |   0%
 ```
 
 ```
-##   |                                                                         |                                                                 |   0%  |                                                                         |=                                                                |   1%  |                                                                         |==                                                               |   2%  |                                                                         |==                                                               |   4%  |                                                                         |===                                                              |   5%  |                                                                         |====                                                             |   6%  |                                                                         |=====                                                            |   7%  |                                                                         |======                                                           |   9%  |                                                                         |======                                                           |  10%  |                                                                         |=======                                                          |  11%  |                                                                         |========                                                         |  12%  |                                                                         |=========                                                        |  14%  |                                                                         |==========                                                       |  15%  |                                                                         |==========                                                       |  16%  |                                                                         |===========                                                      |  17%  |                                                                         |============                                                     |  19%  |                                                                         |=============                                                    |  20%  |                                                                         |==============                                                   |  21%  |                                                                         |==============                                                   |  22%  |                                                                         |===============                                                  |  23%  |                                                                         |================                                                 |  25%  |                                                                         |=================                                                |  26%  |                                                                         |==================                                               |  27%  |                                                                         |==================                                               |  28%  |                                                                         |===================                                              |  30%  |                                                                         |====================                                             |  31%  |                                                                         |=====================                                            |  32%  |                                                                         |======================                                           |  33%  |                                                                         |======================                                           |  35%  |                                                                         |=======================                                          |  36%  |                                                                         |========================                                         |  37%  |                                                                         |=========================                                        |  38%  |                                                                         |==========================                                       |  40%  |                                                                         |==========================                                       |  41%  |                                                                         |===========================                                      |  42%  |                                                                         |============================                                     |  43%  |                                                                         |=============================                                    |  44%  |                                                                         |==============================                                   |  46%  |                                                                         |==============================                                   |  47%  |                                                                         |===============================                                  |  48%  |                                                                         |================================                                 |  49%  |                                                                         |=================================                                |  51%  |                                                                         |==================================                               |  52%  |                                                                         |===================================                              |  53%  |                                                                         |===================================                              |  54%  |                                                                         |====================================                             |  56%  |                                                                         |=====================================                            |  57%  |                                                                         |======================================                           |  58%  |                                                                         |=======================================                          |  59%  |                                                                         |=======================================                          |  60%  |                                                                         |========================================                         |  62%  |                                                                         |=========================================                        |  63%  |                                                                         |==========================================                       |  64%  |                                                                         |===========================================                      |  65%  |                                                                         |===========================================                      |  67%  |                                                                         |============================================                     |  68%  |                                                                         |=============================================                    |  69%  |                                                                         |==============================================                   |  70%  |                                                                         |===============================================                  |  72%  |                                                                         |===============================================                  |  73%  |                                                                         |================================================                 |  74%  |                                                                         |=================================================                |  75%  |                                                                         |==================================================               |  77%  |                                                                         |===================================================              |  78%  |                                                                         |===================================================              |  79%  |                                                                         |====================================================             |  80%  |                                                                         |=====================================================            |  81%  |                                                                         |======================================================           |  83%  |                                                                         |=======================================================          |  84%  |                                                                         |=======================================================          |  85%  |                                                                         |========================================================         |  86%  |                                                                         |=========================================================        |  88%  |                                                                         |==========================================================       |  89%  |                                                                         |===========================================================      |  90%  |                                                                         |===========================================================      |  91%  |                                                                         |============================================================     |  93%  |                                                                         |=============================================================    |  94%  |                                                                         |==============================================================   |  95%  |                                                                         |===============================================================  |  96%  |                                                                         |===============================================================  |  98%  |                                                                         |================================================================ |  99%  |                                                                         |=================================================================| 100%
+## Error in eval(expr, envir, enclos): lexical error: invalid char in json text.
+##                                        memurlarnet/clean/01.json
+##                      (right here) ------^
 ```
+
 
 ```r
 	length(dl)
 ```
 
 ```
-## [1] 81
+## Error in eval(expr, envir, enclos): object 'dl' not found
 ```
 
 --- .class #id 
@@ -2028,13 +1982,7 @@ head(df)
 ```
 
 ```
-##      ilce  yil sandik secmen oykullanan gecerlioy
-## 1: Seyhan 2011   1670 482157     407851    397828
-## 2: Seyhan 2007   1870 570517     440323    428998
-## 3: Seyhan 2002   2043 562664     412516    396148
-## 4: Seyhan 1999   2736 488810     394815    377190
-## 5: Seyhan 1995   1502 436945     355731    342748
-## 6: Seyhan 1991   1180 354377     275152    265319
+## Error in eval(expr, envir, enclos): object 'dl' not found
 ```
 
 --- .class #id 
@@ -2050,17 +1998,24 @@ head(df)
 			rbindlist
 		) %>%
 		rbindlist
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'dl' not found
+```
+
+```r
 	tail(dt)
 ```
 
 ```
-##        ilce  yil sandik secmen oykullanan gecerlioy
-## 1: Kaynaşlı 2011     64  14580      13244     12990
-## 2: Kaynaşlı 2007     50  12992      11723     11504
-## 3: Kaynaşlı 2002     58  11927      10487     10185
-## 4:  Yığılca 2011     64  12202      11169     10897
-## 5:  Yığılca 2007     56  13316      12061     11779
-## 6:  Yığılca 2002     69  13339      11725     11325
+##                                             
+## 1 function (x, df, ncp, log = FALSE)        
+## 2 {                                         
+## 3     if (missing(ncp))                     
+## 4         .External(C_dt, x, df, log)       
+## 5     else .External(C_dnt, x, df, ncp, log)
+## 6 }
 ```
 
 --- .class #id 
@@ -2084,8 +2039,7 @@ head(df)
 ```
 
 ```
-## [1] "ilce"       "yil"        "sandik"     "secmen"     "oykullanan"
-## [6] "gecerlioy"  "partiler"
+## NULL
 ```
 
 ```r
@@ -2095,7 +2049,7 @@ head(df)
 ```
 
 ```
-## [1] 15
+## [1] 0
 ```
 
 - Adana'nın 15 ilçesi
@@ -2108,124 +2062,7 @@ pl[[1]][[1]] %>% str
 ```
 
 ```
-## List of 39
-##  $ :List of 2
-##   ..$ Parti: chr "AK Parti"
-##   ..$ Oy   : int 130863
-##  $ :List of 2
-##   ..$ Parti: chr "ANAP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "ATP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "BBP"
-##   ..$ Oy   : int 2421
-##  $ :List of 2
-##   ..$ Parti: chr "BP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "BTP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "CHP"
-##   ..$ Oy   : int 137511
-##  $ :List of 2
-##   ..$ Parti: chr "DBP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "DEHAP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "DEPAR"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "DP"
-##   ..$ Oy   : int 1907
-##  $ :List of 2
-##   ..$ Parti: chr "DSP"
-##   ..$ Oy   : int 755
-##  $ :List of 2
-##   ..$ Parti: chr "DTP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "DYP"
-##   ..$ Oy   : int 539
-##  $ :List of 2
-##   ..$ Parti: chr "EMEP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "FP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "Genç Parti"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "HADEP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "HEPAR"
-##   ..$ Oy   : int 699
-##  $ :List of 2
-##   ..$ Parti: chr "Has Parti"
-##   ..$ Oy   : int 1269
-##  $ :List of 2
-##   ..$ Parti: chr "HYP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "İP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "LDP"
-##   ..$ Oy   : int 114
-##  $ :List of 2
-##   ..$ Parti: chr "MHP"
-##   ..$ Oy   : int 60289
-##  $ :List of 2
-##   ..$ Parti: chr "MMP"
-##   ..$ Oy   : int 250
-##  $ :List of 2
-##   ..$ Parti: chr "Millet Partisi"
-##   ..$ Oy   : int 715
-##  $ :List of 2
-##   ..$ Parti: chr "ÖDP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "RP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "Saadet Partisi"
-##   ..$ Oy   : int 4261
-##  $ :List of 2
-##   ..$ Parti: chr "SHP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "SİP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "SP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "TKP"
-##   ..$ Oy   : int 517
-##  $ :List of 2
-##   ..$ Parti: chr "YDH"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "YDP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "Yeni Parti"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "YP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "YTP"
-##   ..$ Oy   : int 0
-##  $ :List of 2
-##   ..$ Parti: chr "BĞMZ"
-##   ..$ Oy   : int 55718
+## Error in pl[[1]]: subscript out of bounds
 ```
 
 --- .class #id 
@@ -2236,17 +2073,18 @@ pl[[1]][[1]] %>% str
 ```r
 	pt_ilce = pl[[1]][[1]] %>%
 		rbindlist
+```
+
+```
+## Error in pl[[1]]: subscript out of bounds
+```
+
+```r
 	head(pt_ilce)
 ```
 
 ```
-##       Parti     Oy
-## 1: AK Parti 130863
-## 2:     ANAP      0
-## 3:      ATP      0
-## 4:      BBP   2421
-## 5:       BP      0
-## 6:      BTP      0
+## Error in head(pt_ilce): object 'pt_ilce' not found
 ```
 
 --- .class #id 
@@ -2264,7 +2102,7 @@ pl[[1]][[1]] %>% str
 ```
 
 ```
-## [1] 15
+## [1] 0
 ```
 
 ```r
@@ -2272,13 +2110,7 @@ pl[[1]][[1]] %>% str
 ```
 
 ```
-##       Parti     Oy
-## 1: AK Parti 130863
-## 2:     ANAP      0
-## 3:      ATP      0
-## 4:      BBP   2421
-## 5:       BP      0
-## 6:      BTP      0
+## Error in pt_ilceler[[1]]: subscript out of bounds
 ```
 
 - Bu bir list of data.table
@@ -2302,7 +2134,7 @@ pl[[1]][[1]] %>% str
 ```
 
 ```
-## [1] 585
+## [1] 0
 ```
 
 ```r
@@ -2310,13 +2142,7 @@ pl[[1]][[1]] %>% str
 ```
 
 ```
-##         Parti Oy
-## 1:        YDH  0
-## 2:        YDP  0
-## 3: Yeni Parti  0
-## 4:         YP  0
-## 5:        YTP  0
-## 6:       BĞMZ 40
+## Null data.table (0 rows and 0 cols)
 ```
 
 --- .class #id 
@@ -2326,31 +2152,86 @@ pl[[1]][[1]] %>% str
 
 ```r
 	pt_ilceler[[1]]$ilce = 'Saimbeyli'
+```
+
+```
+## Error in `*tmp*`[[1]]: subscript out of bounds
+```
+
+```r
 	head(pt_ilceler[[1]])
 ```
 
 ```
-##       Parti     Oy      ilce
-## 1: AK Parti 130863 Saimbeyli
-## 2:     ANAP      0 Saimbeyli
-## 3:      ATP      0 Saimbeyli
-## 4:      BBP   2421 Saimbeyli
-## 5:       BP      0 Saimbeyli
-## 6:      BTP      0 Saimbeyli
+## Error in pt_ilceler[[1]]: subscript out of bounds
 ```
 
 - Bunu tüm ilçelerde yapmalıyız
 
 --- .class #id 
 
+## Tüm ilçelerin listelerinin boyutlarına göre veri ekleme
+
+
+```r
+	row_counts = llply(pt_ilceler, nrow)
+	ilceler = d2011 %>% 
+		list.select(ilce) %>%
+		unlist
+	rep(ilceler, row_counts) %>% str
+```
+
+```
+##  NULL
+```
+
+--- .class #id 
+
+## İlçe ve yıl verilerini birleştirilmiş tabloya ekleme
+
+
+```r
+	row_counts = llply(pt_ilceler, nrow)
+	ilceler = d2011 %>% 
+		list.select(ilce) %>%
+		unlist
+	yillar = d2011 %>% 
+		list.select(yil) %>%
+		unlist
+	pt$ilce = rep(ilceler, row_counts)
+```
+
+```
+## Error in `[<-.data.table`(x, j = name, value = value): Cannot use := to add columns to a null data.table (no columns), currently. You can use := to add (empty) columns to a 0-row data.table (1 or more empty columns), though.
+```
+
+```r
+	pt$yil = rep(yillar, row_counts)
+```
+
+```
+## Error in `[<-.data.table`(x, j = name, value = value): Cannot use := to add columns to a null data.table (no columns), currently. You can use := to add (empty) columns to a 0-row data.table (1 or more empty columns), though.
+```
+
+```r
+	head(pt)
+```
+
+```
+## Null data.table (0 rows and 0 cols)
+```
+
+--- .class #id 
+
 ## Linkler
 
-- Html5 slaytlar ve kaynak kodları: https://github.com/mertnuhoglu/r_verigazeteciligi
+- Html5 slaytlar ve kaynak kodları: https://github.com/mertnuhoglu/data_analysis_presentations/r_verigazeteciligi
  - https://dl.dropboxusercontent.com/u/103580364/r_verigazeteciligi/index.html#1
 - [Veribilimi İstanbul](https://www.facebook.com/groups/465842350233183/)
 - [RStudio Webinars](http://www.rstudio.com/resources/webinars/)
 - İletişim bilgilerim:
  - http://twitter.com/mertnuhoglu
  - mert.nuhoglu@gmail.com
+- [Seçim verileri toparlama projesi](https://github.com/mertnuhoglu/secim_verileri)
 
 
