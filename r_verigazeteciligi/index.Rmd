@@ -1,0 +1,1254 @@
+---
+title       : R ile Veri Analizi 
+subtitle    : Veri Gazeteciliği Atölye Programı
+author      : Mert Nuhoglu
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+```{r load_packages, include=FALSE}
+	 library(dplyr)
+```
+
+## Giriş
+
+- Örneklere dayalı dil öğrenme
+	- Yabancı dil
+	- Gramer kurallarını zihin kendisi çıkartır
+		- Stephen Krashen'ın yabancı dil öğrenme teorisi:
+			[http://www.sk.com.br/sk-krash-english.html](http://www.sk.com.br/sk-krash-english.html)
+	  - Öğrenmek daha zevkli: zorlanma - kolaylık dengesi
+
+--- .class #id 
+
+## Veri Bilimi Nedir?
+
+- Disiplinler arası bir alan
+  - Programlama
+  - İstatistik
+  - Alan uzmanlığı - analiz
+
+--- .class #id 
+
+## Veri Bilimi Nedir?
+
+![Veri Bilimi Venn Şeması](assets/img/Venn-Diagram-of-Data-Scientist-Skills.png)
+
+--- .class #id 
+
+## New York Uçuş Verisi
+
+- Veri kaynağı
+	- [http://datascience.la/hadley-wickhams-dplyr-tutorial-at-user-2014-part-1/](http://datascience.la/hadley-wickhams-dplyr-tutorial-at-user-2014-part-1/)
+	- csv dosyaları
+	- [https://github.com/mertnuhoglu/r_verigazeteciligi](https://github.com/mertnuhoglu/r_verigazeteciligi) 
+- Verileri yükleme
+
+```{r }
+	 library(data.table)
+	 flights = fread("flights.csv")
+	 airports = fread("airports.csv")
+	 planes = fread("planes.csv")
+	 weather = fread("weather.csv")
+```
+
+--- .class #id 
+
+## Verileri Gözden Geçirme
+
+```{r }
+	 str(flights)
+```
+
+--- .class #id 
+
+## Verileri Gözden Geçirme (Alt.)
+
+```
+	 library(dplyr)
+```
+
+```{r }
+	 tbl_df(flights)
+```
+
+--- .class #id 
+
+## Diğer Veriler
+
+```{r }
+	 tbl_df(weather)
+```
+
+--- .class #id 
+
+## Diğer Veriler
+
+```{r }
+	 tbl_df(planes)
+```
+
+--- .class #id 
+
+## Diğer Veriler
+
+```{r }
+	 tbl_df(airports)
+```
+
+--- .class #id 
+
+## Row Index (Satır No)
+
+```{r }
+	 flights[3]
+```
+
+```{r }
+	 flights[5]
+```
+
+--- .class #id 
+
+## Head (Baş Kısım)
+
+```{r }
+	 head(flights)
+```
+
+--- .class #id 
+
+## Head (Baş Kısım) (Alt.)
+
+```{r }
+	 flights[1:5]
+```
+
+--- .class #id 
+
+## Range (Aralık) 
+
+```{r }
+	 flights[30:32]
+```
+
+--- .class #id 
+
+## Tail (Son Kısım) 
+
+```{r }
+	 tail(flights)
+```
+
+--- .class #id 
+
+## RStudio
+
+```
+	setwd("/Users/mertnuhoglu/projects/dewey/r_verigazeteciligi")
+	library(data.table)
+	flights = fread("flights.csv")
+	View(flights)
+```
+
+--- .class #id 
+
+## RStudio
+
+![RStudio CSV tablosu](assets/img/rstudio.png)
+
+--- .class #id 
+
+## Columns (Kolonlar)
+
+```{r }
+	 names(flights)
+```
+
+```{r }
+	 str(flights)
+```
+
+--- .class #id 
+
+## Satır ve Kolon
+
+```{r }
+	 flights[5]$flight
+```
+
+```{r }
+	 flights[5][['flight']]
+```
+
+--- .class #id 
+
+## Filter (Sorgulama)
+
+```{r }
+	 filter(flights, dest == "SFO")
+```
+
+--- .class #id 
+
+## Filter (Sorgulama) (Alt.)
+
+```{r }
+	 flights %>%
+			filter(dest == "SFO") 
+```
+
+--- .class #id 
+
+## Filter (Sorgulama) (Alt.)
+
+```{r }
+	 flights %>%
+			filter(dest == "SFO") %>%
+			filter(time <= 220)
+```
+
+--- .class #id 
+
+## Filter (Sorgulama) (Alt.)
+
+```{r }
+	 flights %>%
+			filter(dest == "SFO") %>%
+			filter(time <= 220) %>%
+			filter(date > "2011-12-23") %>%
+			filter(date < "2011-12-26")
+```
+
+--- .class #id 
+
+## Group By (Gruplama)
+
+```{r }
+	 flights %>%
+			group_by(date) %>%
+			summarize(
+				 dep = mean(dep_delay, na.rm = T),
+				 arr = mean(arr_delay, na.rm = T)
+			)
+```
+
+--- .class #id 
+
+## NA (Not Available) Veriler
+
+```{r }
+	 x = c(4, 5, 7)
+	 sum(x)
+```
+
+```{r }
+	 x = c(4, 5, 7, NA)
+	 sum(x)
+```
+
+```{r }
+	 x = c(4, 5, 7, NA)
+	 sum(x, na.rm = T)
+```
+
+--- .class #id 
+
+## sum (toplama) (Alt: Pipe kullanarak)
+
+```{r }
+	 x = c(4, 5, 7)
+	 x %>% 
+			sum()
+```
+
+```{r }
+	 x = c(4, 5, 7)
+	 x %>% 
+			sum
+```
+
+```{r }
+	 x = c(4, 5, 7, NA)
+	 x %>% 
+			sum(na.rm = T)
+```
+
+--- .class #id 
+
+## sum (toplama) (Alt: Pipe kullanarak)
+
+```{r }
+	 x = c(4, 5, 7, NA)
+	 x %>% 
+			is.na
+```
+
+```{r }
+	 x = c(4, 5, 7, NA)
+	 x %>% 
+			is.na(.)
+```
+
+--- .class #id 
+
+## Help (Yardım)
+
+```
+	 ?is.na
+	 ?sum
+```
+
+--- .class #id 
+
+## Subsetting
+
+```{r }
+	 x = c(4, 5, 7)
+	 x > 5
+	 x[ c(F, F, T) ]
+	 x[ x > 5 ]
+```
+
+--- .class #id 
+
+## Subsetting ve logical operatörler
+
+```{r }
+	 x = c(4, 5, 7, 9, 11)
+	 x > 5 & x < 10
+	 x[ c(F, F, T, T, F) ]
+	 x[ x > 5 & x < 10 ]
+```
+
+--- .class #id 
+
+## is.na ile subsetting
+
+- Kaç tane NA değer var?
+
+```{r }
+	 x = c(4, 5, 7, NA)
+	 is.na(x)
+	 sum( c(F, F, F, T) )
+	 sum( is.na( x ) )
+```
+
+--- .class #id 
+
+## is.na + pipes
+
+```{r }
+	 sum( is.na( x ) )
+	 x %>% 
+			is.na %>%
+			sum
+```
+
+--- .class #id 
+
+## is.na ile subsetting
+
+- NA'leri nasıl filtreleriz?
+
+```{r }
+	 library("magrittr")
+	 x = c(4, 5, 7, NA)
+	 x %>% 
+			is.na(.) %>%
+			not
+```
+
+```{r }
+	 !is.na(x)
+	 not(is.na(x))
+```
+
+--- .class #id 
+
+## is.na ile subsetting
+
+- NA'leri nasıl filtreleriz?
+
+```{r }
+	 x = c(4, 5, 7, NA)
+	 !is.na(x)
+	 x[!is.na(x)]
+	 x[c(T, T, T, F)]
+```
+
+--- .class #id 
+
+## Fonksiyonları nereden bulacağız?
+
+- Let me google that for you
+
+```
+	 http://lmgtfy.com/?q=r+mean+of+numbers
+```
+
+--- .class #id 
+
+## Library'lerin (kütüphane) kapsamları
+
+- http://lmgtfy.com/?q=r+dplyr
+
+- Dahili kütüphaneler için:
+
+	- http://adv-r.had.co.nz/Vocabulary.html
+
+--- .class #id 
+
+## Operatörlerle ilgili yardım?
+
+- Her şey bir fonksiyon
+
+```
+	 ?"if"
+	 ?"%>%"
+```
+
+--- .class #id 
+
+## Group By (Gruplama)
+
+```{r }
+	 flights %>%
+			group_by(date) %>%
+			summarize(
+				 dep = mean(dep_delay, na.rm = T),
+				 arr = mean(arr_delay, na.rm = T),
+				 over_15 = mean(dep_delay > 15),
+				 over_15_total = sum(dep_delay > 15)
+			)
+```
+
+--- .class #id 
+
+## Boş verileri (NA) filtreleme
+
+```{r }
+	 flights %>%
+			group_by(date) %>%
+			filter(!is.na(dep_delay)) %>%
+			filter(!is.na(arr_delay)) %>%
+			summarize(
+				 dep = mean(dep_delay),
+				 arr = mean(arr_delay),
+				 over_15 = mean(dep_delay > 15),
+				 over_15_total = sum(dep_delay > 15)
+			)
+```
+
+--- .class #id 
+
+## Imposter syndrome (Kandırmaca ezikliği)
+
+- Kimse her şeyi tam olarak anlayamaz
+- Yetersizlik hissi her zaman burada
+	 - Ne kadar öğrenirsen, o kadar fazla
+- Dil bocalayarak öğrenilir
+- Biraz kap, dene, hata yap, düzelt
+- Nasıl düzelteceğiz?
+
+--- .class #id 
+
+## Kendi başımıza nasıl düzelteceğiz?
+
+- http://stackoverflow.com
+
+- Sorularınıza en fazla 5 dakika içinde yanıt
+
+- Ne kadar çok sorarsanız, o kadar çok öğrenirsiniz
+- Soruyu yazarken, yanıtı bulursunuz
+
+--- .class #id 
+
+## Nasıl soru sormalı?
+
+- Minimalist
+- Yanlış:
+	 - Elimde Gapminder verisi var. Bunun içindeki GSMH verilerini filtreleyip, ortalama yaşam süreleriyle birleştirmeye çalışıyorum. Ancak olmuyor. Ne yapmam lazım?
+- Doğru:
+	 - Elimde iki veri kümesi var. Bunları birleştirmek istiyorum. 
+	 - Örnekleri şu şekilde (3-5 satır örnek veri)
+	 - Bunları nasıl birleştirebilirim ve şu çıktıyı elde ederim (istenen çıktının verisi)
+
+--- .class #id 
+
+## Stackoverflow'daki sorular
+
+- Tüm R soruları
+	- http://stackoverflow.com/questions/tagged/r
+- Örnekler:
+	 - http://stackoverflow.com/questions/5992082/how-to-remove-all-whitespace-from-a-string
+			- " xx yy 11 22  33 " will become "xxyy112233". How can I achieve this?
+	 - http://stackoverflow.com/questions/1269624/how-to-get-row-from-r-dataframe
+	 - http://stackoverflow.com/questions/29880423/how-to-write-a-subsetting-operation-in-magrittr-dplyr-xis-nax
+	 - http://stackoverflow.com/questions/9749598/r-obtaining-month-and-year-from-a-date
+	 - http://stackoverflow.com/questions/14458314/letter-y-comes-after-i-when-sorting-alphabetically
+
+--- .class #id 
+
+## Karmaşık içiçe işlemler
+
+```{r }
+	hourly_delay <- filter(
+		summarise(
+			group_by(
+				filter(flights, !is.na(dep_delay)), 
+				date, hour), 
+			delay = mean(dep_delay), 
+			n = n()), 
+		n > 10
+	)
+	 hourly_delay
+```
+
+--- .class #id 
+
+## Pipeline ile sadeleştirme
+
+```{r }
+hourly_delay <- flights %>% 
+	filter(!is.na(dep_delay)) %>%
+	group_by(date, hour) %>%
+	summarise(
+		delay = mean(dep_delay),
+		n = n()
+	) %>% 
+	filter(n > 10)
+hourly_delay
+```
+
+--- .class #id 
+
+## Problem
+
+- Ortalama varış gecikmesi en fazla olan uçuş destinasyonları nelerdir?
+
+```{r }
+flights %>%
+  group_by(dest) %>%
+  summarise(arr_delay = mean(arr_delay, na.rm = TRUE), n = n()) %>%
+  arrange(desc(arr_delay))
+```
+
+--- .class #id 
+
+## Problem
+
+- Havalimanı, sefer no ve destinasyona göre, tüm uçuşları grupladığımızda, 365 adet uçuş olan kombinasyonlar hangileridir?
+
+```{r }
+flights %>% 
+  group_by(carrier, flight, dest) %>% 
+  tally %>%
+  filter(n == 365)
+```
+
+--- .class #id 
+
+## Aynı problem alternatif çözüm
+
+```{r }
+flights %>% 
+  group_by(carrier, flight, dest) %>% 
+  filter(n() == 365)
+```
+
+--- .class #id 
+
+## Uçuş süresine bağlı olarak gecikmeler nasıl?
+
+- Uçuş sürelerini hesapla. Bunlara göre tüm uçuşları gruplandır. Her gruptaki ortalama gecikmeyi ve toplam uçuş sayısını göster.
+
+```{r }
+per_hour <- flights %>%
+  filter(cancelled == 0) %>%
+  mutate(time = hour + minute / 60) %>%
+  group_by(time) %>%
+  summarise(arr_delay = mean(arr_delay, na.rm = TRUE), n = n())
+per_hour
+```
+
+--- .class #id 
+
+## Tüm kayıtları csv olarak kaydet
+
+```
+install.packages("readr")
+```
+
+```
+library("readr")
+write_csv(per_hour, "per_hour.csv")
+```
+
+--- .class #id 
+
+## 30'dan fazla uçuş yapan uçaklar hangileridir?
+
+```{r }
+flights %>%
+  filter(!is.na(arr_delay)) %>%
+  group_by(plane) %>%
+	summarise(n = n()) %>%
+  filter(n > 30) 
+```
+
+--- .class #id 
+
+## 30'dan fazla uçuş yapan uçaklara ait uçuşlar hangileridir?
+
+```{r }
+planes = flights %>%
+  filter(!is.na(arr_delay)) %>%
+  group_by(plane) %>%
+  filter(n() > 30) 
+planes
+```
+
+--- .class #id 
+
+## Bu uçuşların arasında 5 dk'dan daha az varış gecikmesi olanlar hangileri?
+
+```{r }
+planes %>% filter(arr_delay < 5)
+```
+
+--- .class #id 
+
+## select (kolonları seçme)
+
+```{r }
+names(airports)
+location <- airports %>% 
+  select(dest = iata, name = airport, lat, long)
+location
+```
+
+--- .class #id 
+
+## Destinasyonlara göre en çok varış gecikmeli uçuşlar
+
+```{r }
+flights %>%
+  group_by(dest) %>%
+  summarise(arr_delay = mean(arr_delay, na.rm = TRUE), n = n()) %>%
+  arrange(desc(arr_delay)) 
+```
+
+--- .class #id 
+
+## Bu uçuşların destinasyonlarının lokasyon koordinatları?
+
+```{r }
+delays <- flights %>%
+  group_by(dest) %>%
+  summarise(arr_delay = mean(arr_delay, na.rm = TRUE), n = n()) %>%
+  arrange(desc(arr_delay)) %>%
+  inner_join(location, by="dest")
+delays
+```
+
+--- .class #id 
+
+## Koordinatları harita üzerinde gösterme
+
+```{r }
+library("ggplot2")
+ggplot(delays, aes(long, lat)) + 
+  borders("state") + 
+  geom_point(aes(colour = arr_delay), size = 5, alpha = 0.9) + 
+  scale_colour_gradient2() +
+  coord_quickmap()
+```
+
+--- .class #id 
+
+## Bunların arasında erken varan uçuşlar hangileri?
+
+```{r }
+delays %>% filter(arr_delay < 0)
+```
+
+--- .class #id 
+
+## Erken varan uçuşların haritadaki destinasyonları
+
+```{r }
+early_ones = delays %>% filter(arr_delay < 0)
+ggplot(early_ones, aes(long, lat)) + 
+  borders("state") + 
+  geom_point(aes(colour = arr_delay), size = 5, alpha = 0.9) + 
+  scale_colour_gradient2() +
+  coord_quickmap()
+```
+
+--- .class #id 
+
+## Seçim Verilerini Toplamak
+
+```{r load_packages_secim, include=FALSE}
+	library("lubridate")
+	library("stringr")
+	library("pryr")
+	library("data.table")
+	library("pipeR"); library("plyr"); library("dplyr")
+	library("tidyr")
+	library("magrittr")
+	library("rlist")
+	library("XML")
+	library("xml2")
+	library("reshape2")
+	library("gtools")
+	library("rjson")
+	library("compare")
+```
+
+- Veriler hazır bir şekilde bulunmuyor
+- Kendimiz indirip temizlemeliyiz
+- http://www.memurlar.net/secim
+
+--- .class #id 
+
+## Veri nerede?
+
+- Web sayfasında görünüyor
+
+![](assets/img/ss-1.png)
+
+--- .class #id 
+
+## Sayfanın kaynak kodu
+
+- Chrome: Inspect element
+
+![](assets/img/2015-06-03_09-26-33.png)
+
+--- .class #id 
+
+## Veri nerede?
+
+- Chrome: inspect element
+
+![](assets/img/ss-2.png)
+
+--- .class #id 
+
+## Hangi web sayfalarını indirmeliyiz?
+
+- http://www.memurlar.net/secim/genel/default.aspx?City=tr-01
+- http://www.memurlar.net/secim/genel/default.aspx?City=tr-81
+
+```{r }
+	url = sprintf( "http://www.memurlar.net/secim/genel/default.aspx?City=tr-%s", 1)
+	url
+```
+
+--- .class #id 
+
+## Url'yi indirmek
+
+```{r }
+	i = 1
+	url = sprintf( "http://www.memurlar.net/secim/genel/default.aspx?City=tr-%s", 1)
+	filename = sprintf("memurlarnet/%02s.html", i)
+	url
+	filename
+```
+
+```
+	download.file( url, destfile = filename, method="wget" )
+```
+
+--- .class #id 
+
+## İndirilmiş dosyayı inceleyelim
+
+![](assets/img/ss-3.png)
+
+- "chartResult2011" kelimesini aratalım
+
+![](assets/img/ss-4.png)
+
+- İçerik boş
+
+--- .class #id 
+
+## Veriler nerede?
+
+- Muhtemelen javascript ile veriler gömülüyor
+- Chrome > Inspector > Sources
+
+![](assets/img/ss-6.png)
+
+--- .class #id 
+
+## Javascript dosyasının url'si nedir?
+
+![](assets/img/2015-06-03_10-07-04.png)
+
+- http://www.memurlar.net/secim/data/genel/tr-06.js
+
+--- .class #id 
+
+## Tüm url'leri oluşturalım
+
+```{r }
+	for (i in 1:81) {
+		url = sprintf( "http://www.memurlar.net/secim/data/genel/tr-%02s.js", i)
+	}
+	url
+```
+
+--- .class #id 
+
+## Tüm url'leri indirelim
+
+```
+	for (i in 1:81) {
+		url = sprintf( "http://www.memurlar.net/secim/data/genel/tr-%02s.js", i)
+		filename = sprintf("memurlarnet/%02s.json", i)
+		download.file( url, destfile = filename, method="wget" )
+	}
+```
+
+--- .class #id 
+
+## Veriyi okuma
+
+```
+	package.install("rlist")
+	library("rlist")
+```
+
+```{r }
+	filename = sprintf("memurlarnet/raw/%02s.json", 1)
+	data = list.load(filename)
+```
+
+--- .class #id 
+
+## Hatanın nedeni?
+
+- json dosyasının içeriği:
+
+```{js }
+	var secimVerisi = [
+	{
+```
+
+- json sentaksıyla ilgili bir sorun
+- şöyle olmalıydı:
+
+```{js }
+	{ "secim" : [
+	{
+```
+
+--- .class #id 
+
+## Bu tür hataların nedenini nasıl bulacağız?
+
+- Bu tür hataları stackoverflow'da sorup çözün
+- Bu hatayı sorsanız, en fazla 3 dakika içinde yanıt alırsınız
+- Ancak okunabilirlik açısından tüm dosya içeriğini değil, küçük bir kısmını koyun
+- İsterseniz, yukarıdaki hatayı sorun ve test edin.
+
+--- .class #id 
+
+## Veri temizleme
+
+- Tüm dosyaları açın
+- İlk satırı silin
+- Yerine şunu ekleyin:
+
+```
+{ "secim": [
+```
+
+- Son satıra da şunu ekleyin:
+
+```
+}
+```
+
+--- .class #id 
+
+## Bu işlemler nasıl otomatikleştirilir?
+
+- Seçenekler:
+	- R
+	- sed
+	- perl
+	- vim
+- En kolayı: sed
+
+```{sh }
+sed '1 d' raw/01.json | sed '1 i\
+{ "secim": [
+' | sed "$ a\
+}
+" > clean/01.json
+```
+
+--- .class #id 
+
+## Bu scripti nasıl yazacaksınız?
+
+- Stackoverflow'dakilere yazdırın
+	- Girdiyi ve istenen çıktıyı net ve kısa olarak yazın
+	- Yapılacak işlemleri çok sade bir şekilde yazın
+- Çayınızı tazeleyin
+- Döndüğünüzde yanıt gelmemişse, hesap sorun: @mertnuhoglu
+
+--- .class #id 
+
+## shell ve R
+
+- Terminal = komut satırı = command prompt = shell = kabuk = ?
+- R içinden shell scriptlerini çağırabiliriz
+
+
+```{r }
+	i = 6
+	filename = sprintf("memurlarnet/raw/%02s.json", i)
+	cmd = sprintf("./clean_memurlarnet_json.sh %s", filename)
+	cmd
+```
+
+```
+	system(cmd)
+```
+
+--- .class #id 
+
+## Tüm dosyalar için shell scripti çağrısı
+
+```
+clean_memurlarnet_json_files = function() {
+	for (i in 1:81) {
+		filename = sprintf("memurlarnet/raw/%02s.json", i)
+		cmd = sprintf("./clean_memurlarnet_json.sh %s", filename)
+		system(cmd)
+	}
+}
+```
+
+--- .class #id 
+
+## Dosyadaki veriyi yükleme
+
+```{r }
+	filename = sprintf("memurlarnet/clean/%02s.json", 1)
+	data = list.load(filename)
+```
+
+--- .class #id 
+
+## Verinin yapısı (şekli) nedir?
+
+```
+	str(data)
+```
+
+- Aşırı uzun bir çıktı verir, çünkü hiyerarşik (list türü) veri yapılarını özetlemek zordur
+
+- Json dosyasından inceleyebiliriz
+	- Kademe kademe (fold edilebilir) bir metin editörü işe yarar:
+	- IntelliJ Idea Community Edition
+		https://www.jetbrains.com/idea/download/
+
+![](assets/img/ss-7.png)
+
+--- .class #id 
+
+## 2. Kademe
+
+![](assets/img/ss-8.png)
+
+- yil = 2011 olan kayıtları nasıl çekebiliriz?
+
+--- .class #id 
+
+## Veriyi keşfetmek (data exploration)
+
+```
+	data %>% str
+```
+
+```{r }
+	names(data)
+	data$secim %>% names
+	data$secim %>% length
+```
+
+- 1. seviyede 88 kayıt var: 
+	- Her biri bir ilçe+seçim yılı içeriyor
+
+--- .class #id 
+
+## Seçim yılına göre verileri çekelim
+
+```{r }
+d2011 = data$secim %>%
+	list.filter("2011" %in% yil)
+length(d2011)
+```
+
+- 2011 yılına ait 15 farklı ilçenin verisi var
+
+--- .class #id 
+
+## İlçe verisi
+
+```{r }
+d2011[[1]] %>% names
+```
+
+- Bir ilçe verisindeki değişkenler (kolonlar)
+
+--- .class #id 
+
+## Hangi ilçeler var?
+
+```{r }
+list.select(d2011, ilce) %>% unlist
+```
+
+- Türkçe karakterler bozuk çıkıyor
+	- Dosyanın encoding'i ne?
+		- iso-8859-9
+
+![](assets/img/ss-9.png)
+
+--- .class #id 
+
+## Unicode'a dönüştürme
+
+- Unicode tüm alfabeleri destekleyen evrensel encoding
+- Nasıl dönüştürülür?
+- Sayısız seçenek var:
+	- Vim
+	- Shell
+	- Notepad2
+	- Notepad++
+- Unix shell: iconv
+
+```
+	iconv -f ISO-8859-9 -t UTF-8 01.json > 01u.json
+```
+
+```{r }
+	filename = sprintf("memurlarnet/clean/%02su.json", 1)
+	data = list.load(filename)
+	d2011 = data$secim %>%
+		list.filter("2011" %in% yil)
+	d2011[[1]] %>% names
+	list.select(d2011, ilce) %>% unlist
+```
+
+--- .class #id 
+
+## Tabloya dönüştürme
+
+- Tüm ilçe verilerini tek bir tabloda birleştirelim
+
+```{r }
+df = d2011 %>% 
+	list.select(ilce, yil, sandik, secmen, oykullanan, gecerlioy) %>%
+	rbindlist
+df
+```
+
+--- .class #id 
+
+## Tüm yıllara ait veriler için yapalım
+
+```{r }
+df = data$secim %>% 
+	list.select(ilce, yil, sandik, secmen, oykullanan, gecerlioy) %>%
+	rbindlist
+head(df)
+```
+
+--- .class #id 
+
+## Tüm şehirlere ait dosyaları toplayıp yapalım
+
+```{r }
+	filenames = sprintf("memurlarnet/clean/%02s.json", 1:81)
+	head(filenames)
+```
+
+```{r echo=F}
+	dl = llply(filenames, list.load, .progress = "text")
+```
+
+```{r }
+	length(dl)
+```
+
+--- .class #id 
+
+## Her bir ile ait listeyi tabloya çevirelim
+
+- Tek bir ile ait listeyi tabloya çevirmek nasıl?
+
+```{r }
+	dl[[1]][[1]] %>% 
+		list.select(ilce, yil, sandik, secmen, oykullanan, gecerlioy) %>%
+		rbindlist %>%
+		head
+```
+
+--- .class #id 
+
+## Tüm iller için bu işlemi uygulama
+
+```{r }
+	dt = dl %>%
+		lapply(
+			. %>% `[[`('secim') %>%
+			list.select(ilce, yil, sandik, secmen, oykullanan, gecerlioy) %>%
+			rbindlist
+		) %>%
+		rbindlist
+	tail(dt)
+```
+
+--- .class #id 
+
+## Partilerin oy verilerini nasıl çekeceğiz?
+
+- Şu ana değin hep tek kademeli verileri işledik
+- Parti oyları bir alt kademede saklı
+
+![](assets/img/ss-10.png)
+
+--- .class #id 
+
+## Partilerin oy verilerini çekme
+
+- Önce tek bir il için yapalım
+
+```{r }
+	d2011[[1]] %>% names
+	pl = d2011 %>% 
+		list.select(partiler)
+	length(pl)
+```
+
+- Adana'nın 15 ilçesi
+
+- İlk ilçenin parti oyları:
+
+```{r }
+pl[[1]][[1]] %>% str
+```
+
+--- .class #id 
+
+## Tek bir ilçedeki verileri tabloya çevirmek
+
+```{r }
+	pt_ilce = pl[[1]][[1]] %>%
+		rbindlist
+	head(pt_ilce)
+```
+
+--- .class #id 
+
+## Tüm ilçeler için bunu yapalım
+
+```{r }
+	pt_ilceler = llply(pl, 
+			. %>%
+			`[[`('partiler') %>%
+			rbindlist
+		) 
+	length(pt_ilceler)
+	head(pt_ilceler[[1]])
+```
+
+- Bu bir list of data.table
+- Tüm list elementlerini birleştirelim
+
+--- .class #id 
+
+## Tüm ilçelerin tablolarını birleştirme
+
+- Aşağıdaki sorun ne?
+
+```{r }
+	pt = llply(pl, 
+			. %>%
+			`[[`('partiler') %>%
+			rbindlist
+		) %>%
+		rbindlist
+	nrow(pt)
+	tail(pt)
+```
+
+--- .class #id 
+
+## Sorun: hangi veri hangi ilçeye ait?
+
+```{r }
+	pt_ilceler[[1]]$ilce = 'Saimbeyli'
+	head(pt_ilceler[[1]])
+```
+
+- Bunu tüm ilçelerde yapmalıyız
+
+--- .class #id 
+
+## Tüm ilçelerin listelerinin boyutlarına göre veri ekleme
+
+```{r }
+	row_counts = llply(pt_ilceler, nrow)
+	ilceler = d2011 %>% 
+		list.select(ilce) %>%
+		unlist
+	rep(ilceler, row_counts) %>% str
+```
+
+--- .class #id 
+
+## İlçe ve yıl verilerini birleştirilmiş tabloya ekleme
+
+```{r }
+	row_counts = llply(pt_ilceler, nrow)
+	ilceler = d2011 %>% 
+		list.select(ilce) %>%
+		unlist
+	yillar = d2011 %>% 
+		list.select(yil) %>%
+		unlist
+	pt$ilce = rep(ilceler, row_counts)
+	pt$yil = rep(yillar, row_counts)
+	head(pt)
+```
+
+--- .class #id 
+
+## Linkler
+
+- Html5 slaytlar ve kaynak kodları: https://github.com/mertnuhoglu/r_verigazeteciligi
+ - https://dl.dropboxusercontent.com/u/103580364/r_verigazeteciligi/index.html#1
+- [Veribilimi İstanbul](https://www.facebook.com/groups/465842350233183/)
+- [RStudio Webinars](http://www.rstudio.com/resources/webinars/)
+- İletişim bilgilerim:
+ - http://twitter.com/mertnuhoglu
+ - mert.nuhoglu@gmail.com
+- [Seçim verileri toparlama projesi](https://github.com/mertnuhoglu/secim_verileri)
+
+
