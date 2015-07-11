@@ -531,8 +531,8 @@ top_pages
 
 ## Presentation and codes
 
-- Html5 slides: [http://mertnuhoglu.github.io/data_analysis_istanbulcoders/istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_istanbulcoders/istanbulcoders/index.html)
-- Source codes: [https://github.com/mertnuhoglu/data_analysis_istanbulcoders/istanbulcoders](https://github.com/mertnuhoglu/data_analysis_istanbulcoders/istanbulcoders)
+- Html5 slides: [http://mertnuhoglu.github.io/data_analysis_presentations/istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_presentations/istanbulcoders/index.html)
+- Source codes: [https://github.com/mertnuhoglu/data_analysis_presentations/istanbulcoders](https://github.com/mertnuhoglu/data_analysis_presentations/istanbulcoders)
 - Tools (PowerPoint killers): 
 	- [slidify](http://ramnathv.github.io/slidify/)
   - [knitr](http://yihui.name/knitr/)

@@ -900,8 +900,8 @@ top_pages
 
 ## Prezentasyon ve kodlar
 
-- Html5 slaytlar: [http://mertnuhoglu.github.io/data_analysis_istanbulcoders/istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_istanbulcoders/istanbulcoders/index.html)
-- Kaynak kodları: [https://github.com/mertnuhoglu/data_analysis_istanbulcoders/istanbulcoders](https://github.com/mertnuhoglu/data_analysis_istanbulcoders/istanbulcoders)
+- Html5 slaytlar: [http://mertnuhoglu.github.io/data_analysis_presentations/istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_presentations/istanbulcoders/index.html)
+- Kaynak kodları: [https://github.com/mertnuhoglu/data_analysis_presentations/istanbulcoders](https://github.com/mertnuhoglu/data_analysis_presentations/istanbulcoders)
 - Araçlar (PowerPoint katilleri): 
 	- [slidify](http://ramnathv.github.io/slidify/)
   - [knitr](http://yihui.name/knitr/)
