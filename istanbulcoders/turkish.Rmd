@@ -1,0 +1,541 @@
+---
+title       : R ile Veri Analizi Uygulamaları
+subtitle    : IstanbulCoders
+author      : Mert Nuhoglu
+job         : 
+framework   : deckjs        # {io2012, html5slides, shower, dzslides, ...}
+deckjs:
+  theme: web-2.0
+  extensions: [goto, hash, menu, navigation, scale, status, automatic]
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : solarized_light # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+```{r load_packages, include=FALSE}
+  source('test_data.R')
+	dn = read_data_naming()
+	data = generate_data %>%
+		Map(dn$base_name, dn$seq_end) %>%
+		setNames(dn$variable)
+	
+	# test data
+	set.seed(1)
+	n_kw = length(data$keyword)
+	n_pg = length(data$page)
+	kv = data.table(
+		keyword = data$keyword %>% sample,
+		visit = (runif(n_kw) * 100) %>% ceiling)
+	kp = data.table(
+		keyword = kv$keyword %>% sample_with_replace(n_pg),
+		page = data$page %>% sample(n_pg))
+	pc = data.table(
+		page = kp$page %>% sample(n_pg),
+		conversion = (runif(n_pg) * 0.05) %>% sample(n_pg) %>% round(3))
+
+	# calculate conversion number for just a single keyword
+	keyword = 'kw003'
+	setkey(kv, keyword)
+	visits = kv[keyword]$visit
+	setkey(kp, keyword)
+	page = kp[keyword]$page
+	setkey(pc, page)
+	conversion_rate = pc[page]$conversion
+	conversions = visits * conversion_rate
+
+	# calculate conversion numbers for all keywords
+	r = kp %>%
+		inner_join(pc, by="page") %>%
+		inner_join(kv, by="keyword") %>%
+		mutate( conversion_number = visit * conversion ) %>%
+		group_by(keyword) %>%
+		summarise(total_conversion = sum(conversion_number)) %>%
+		select(keyword, total_conversion) %>%
+		arrange(total_conversion) 
+	
+	r = r %>%
+		arrange(desc(total_conversion))
+	top_keywords = r$keyword[1:3]
+
+	top_kp = kp %>%
+		filter(keyword %in% top_keywords)
+	# or filter using datatable subsetting (equivalent)
+	setkey(kp, keyword)
+	top_kp = kp[top_keywords]
+
+	top_pages = top_kp$page
+```
+
+## Giriş
+
+- Örneklere dayalı dil öğrenme
+	- Yabancı dil
+	- Gramer kurallarını zihin kendisi çıkartır
+		- Stephen Krashen'ın yabancı dil öğrenme teorisi:
+			[http://www.sk.com.br/sk-krash-english.html](http://www.sk.com.br/sk-krash-english.html)
+	  - Öğrenmek daha zevkli: zorlanma - kolaylık dengesi
+
+--- .class #id 
+
+## Veri Bilimi Nedir?
+
+- Disiplinler arası bir alan
+  - Programlama
+  - İstatistik
+  - Alan uzmanlığı - analiz
+
+--- .class #id 
+
+## Veri Bilimi Nedir?
+
+![Veri Bilimi Venn Şeması](assets/img/Venn-Diagram-of-Data-Scientist-Skills.png)
+
+--- .class #id 
+
+## Eticaret: Conversion rate optimizasyonu
+
+- Blog sitesi: BallOrange.com 
+- Conversion: Ziyaretçilerin email adresleri
+- Her blog yazısı için
+	- Trafik farklı
+	- Conversion oranı farklı
+- En değerli blog yazıları:
+	- Trafik x conversion oranı
+- Örnek:
+	- A sayfası:
+		- 1000 ziyaretçi x %5 dönüştürme = 50 email
+	- B sayfası:
+		- 500 ziyaretçi x %15 dönüştürme = 75 email
+
+--- .class #id 
+
+## Conversion rate optimizasyonu 2
+
+- Google Analytics'ten topladığımız veriler:
+
+	- Keyword - Visit: The number of visits per search keyword 
+	- Keyword - Page: To which blog page does a search keyword send the visitors
+	- Page - Conversion Rate: Ratio of visitors that leave their email addresses in each page
+
+--- .class #id 
+
+## Test Data Generation
+
+`ballorange_conversion_optimization()` in test_data.R
+
+```{r data_init, include=FALSE}
+	dn = read_data_naming()
+	data = generate_data %>%
+		Map(dn$base_name, dn$seq_end) %>%
+		setNames(dn$variable)
+```
+
+```{r }
+	 data
+```
+
+--- .class #id 
+
+## Veri modeli 
+
+- keyword-page: kp
+- page-conversion: pc
+- keyword-visit: kv
+
+--- .class #id 
+
+## Generate test data
+
+```{r simulate_data}
+	set.seed(1)
+	n_kw = length(data$keyword)
+	n_pg = length(data$page)
+	kv = data.table(
+		keyword = data$keyword %>% sample,
+		visit = (runif(n_kw) * 100) %>% ceiling)
+	kp = data.table(
+		keyword = kv$keyword %>% sample_with_replace(n_pg),
+		page = data$page %>% sample(n_pg))
+	pc = data.table(
+		page = kp$page %>% sample(n_pg),
+		conversion = (runif(n_pg) * 0.05) %>% sample(n_pg) %>% round(3))
+```
+
+--- .class #id 
+
+## Generate test data 2
+
+```{r }
+head(kv)
+head(kp)
+```
+
+--- .class #id 
+
+## Generate test data 3
+
+```{r }
+head(pc)
+pc %>% head
+```
+
+--- .class #id 
+
+## How to generate such test data easily?
+
+```{r }
+dn = read_data_naming()
+dn
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+generate_data("page", 10)
+```
+ 
+```{r }
+Map( generate_data, "page", 10)
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+Map( generate_data, c("page", "keyword"), 10)
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+Map( generate_data, c("page", "keyword"), c(10, 20))
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+generate_data %>% 
+   Map( c("page", "keyword"), c(10, 20) )
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+dn$base_name
+dn$seq_end
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+generate_data %>%
+		Map(dn$base_name, dn$seq_end)
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+data = generate_data %>%
+		Map(dn$base_name, dn$seq_end) %>%
+		setNames(dn$variable)
+data
+```
+
+--- .class #id 
+
+## How to generate such test data easily? 
+
+```{r }
+data %>% str
+```
+
+--- .class #id 
+
+## Test datatable
+
+```{r }
+	n_kw = length(data$keyword)
+	kp = data.table(
+		keyword = kv$keyword %>% sample,
+		page = data$page %>% sample(n_kw))
+kp
+```
+
+--- .class #id 
+
+## sample function
+
+```{r }
+set.seed(1)
+sample(1:10, 3)
+set.seed(1)
+1:10 %>% sample(3)
+```
+
+```{r }
+sample(c("ali", "veli", "can", "cem"), 3)
+```
+
+--- .class #id 
+
+## Test datatable 
+
+```{r }
+	kv = data.table(
+		keyword = data$keyword %>% sample,
+		visit = (runif(n_kw) * 100) %>% ceiling)
+kv
+```
+
+--- .class #id 
+
+## Random number generation
+
+```{r }
+runif(10)
+```
+ 
+```{r }
+runif(10) * 100
+```
+
+--- .class #id 
+
+## Generating test data - complete
+
+```{r }
+	dn = read_data_naming()
+	data = generate_data %>%
+		Map(dn$base_name, dn$seq_end) %>%
+		setNames(dn$variable)
+	
+	set.seed(1)
+	n_kw = length(data$keyword)
+	kv = data.table(
+		keyword = data$keyword %>% sample,
+		visit = (runif(n_kw) * 100) %>% ceiling)
+	kp = data.table(
+		keyword = kv$keyword %>% sample,
+		page = data$page %>% sample(n_kw))
+	pc = data.table(
+		page = kp$page %>% sample,
+		conversion = (runif(n_kw) * 0.05) %>% sample(n_kw) %>% round(3))
+```
+
+--- .class #id 
+
+## Sorun 
+
+- En çok email adresi sağlayan 5 anahtar kelimeyi (keyword) bul
+
+--- .class #id 
+
+## Örnek bir kelime için dönüşüm oranı kaçtır?
+
+- "kw003" kelimesi için ziyaret sayısı kaçtır?
+
+```{r }
+	keyword = 'kw003'
+	setkey(kv, keyword)
+	kv3 = kv[keyword]
+  kv3
+```
+
+- sadece ziyaret sayısını çekelim
+
+```{r }
+setkey(kv, keyword)
+visits = kv[keyword]$visit
+visits
+```
+
+--- .class #id 
+
+## Bu anahtar kelimenin getirdiği trafik nedir?
+
+```{r }
+  setkey(kv, keyword)
+	setkey(kp, keyword)
+	kp3 = kv[keyword]
+  kp3
+	page = kp[keyword]$page
+  page
+```
+
+--- .class #id 
+
+## Bu sayfanın dönüşüm oranı nedir?
+
+```{r }
+setkey(pc, page)
+pc3 = pc[page]
+pc3
+conversion_rate = pc3$conversion
+conversion_rate
+```
+
+--- .class #id 
+
+## Toplam dönüşüm miktarı (email sayısı) kaçtır?
+
+```{r }
+setkey(kv, keyword)
+visits = kv[keyword]$visit
+conversions = visits * conversion_rate
+conversions
+```
+
+--- .class #id 
+
+## Bu hesaplamayı nasıl genelleştirebiliriz tüm anahtar kelimeler için?
+
+1. Yaklaşım: İmperatif yaklaşım
+- Her anahtar kelime için yukarıdaki hesaplamayı yapalım
+   - for loop
+     - her keyword için page'i çekeriz
+   - inner loop
+     - her page için conversion rate'leri çekeriz
+     - bu conversion rate'lerle visit sayılarını çarparız
+     - tüm sayfalar için bu conversion sayılarını toplarız
+
+--- .class #id 
+
+## Hesaplamayı genelleştirme 2
+
+2. Yaklaşım: Deklaratif düşünme
+   - Nasıl yapacağımızı değil ne yapacağımızı tarif etme
+   - Kümeler (sets) ve ilişkiler (relationships)
+   - SQL tarzı
+- SQL tablosu = n değişken/küme arasında ilişki/bağıntı (mapping)
+	- keyword-page: kp
+	- page-conversion: pc
+	- keyword-visit: kv
+
+--- .class #id 
+
+## Join işlemi
+
+- Ortak değişkenleri/kümeleri olan ilişkileri/tabloları birleştirebiliriz (join)
+- Örnek: 
+   - keyword-page
+   - keyword-visit
+- Sonuç:
+   - keyword-page-visit
+
+--- .class #id 
+
+## Sembolik düşünme
+
+- Nasıl birleştireceğimizi boşverin
+- Sadece ne yapacağımızı düşünelim:
+- keyword-page ile page-conversion tablolarını birleştirelim
+  - keyword-page-conversion
+- buna page-visit tablosunu ekleyelim
+  - keyword-page-conversion-visit
+
+--- .class #id 
+
+## Sembolik düşünme
+
+- conversion_number = conversion x visit
+  - keyword-page-conversion-visit-conversion_number
+- gereksiz değişkenleri silelim:
+  - keyword-conversion_number
+- 1 keyword için n tane satır vardır
+  - aynı keyword'e sahip satırları grupla (pivotlama/gruplama)
+  - her grup içindeki conversion_number'larını topla: total_conversion
+- tüm satırları total_conversion'a göre sırala
+- en üstteki 5 taneyi çek
+
+--- .class #id 
+
+## Bu işlemleri kodlayalım
+
+```{r }
+	r = kp %>%
+		inner_join(pc, by="page") %>%
+		inner_join(kv, by="keyword") %>%
+		mutate( conversion_number = visit * conversion ) %>%
+		group_by(keyword) %>%
+		summarise(total_conversion = sum(conversion_number)) %>%
+		select(keyword, total_conversion) %>%
+		arrange(total_conversion) 
+r %>% head
+```
+
+--- .class #id 
+
+## Sıralamayı tersine çevirelim
+
+```{r }
+	r = r %>%
+		arrange(desc(total_conversion))
+r %>% head
+```
+
+--- .class #id 
+
+## Hangi sayfalar en iyi kelimelerin hedefi?
+
+- En iyi 3 kelimeyi çıkartalım (filtreleyelim)
+- Bu kelimelerin trafik getirdiği sayfalar neler?
+
+```{r }
+top_keywords = r$keyword[1:3]
+top_kp = kp %>%
+  filter(keyword %in% top_keywords)
+top_kp %>% head
+top_pages = top_kp$page
+top_pages
+```
+
+--- .class #id 
+
+## Fonksiyonel programlama burada nerede?
+
+- Functional sequence
+  - Functional:
+    - input: function
+    - output: data (vector)
+- Higher order functions
+  - input: function
+  - output: function
+- For loop yok
+
+--- .class #id 
+
+## Linkler
+
+- [Veribilimi İstanbul](https://www.facebook.com/groups/465842350233183/)
+- [RStudio Webinars](http://www.rstudio.com/resources/webinars/)
+- [Functional Programming Design Patterns](http://fsharpforfunandprofit.com/fppatterns/)
+- [Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
+- [The Lambda Calculus for Absolute Dummies (like myself)](http://palmstroem.blogspot.com.tr/2012/05/lambda-calculus-for-absolute-dummies.html)
+
+--- .class #id 
+
+## Prezentasyon ve kodlar
+
+- Html5 slaytlar: [http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_istanbulcoders/index.html)
+- Kaynak kodları: [https://github.com/mertnuhoglu/data_analysis_istanbulcoders](https://github.com/mertnuhoglu/data_analysis_istanbulcoders)
+- Araçlar (PowerPoint katilleri): 
+	- [slidify](http://ramnathv.github.io/slidify/)
+  - [knitr](http://yihui.name/knitr/)
+  - [RMarkdown](http://rmarkdown.rstudio.com/)
+
+
