@@ -1,17 +1,8 @@
 ---
-title       : Data Analysis Applications using R
-subtitle    : IstanbulCoders
-author      : Mert Nuhoglu
-job         : 
-framework   : deckjs        # {io2012, html5slides, shower, dzslides, ...}
-deckjs:
-  theme: web-2.0
-  extensions: [goto, hash, menu, navigation, scale, status, automatic]
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : solarized_light # 
-widgets     : []            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
-knit        : slidify::knit2slides
+title: "Data Analysis Applications using R v1"
+author: Mert Nuhoglu
+date: July 16, 2015
+output: ioslides_presentation
 ---
 
 ```{r load_packages, include=FALSE}
@@ -72,27 +63,26 @@ knit        : slidify::knit2slides
 
 - Learning a language based on examples
 	- Foreign language
-	- Mind extracts the grammer rules by itself
+	- Mind extracts the grammar rules by itself
 		- Foreign language learning theory of Stephen Krashen:
 			[http://www.sk.com.br/sk-krash-english.html](http://www.sk.com.br/sk-krash-english.html)
 	  - Learning is more fun: balance between challenging - difficulty
 
---- .class #id 
+<div class="notes">
+Welcome everybody!
 
-## What is data science?
+This presentation is a problem based tutorial for learning basics of data analysis using R.
 
-- Interdisciplinary field
-  - Programming
-  - Statistics
-  - Domain expertise - analysis
+In terms of teaching approach, this presentation has a somewhat different style. It prioritizes the examples more than the grammar rules. 
 
---- .class #id 
+According to the foreign language learning theory of Stephen Krashen, mind extracts the grammar rules by itself. It captures the repeating patterns in the use of language. It discovers the grammar rules incrementally. 
 
-## What is data science?
+This kind of language learning is much more fun and easier than learning a foreign language by learning grammar rules and memorizing words. 
 
-![Venn Diagram for Data Science](assets/img/Venn-Diagram-of-Data-Scientist-Skills.png)
+I believe this natural learning approach is more appropriate in learning programming languages too. Therefore, I prepared this presentation in somewhat experimental style.
 
---- .class #id 
+Please, give me your feedback on this learning approach.
+</div>
 
 ## Ecommerce: Conversion rate optimization
 
@@ -109,7 +99,11 @@ knit        : slidify::knit2slides
 	- Page B:
 		- 500 visitors x %15 conversion = 75 emails
 
---- .class #id 
+<div class="notes">
+BallOrange.com is an ecommerce website. The web site contains a blog where articles about games are published. The blog is used for content marketing purposes. The aim is to receive email addresses of blog readers to keep them updated on new articles and campaigns. 
+
+Making the anonymous visitors to leave their email addresses is very valuable for the BallOrange because this lets the company to build a good brand image in the audience. The act of getting an email address of a blog reader is called as "conversion" in internet marketing. The goal of the company is to increase the conversion rate as much as possible.
+</div>
 
 ## Conversion rate optimization 2
 
@@ -119,24 +113,17 @@ knit        : slidify::knit2slides
 	- Keyword - Page: To which blog page does a search keyword send the visitors
 	- Page - Conversion Rate: Ratio of visitors that leave their email addresses in each page
 
---- .class #id 
+<div class="notes">
+To increase the conversion rate the company has setup Google Analytics service in their shopping cart web site. Assume that the company obtains the following datasets from analytics software:
 
-## Test Data Generation
+- Keyword - Visit dataset which contains the number of visits per search keyword 
+- Keyword - Page dataset which contains the mappings between keywords and the blog pages to which a search keyword sends the visitors
+- Page - Conversion Rate dataset which contains the ratio of visitors that leave their email addresses for each page
 
-`ballorange_conversion_optimization()` in test_data.R
+The final goal of the company is to improve the total number of conversions. To achieve this, the company wants to find out which keywords and pages are most valuable in terms of the total number of conversions achieved.
+</div>
 
-```{r data_init, include=FALSE}
-	dn = read_data_naming()
-	data = generate_data %>%
-		Map(dn$base_name, dn$seq_end) %>%
-		setNames(dn$variable)
-```
-
-```{r }
-	 data
-```
-
---- .class #id 
+# Test Data Generation
 
 ## Data model
 
@@ -144,139 +131,48 @@ knit        : slidify::knit2slides
 - page-conversion: pc
 - keyword-visit: kv
 
---- .class #id 
+<div class="notes">
+In this example, we assume that we have three datasets or tables as input. I am using the terms dataset and table as synonym words. A dataset or table is like a spreadsheet in Excel. You have multiple columns. Each column corresponds to a variable. Each row is a record or an observation.
+
+So, we have three tables:
+
+- keyword-page table denoted as kp
+- page-conversion table denoted as pc
+- keyword-visit table denoted as kv
+
+</div>
 
 ## Generate test data
-
-```{r simulate_data}
-	set.seed(1)
-	n_kw = length(data$keyword)
-	n_pg = length(data$page)
-	kv = data.table(
-		keyword = data$keyword %>% sample,
-		visit = (runif(n_kw) * 100) %>% ceiling)
-	kp = data.table(
-		keyword = kv$keyword %>% sample_with_replace(n_pg),
-		page = data$page %>% sample(n_pg))
-	pc = data.table(
-		page = kp$page %>% sample(n_pg),
-		conversion = (runif(n_pg) * 0.05) %>% sample(n_pg) %>% round(3))
-```
-
---- .class #id 
-
-## Generate test data 2
 
 ```{r }
 head(kv)
 head(kp)
 ```
 
---- .class #id 
+<div class="notes">
+I prepared some test data. In fact, I believe that producing test data rapidly is an important skill every data scientist should know. But for now, I won't explain how to produce test data. 
 
-## Generate test data 3
+Here are some sample records from two tables: kv which is keyword-visit table and kp which is keyword-page table.
+</div>
+
+## Generate test data 2
 
 ```{r }
 head(pc)
 pc %>% head
 ```
 
---- .class #id 
+<div class="notes">
+And these are the sample records from page-conversion table.
 
-## How to generate such test data easily?
+Note that the above statement and below statement produce the same output.
 
-```{r }
-dn = read_data_naming()
-dn
-```
+The classical way of calling a function is the first one. head is a function. pc is the argument or input of the function. 
 
---- .class #id 
+But R allows us to write the usual functions in a different way with the help of a library called as dplyr.
 
-## How to generate such test data easily? 
-
-```{r }
-generate_data("page", 10)
-```
- 
-```{r }
-Map( generate_data, "page", 10)
-```
-
---- .class #id 
-
-## How to generate such test data easily? 
-
-```{r }
-Map( generate_data, c("page", "keyword"), 10)
-```
-
---- .class #id 
-
-## How to generate such test data easily? 
-
-```{r }
-Map( generate_data, c("page", "keyword"), c(10, 20))
-```
-
---- .class #id 
-
-## How to generate such test data easily? 
-
-```{r }
-generate_data %>% 
-   Map( c("page", "keyword"), c(10, 20) )
-```
-
---- .class #id 
-
-## How to generate such test data easily? 
-
-```{r }
-dn$base_name
-dn$seq_end
-```
-
---- .class #id 
-
-## How to generate such test data easily? 
-
-```{r }
-generate_data %>%
-		Map(dn$base_name, dn$seq_end)
-```
-
---- .class #id 
-
-## How to generate such test data easily? 
-
-```{r }
-data = generate_data %>%
-		Map(dn$base_name, dn$seq_end) %>%
-		setNames(dn$variable)
-data
-```
-
---- .class #id 
-
-## How to generate such test data easily? 
-
-```{r }
-data %>% str
-```
-
---- .class #id 
-
-## Test datatable
-
-```{r }
-	n_kw = length(data$keyword)
-	kp = data.table(
-		keyword = kv$keyword %>% sample,
-		page = data$page %>% sample(n_kw))
-kp
-```
-
---- .class #id 
+This is an operator. It is called as pipe operator. It works like a pipe. It pipes the first argument to the second argument. So, it pipes the table pc to the function head.
+</div>
 
 ## sample function
 
@@ -291,8 +187,6 @@ set.seed(1)
 sample(c("ali", "veli", "can", "cem"), 3)
 ```
 
---- .class #id 
-
 ## Test datatable 
 
 ```{r }
@@ -301,8 +195,6 @@ sample(c("ali", "veli", "can", "cem"), 3)
 		visit = (runif(n_kw) * 100) %>% ceiling)
 kv
 ```
-
---- .class #id 
 
 ## Random number generation
 
@@ -313,8 +205,6 @@ runif(10)
 ```{r }
 runif(10) * 100
 ```
-
---- .class #id 
 
 ## Generating test data - complete
 
@@ -337,13 +227,11 @@ runif(10) * 100
 		conversion = (runif(n_kw) * 0.05) %>% sample(n_kw) %>% round(3))
 ```
 
---- .class #id 
+# Conversion Problem
 
-## Sorun 
+## Problem Definition
 
 - Find 5 keywords that let us collect the most email addresses
-
---- .class #id 
 
 ## What is the conversion ratio for some keyword?
 
@@ -364,8 +252,6 @@ visits = kv[keyword]$visit
 visits
 ```
 
---- .class #id 
-
 ## How much traffic does this keyword bring to which page?
 
 ```{r }
@@ -377,8 +263,6 @@ visits
   page
 ```
 
---- .class #id 
-
 ## How much is the conversion ration of that page?
 
 ```{r }
@@ -389,8 +273,6 @@ conversion_rate = pc3$conversion
 conversion_rate
 ```
 
---- .class #id 
-
 ## What is the amount of total conversions (number of collected emails)?
 
 ```{r }
@@ -400,7 +282,7 @@ conversions = visits * conversion_rate
 conversions
 ```
 
---- .class #id 
+# General Solution to the Problem
 
 ## How to generalize this calculation for all keywords and pages?
 
@@ -413,8 +295,6 @@ conversions
 		 - multiply conversion ratios with visitors amounts
 		 - sum up the conversion amounts for all the pages belonging to the same keyword
 
---- .class #id 
-
 ## Generalization of the calculation 2
 
 2. Approach: Declarative approach
@@ -426,8 +306,6 @@ conversions
 	- page-conversion: pc
 	- keyword-visit: kv
 
---- .class #id 
-
 ## Join operation
 
 - Join the mappings/tables that have common variables/sets
@@ -437,8 +315,6 @@ conversions
 - Result:
    - keyword-page-visit
 
---- .class #id 
-
 ## Symbolic thinking
 
 - Ignore how we are going to join
@@ -447,8 +323,6 @@ conversions
   - keyword-page-conversion
 - Add page-visit table to that
   - keyword-page-conversion-visit
-
---- .class #id 
 
 ## Symbolic thinking
 
@@ -461,8 +335,6 @@ conversions
 	- sum conversion_number in each group: total_conversion
 - order all the rows by total_conversion
 - get the top 5
-
---- .class #id 
 
 ## Let's code this procedure
 
@@ -478,8 +350,6 @@ conversions
 r %>% head
 ```
 
---- .class #id 
-
 ## Reverse the ordering
 
 ```{r }
@@ -487,8 +357,6 @@ r %>% head
 		arrange(desc(total_conversion))
 r %>% head
 ```
-
---- .class #id 
 
 ## What pages are the targets of the best keywords?
 
@@ -504,7 +372,7 @@ top_pages = top_kp$page
 top_pages
 ```
 
---- .class #id 
+# Final notes
 
 ## Functional programming in these codes?
 
@@ -517,8 +385,6 @@ top_pages
   - output: function
 - There is no for loop 
 
---- .class #id 
-
 ## Links
 
 - [Data Science Istanbul](https://www.facebook.com/groups/465842350233183/)
@@ -527,12 +393,10 @@ top_pages
 - [Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
 - [The Lambda Calculus for Absolute Dummies (like myself)](http://palmstroem.blogspot.com.tr/2012/05/lambda-calculus-for-absolute-dummies.html)
 
---- .class #id 
-
 ## Presentation and codes
 
-- Html5 slides: [http://mertnuhoglu.github.io/data_analysis_presentations/index.html](http://mertnuhoglu.github.io/data_analysis_presentations/index.html)
-- Source codes: [https://github.com/mertnuhoglu/data_analysis_presentations](https://github.com/mertnuhoglu/data_analysis_presentations)
+- Html5 slides: [http://mertnuhoglu.github.io/data_analysis_presentations/istanbulcoders/index.html](http://mertnuhoglu.github.io/data_analysis_presentations/istanbulcoders/index.html)
+- Source codes: [https://github.com/mertnuhoglu/data_analysis_presentations/istanbulcoders](https://github.com/mertnuhoglu/data_analysis_presentations/istanbulcoders)
 - Tools (PowerPoint killers): 
 	- [slidify](http://ramnathv.github.io/slidify/)
   - [knitr](http://yihui.name/knitr/)

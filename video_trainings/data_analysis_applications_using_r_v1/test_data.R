@@ -74,7 +74,8 @@ ballorange_conversion_optimization = function() {
 	setkey(kp, keyword)
 	top_kp = kp[top_keywords]
 
-	top_pages = top_kp$page
+	top_pages = top_kp$page %>%
+		unique 
 }
 
 study_test_data = function() {
