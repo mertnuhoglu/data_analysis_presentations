@@ -4,8 +4,8 @@ company,c,30
 category,g,3
 salesman,s,6
 region,r,4
-keyword,kw,15
-page,pg,50
+keyword,kw,50
+page,pg,15
 customer,c,20
 location,loc,10
 campaign,campaign,6

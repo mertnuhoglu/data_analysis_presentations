@@ -16,47 +16,43 @@ output: ioslides_presentation
 	set.seed(1)
 	n_kw = length(data$keyword)
 	n_pg = length(data$page)
-	kv = data.table(
-		keyword = data$keyword %>% sample,
+	kpv = data.table(
+		keyword = data$keyword %>% sample(n_kw),
+		page = data$page %>% sample_with_replace(n_kw),
 		visit = (runif(n_kw) * 100) %>% ceiling)
-	kp = data.table(
-		keyword = kv$keyword %>% sample_with_replace(n_pg),
-		page = data$page %>% sample(n_pg))
 	pc = data.table(
-		page = kp$page %>% sample(n_pg),
+		page = kpv$page %>% sample(n_pg),
 		conversion = (runif(n_pg) * 0.05) %>% sample(n_pg) %>% round(3))
 
 	# calculate conversion number for just a single keyword
 	keyword = 'kw003'
-	setkey(kv, keyword)
-	visits = kv[keyword]$visit
-	setkey(kp, keyword)
-	page = kp[keyword]$page
+	setkey(kpv, keyword)
+	visits = kpv[keyword]$visit
+	page = kpv[keyword]$page
 	setkey(pc, page)
-	conversion_rate = pc[page]$conversion
-	conversions = visits * conversion_rate
+	conversion_ratio = pc[page]$conversion
+	conversions = visits * conversion_ratio
 
 	# calculate conversion numbers for all keywords
-	r = kp %>%
+	r = kpv %>%
 		inner_join(pc, by="page") %>%
-		inner_join(kv, by="keyword") %>%
-		mutate( conversion_number = visit * conversion ) %>%
-		group_by(keyword) %>%
-		summarise(total_conversion = sum(conversion_number)) %>%
-		select(keyword, total_conversion) %>%
+		mutate( conversion_per_keyword = visit * conversion ) %>%
+		group_by(page) %>%
+		summarise(total_conversion = sum(conversion_per_keyword)) %>%
+		select(page, total_conversion) %>%
 		arrange(total_conversion) 
 	
 	r = r %>%
 		arrange(desc(total_conversion))
-	top_keywords = r$keyword[1:3]
+	top_pages = r$page[1:3]
 
-	top_kp = kp %>%
-		filter(keyword %in% top_keywords)
+	top_kpv = kpv %>%
+		filter(page %in% top_pages)
 	# or filter using datatable subsetting (equivalent)
-	setkey(kp, keyword)
-	top_kp = kp[top_keywords]
+	setkey(kpv, page)
+	top_kpv = kpv[top_pages]
 
-	top_pages = top_kp$page
+	top_keywords = top_kpv$keyword
 ```
 
 ## Introduction
@@ -127,32 +123,29 @@ The final goal of the company is to improve the total number of conversions. To 
 
 ## Data model
 
-- keyword-page: kp
+- keyword-page-visit: kpv
 - page-conversion: pc
-- keyword-visit: kv
 
 <div class="notes">
-In this example, we assume that we have three datasets or tables as input. I am using the terms dataset and table as synonym words. A dataset or table is like a spreadsheet in Excel. You have multiple columns. Each column corresponds to a variable. Each row is a record or an observation.
+In this example, we assume that we have two datasets or tables as input. I am using the terms dataset and table as synonym words. A dataset or table is like a spreadsheet in Excel. You have multiple columns. Each column corresponds to a variable. Each row is a record or an observation. @mp3=p004_01
 
-So, we have three tables:
+So, we have two tables:
 
-- keyword-page table denoted as kp
-- page-conversion table denoted as pc
-- keyword-visit table denoted as kv
+- keyword-page-visit table denoted as kpv
+- page-conversion table denoted as pc @mp3=p004_02
 
 </div>
 
 ## Generate test data
 
 ```{r }
-head(kv)
-head(kp)
+head(kpv)
 ```
 
 <div class="notes">
 I prepared some test data. In fact, I believe that producing test data rapidly is an important skill every data scientist should know. But for now, I won't explain how to produce test data. 
 
-Here are some sample records from two tables: kv which is keyword-visit table and kp which is keyword-page table.
+Here are some sample records from kpv keyword-page-visit table. @mp3=p005_01
 </div>
 
 ## Generate test data 2
@@ -174,113 +167,96 @@ But R allows us to write the usual functions in a different way with the help of
 This is an operator. It is called as pipe operator. It works like a pipe. It pipes the first argument to the second argument. So, it pipes the table pc to the function head.
 </div>
 
-## sample function
-
-```{r }
-set.seed(1)
-sample(1:10, 3)
-set.seed(1)
-1:10 %>% sample(3)
-```
-
-```{r }
-sample(c("ali", "veli", "can", "cem"), 3)
-```
-
-## Test datatable 
-
-```{r }
-	kv = data.table(
-		keyword = data$keyword %>% sample,
-		visit = (runif(n_kw) * 100) %>% ceiling)
-kv
-```
-
-## Random number generation
-
-```{r }
-runif(10)
-```
- 
-```{r }
-runif(10) * 100
-```
-
-## Generating test data - complete
-
-```{r }
-	dn = read_data_naming()
-	data = generate_data %>%
-		Map(dn$base_name, dn$seq_end) %>%
-		setNames(dn$variable)
-	
-	set.seed(1)
-	n_kw = length(data$keyword)
-	kv = data.table(
-		keyword = data$keyword %>% sample,
-		visit = (runif(n_kw) * 100) %>% ceiling)
-	kp = data.table(
-		keyword = kv$keyword %>% sample,
-		page = data$page %>% sample(n_kw))
-	pc = data.table(
-		page = kp$page %>% sample,
-		conversion = (runif(n_kw) * 0.05) %>% sample(n_kw) %>% round(3))
-```
-
 # Conversion Problem
 
 ## Problem Definition
 
 - Find 5 keywords that let us collect the most email addresses
 
-## What is the conversion ratio for some keyword?
+<div class="notes">
+Let's return back to our example problem. The company BallOrange wants to collect email addresses of their blog's visitors. They publish lots of new blog articles. They want to find out which blog articles are most effective. They want to focus their copywriting effort into the topics that produce best conversion results. Therefore they want to find out the top search keywords that bring the most email addresses to their subscription list.
+</div>
+
+## What is the conversion rate for some keyword?
 
 - How many visitors for keyword "kw003"?
 
 ```{r }
-	keyword = 'kw003'
-	setkey(kv, keyword)
-	kv3 = kv[keyword]
-  kv3
+setkey(kpv, keyword)
+kpv['kw003']
 ```
 
 - Let's just get the visitors amount
 
 ```{r }
-setkey(kv, keyword)
-visits = kv[keyword]$visit
-visits
+kpv['kw003']$visit
 ```
 
-## How much traffic does this keyword bring to which page?
+<div class="notes">
+Before working on the general solution to the problem, let's first solve  the problem for just one case. Focusing into a specific problem before general problems helps our mind to get into the mood. @mp3=p008_01
+
+So, let's find out the conversion rate for some specific keyword. 
+
+Here, we take as example, the keyword "kw003". First we want to find out the number of visitors for this keyword. We should make a lookup to the table kpv which contains keyword-page-visit columns or variables. @show @mp3=p008_02
+
+How are we gonna search or lookup in this table for a specific keyword? One way to make a search is this. We first specify the column by which we are gonna make a search. Then we make the search by putting the lookup keys into the brackets. @show @mp3=slide08_what_is_the_conversion_rate_for_some_keyword_p01
+
+There are alternative ways to make a search in a table in R. I am not going to describe various ways of doing a search here, because my primary goal is to explain the tools and methods abstracted from the delicate details for now. When you are learning a new foreign language you don't need to learn every possible way of telling a meaning. It is better to learn just one simple and concise way of telling it. Then you make practice with the expressions that you learned. Meanwhile, your mind decodes and absorbs the grammar rules by itself. Then your mind is ready to learn alternative ways of describing the same meaning. The critical skill in learning a new language is to postpone learning rules and delicate details to the right time. @mp3=p0030
+
+Making a search in this way, returns the whole row in the table. We just want to obtain one column in the table. To extract just one column, we append dollar sign and the name of the column we look for. @show @mp3=p0031
+</div>
+
+## How much traffic does some keyword bring to some page?
 
 ```{r }
-  setkey(kv, keyword)
-	setkey(kp, keyword)
-	kp3 = kv[keyword]
-  kp3
-	page = kp[keyword]$page
-  page
+setkey(kpv, keyword)
+kpv['kw003']
+p = kpv['kw003']$page
 ```
 
-## How much is the conversion ration of that page?
+<div class="notes">
+This expression `kpv['kw003']` shows  that there are 60 (`r kpv['kw003']`) visits due to keyword `kw003` to the page "pg007" (`r p`). @mp3=p009_01
+
+I assign the name of the page, namely "pg007" to the variable "p". @mp3=p009_02
+</div>
+
+## How much is the conversion rate of that page?
 
 ```{r }
 setkey(pc, page)
-pc3 = pc[page]
+pc3 = pc[p]
 pc3
-conversion_rate = pc3$conversion
-conversion_rate
+conversion_ratio = pc3$conversion
+conversion_ratio
 ```
+
+<div class="notes">
+Now, we want to find out how many conversions occurred in that page. To find it, first we need to get the conversion ratio from the table "pc". @mp3=p010_01
+
+To get it, we need to make a lookup using the page name. The page name is stored inside the variable "p". @mp3=p010_02
+
+To make a search in the page column of the "pc" table, we first call setkey function on "pc" variable. Then we make the lookup in the "pc" table. Then, we get the value in the conversion column of the corresponding record. @mp3=p010_03
+</div>
 
 ## What is the amount of total conversions (number of collected emails)?
 
 ```{r }
-setkey(kv, keyword)
-visits = kv[keyword]$visit
-conversions = visits * conversion_rate
+setkey(kpv, keyword)
+visits = kpv['kw003']$visit
+visits
+conversion_ratio
+```
+
+```{r }
+conversions = visits * conversion_ratio
 conversions
 ```
+
+<div class="notes">
+We obtained the number of visits from keyword "kw003". We also got the conversion ratio of the visited page. Now, let's multiply these two values in order to get the total number of conversions due to the keyword "kw003". @mp3=p011_01
+
+The result is 1.02 (`r conversions`). This means that we are collecting 1.02 emails per day due the traffic that is coming from keyword "kw003".  @mp3=p011_02
+</div>
 
 # General Solution to the Problem
 
@@ -288,89 +264,183 @@ conversions
 
 1. Approach: Imperative approach
 - Let's do the above calculation for each keyword
-   - for loop of keywords
-     - get the pages of that keyword
-   - inner loop for pages
-		 - get the conversion ration of the page
-		 - multiply conversion ratios with visitors amounts
+   - for each keyword
+     - get the page of that keyword
+		 - get the conversion ratio of the page
+		 - multiply conversion ratios with visit amounts
 		 - sum up the conversion amounts for all the pages belonging to the same keyword
 
-## Generalization of the calculation 2
+<div class="notes">
+Ok, in the previous slide we obtained the conversion rate for just one specific keyword. But our final goal is to obtain the conversion rates for all keywords. Because we want to focus our content production effort into those keywords. So, how are we gonna generalize the calculations that we have just done? @mp3=p012_01
 
-2. Approach: Declarative approach
+There are basically two types of approaches to any computational problem. One approach is usually called imperative approach. Here you describe every single step of how to do the computation. This approach basically answers the question: how to do it. @mp3=p012_02
+
+</div>
+
+## Generalization of the computation 
+
+2. Approach: Higher abstraction 
 	 - Describe what to do instead of how to do it
 	 - Sets and relationships
 	 - SQL style
 - SQL table = a mapping between n variables/sets
-	- keyword-page: kp
+	- keyword-page-visit: kpv
 	- page-conversion: pc
-	- keyword-visit: kv
+
+<div class="notes">
+The other approach answers the question: what to do. It is more abstract. There are different names for this approach due to different styles of it such as object oriented programming, functional programming, declarative programming. These concepts are not the same. There are fundamental differences between them. But for now, we focus on just one fundamental difference in both problem solving approaches: Are we going to describe each and every step of how to solve the problem. Or are we going to describe what to do in order to solve the problem. @mp3=p012_03
+
+The answer to the question "what" is an abstract way of handling a problem. It is abstract because you don't describe the implicit details of the solution. @mp3=p012_04
+
+But the level of abstraction is critical. Every abstraction is an implementation from a higher abstract perspective. This is an interesting philosophical problem, but let's focus to our existing practical problem. @mp3=p012_05
+</div>
 
 ## Join operation
 
 - Join the mappings/tables that have common variables/sets
 - Example: 
-   - keyword-page
-   - keyword-visit
-- Result:
    - keyword-page-visit
+   - page-conversion
+- Result:
+   - keyword-page-visit-conversion
+
+<div class="notes">
+We need to join the tables. How are we gonna do this? By using the comman variables.
+
+For example, we need to join those two tables: @show
+
+- keyword-page-visit
+- page-conversion
+
+The common variable here is: page. @show
+
+The result of joining operation is simple. It is the sum of all variables: keyword-page-visit-conversion. @mp3=p014_01
+
+</div>
 
 ## Symbolic thinking
 
 - Ignore how we are going to join
 - Focus into what we will do
-- Let's join the tables keyword-page and page-conversion
-  - keyword-page-conversion
-- Add page-visit table to that
-  - keyword-page-conversion-visit
+- Let's join the tables keyword-page-visit and page-conversion
+  - keyword-page-visit-conversion
 
-## Symbolic thinking
+<div class="notes">
+Ignore how we are going to join the tables. We just specify the tables to be joined and the common variable. That is enough. @mp3=p015_01
 
-- conversion_number = conversion x visit
-  - keyword-page-conversion-visit-conversion_number
-- remove unnecessary variables:
-  - keyword-conversion_number
-- there are n rows for each keyword
-	- group the rows that have the same keyword (pivoting/grouping)
-	- sum conversion_number in each group: total_conversion
-- order all the rows by total_conversion
-- get the top 5
+Now, this is an approach at a higher abstraction level than the previous imperative procedure. Because we don't describe how to join the different data sets. Instead, we describe what to do. @mp3=p015_02
+</div>
 
-## Let's code this procedure
+## Remaining steps
+
+- conversion_per_keyword = conversion x visit
+  - keyword-page-visit-conversion-conversion_per_keyword
+- there are multiple rows per page
+	- group the rows that belong to the same page (pivoting/grouping)
+- sum conversion_per_keyword in each group: total_conversion
+- remove unnecessary variables. select the following ones:
+  - page-conversion_per_keyword
+- order (arrange) all the rows by total_conversion
+- get the top 3
+
+<div class="notes">
+Next step is to calculate conversions per keyword. Remember after joining both tables we have conversion ratios and visit number in each row. Multiply them to obtain conversion_per_keyword. @mp3=p016_01
+
+Then, we should group the rows that belong to the same page. Remember, there are multiple keywords that get traffic to some page. So, we should collect all the rows that belong to the same page. This is called as grouping or pivoting in data analysis terminology.  @mp3=p016_02
+
+Here we do the grouping in order to sum all conversion_per_keyword values of each keyword that belong to the same page.  @mp3=p016_03
+
+After this operation, we select the variables we are interested in. Remember our goal was to find out the top pages in terms of conversion rates. So we just need the variables: page and total_conversion. @mp3=p016_04
+
+Next we order all the rows by total_conversion values. And we get the top rows. @mp3=p016_05
+</div>
+
+## Let's code this procedure/algorithm
 
 ```{r }
-	r = kp %>%
-		inner_join(pc, by="page") %>%
-		inner_join(kv, by="keyword") %>%
-		mutate( conversion_number = visit * conversion ) %>%
-		group_by(keyword) %>%
-		summarise(total_conversion = sum(conversion_number)) %>%
-		select(keyword, total_conversion) %>%
-		arrange(total_conversion) 
+r = kpv %>%
+	inner_join(pc, by="page") %>%
+	mutate( conversion_per_keyword = visit * conversion ) %>%
+	group_by(page) %>%
+	summarise(total_conversion = sum(conversion_per_keyword)) %>%
+	select(page, total_conversion) %>%
+	arrange(total_conversion) 
 r %>% head
 ```
+
+<div class="notes">
+This new algorithm consists of 7 steps. Each step is described in such a way that we specified only what is needed to be done. For example, the algorithm says that to group all the rows by page. But it doesn't describe how to do it. @mp3=p017_01
+
+Here is the R program that describes this algorithm. It consists of exactly 7 steps as we described above. @mp3=p017_02
+
+First step is joining the tables kpv and pc.
+
+Second step is to calculate conversion_per_keyword values for each row in the newly combined table.
+
+Third step is to group the rows that belong to the same page.
+
+Fourth step is to sum conversion amounts of each keyword that belong to the same page to obtain total_conversion of that page. @mp3=p017_03
+
+Fifth step is to select the variables that we are interested in and drop the remaining ones.
+
+Sixth step is to order or arrange the rows by total_conversion values.
+
+Seventh step is to get the top rows. @mp3=p017_04
+</div>
 
 ## Reverse the ordering
 
 ```{r }
-	r = r %>%
-		arrange(desc(total_conversion))
+r = r %>%
+	arrange(desc(total_conversion))
 r %>% head
 ```
 
-## What pages are the targets of the best keywords?
+<div class="notes">
+This ordering put the lowest total_conversion rows to the top. So, we should reverse the ordering. This is called as descending order. To obtain descending order, we pass total_conversion variable to the `desc` function as argument. @mp3=p018_01
+</div>
 
-- Get the best 3 keywords (filtering)
-- What are the pages these keywords provide traffic?
+## What are the top pages?
+
+- Get the best 3 pages (subsetting)
 
 ```{r }
-top_keywords = r$keyword[1:3]
-top_kp = kp %>%
-  filter(keyword %in% top_keywords)
-top_kp %>% head
-top_pages = top_kp$page
+top_pages = r$page[1:3]
 top_pages
 ```
+
+<div class="notes">
+To get the top 3 pages, we use this expression. @show
+
+Inside the brackets, we tell to get the elements from index 1 up to the index 3 which means to get the top 3 values. @mp3=p019_01
+</div>
+
+## What are the top keywords?
+
+- What are the keywords that get traffic to the top pages?
+
+```{r }
+top_kpv = kpv %>%
+	filter(page %in% top_pages)
+```
+
+```{r }
+setkey(kpv, page)
+top_kpv = kpv[top_pages]
+
+top_keywords = top_kpv$keyword
+top_keywords
+```
+
+<div class="notes">
+What are the keywords that get traffic to the top pages?
+
+To answer this question, we should filter kpv table by top_pages. Remember, kpv table has three columns: keyword, page, visits. top_pages contains the names of the top 3 pages. @mp3=p020_01
+
+One way of filtering a table is using the `filter` function. Inside the `filter` function's argument, we have to describe the criteria of filtering operation. The criteria is to filter the rows whose `page` value is an element of the set `top_pages`. @mp3=p020_02
+
+Another way of filtering a table is using subsetting function of the datatables. The subsetting function is done by bracket operator. In this way, we first need to specify the key column on which we are going to make a subsetting or search operation. The key column is the `page` column. Then we specify which values we are looking for in this column. @mp3=p020_03
+</div>
 
 # Final notes
 
