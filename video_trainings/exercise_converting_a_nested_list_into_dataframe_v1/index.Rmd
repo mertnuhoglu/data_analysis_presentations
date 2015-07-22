@@ -1,0 +1,174 @@
+---
+title: "Data Transformation Exercise in R: Converting a nested list into dataframe"
+author: Mert Nuhoglu
+date: July 21, 2015
+output: ioslides_presentation
+---
+
+```{r load_packages, include=FALSE}
+library("dplyr")
+```
+
+# Problem
+
+## Problem Definition
+
+- Conversion of a list into a data frame (or data table)
+- Lists: Hierarchical 
+- Data Frames: Flat
+
+<div class="notes">
+A very common problem in data cleaning or data transformation jobs is the conversion of some list data structure into a data frame data structure. 
+
+Lists in R are hierarchical data structures. Whereas data frames or data tables are flat data structures. This crucial difference makes the transformation of the data structures a bit cumbersome. @mp3=p001_01
+</div>
+
+## Source Data Structure
+
+- To reproduce the list use the following code
+
+```{r }
+f = list(list(NA, "false", "5"), list(NA, "false", "3"))
+```
+
+<div class="notes">
+In this example, we have a nested list of 2 levels. That is the list consists of elements which are themselves lists of some primitives.
+
+Let's write this expression in R console and see the structure of the list f. @mp3=p002_01 @code
+</div>
+
+## Structure of List
+
+```{r }
+str(f)
+```
+
+<div class="notes">
+Use str() function to see the structure of the list f. @code
+
+This shows that f consists of a list of 2 elements. This is the upper or root level of our hierarchical data structure. 
+
+Each element of these two lists consists of lists of three elements. Their elements are primitives. So there is no more nested lists. @mp3=p003_01
+</div>
+
+## Target Data Structure
+
+- A dataframe of two rows and three columns:
+
+			X1    X2 X3
+	1 <NA> false  5
+	2 <NA> false  3
+
+<div class="notes">
+Target structure is a data frame with 3 columns and 2 rows. Each list element should become a row.
+
+So, the question is how can we transform the nested list f into this flat dataframe? @mp3=p004_01
+</div>
+
+## Alternative 1: Can we use rbind or rbindlist? 
+
+```{r }
+do.call(rbind, f)
+```
+
+```{r }
+rbindlist(f)
+```
+
+<div class="notes">
+In this case, we can use the function rbind or rbindlist because each element of the list f are lists that have the same structure. So each nested list corresponds to a row and we are actually rbinding these rows together. @mp3=p006_01
+
+Note that there is a difference in the results of rbind and rbindlist. rbind returns a matrix whereas rbindlist returns a data.table. So, when we use rbind, we have to convert this matrix into a data.table with an additional operation. @mp3=p006_02
+</div>
+
+## Converting matrix to data.table
+
+```{r }
+do.call(rbind, f) %>%
+	as.data.table
+```
+
+```{r }
+do.call(rbind, f) %>%
+	as.data.frame
+```
+
+<div class="notes">
+To convert the matrix into a dataframe or datatable, we need to use as.data.table or as.data.frame functions. @mp3=p007_01
+</div>
+
+## List of dataframe
+
+```{r }
+g = list(
+	data.frame(a=NA, b="false", c="5"), 
+	data.frame(a=NA, b="false", c="3")
+)
+str(g)
+```
+
+<div class="notes">
+Let's take another example. @mp3=p005_01
+
+Note that, the elements of the list g are dataframes. There is no nested list structure in this object. g is list of two elements where each element is a dataframe. @mp3=p005_02
+
+Whereas in the previous case, the elements of list f are again lists themselves. (@code compare f and g in console) @mp3=p005_03
+
+</div>
+
+## Can we use rbind or rbindlist? 2
+
+```{r }
+do.call(rbind, g)
+```
+
+```{r }
+rbindlist(g)
+```
+
+<div class="notes">
+Again, we can use the function rbind or rbindlist because each element of the list g is a dataframe. We are actually rbinding these dataframes together. @mp3=p008_01
+</div>
+
+## Does rbind/rbindlist work always?
+
+```{r }
+f2 = list(
+	list(list(7, 2), "false", "5"), 
+	list(list(1, 3), "false", "3")
+)
+```
+
+```{r }
+do.call(rbind, f2) %>%
+	as.data.frame
+```
+
+```
+rbindlist(f2)
+```
+
+	Error in rbindlist
+
+<div class="notes">
+Do rbind or rbindlist work always? Unfortunately, no. There are several cases of nested list structures where you have to find more complicated ways to transform them into dataframes. @mp3=p009_01
+
+For example, take any list that has more than two levels of nested list. Calling rbindlist on them will result in error. Whereas calling rbind results in a dataframe that is a little weird.
+
+Note that, the first column of the resulting data.frame is not a primitive.  @mp3=p009_02
+</div>
+
+## rbind with deeply nested list
+
+```{r }
+d2 = do.call(rbind, f2) %>%
+	as.data.frame
+str(d2)
+```
+
+<div class="notes">
+Here we can see the first column of resulting data.frame more clearly. It is not a primitive data such as character or number. Instead it is a list data. So, the data.frame become a non-flat data structure. @mp3=p010_01
+
+A non-flat data.frame is not something that R programmers expect to work with. It won't play nicely with subsetting functions. Therefore we should make additional operations to convert this data.frame into a proper flat data.frame. @mp3=p010_02
+</div>
+
