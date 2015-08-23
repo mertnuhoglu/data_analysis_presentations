@@ -1,0 +1,189 @@
+---
+title: "Classification of Data Mining Problems v1"
+author: Mert Nuhoglu
+date: July 23, 2015
+output: ioslides_presentation
+---
+
+## Classification of Data Mining Problems
+
+- Classification
+- Regression
+- Similarity matching
+- Clustering
+- Co-occurrence grouping
+- Profiling
+- Link prediction
+- Data reduction
+- Causal modeling
+
+<div class="notes">
+There are too many different data mining algorithms. But there are only a small set of problem types.  @mp3=p000_01
+
+In this presentation, I will explain 9 common data mining problem types. The information in this presentation is mostly based on the great book called "Data Science for Business" written by Provost and Fawcett. @mp3=p000_02
+</div>
+
+## Classification or class probability estimation
+
+- What is the class of something?
+- Example:
+	- Is this twitter message positive or negative about your brand?
+- Scoring
+	- What is the likelihood that this message is positive?
+
+<div class="notes">
+A very common problem type is classification problems. In these problems, you try to classify something. @mp3=p001_01
+
+For example, take sentimental analysis of twitter messages. You want to know how positive are the twitter messages related to your brand. Are the consumers happy with your brand or not? You can go read every twitter message and decide whether each message is positive or negative. But this will take too much time. Instead you would better use data mining methods to classify whether a message is positive or negative. This is an example for classification problems. @mp3=p001_02
+
+In this case we have three classes: positive, negative, and neutral. The classes are mutually exclusive. @mp3=p001_03
+
+But usually it is not quite right to classify a specific message into one of these classes. A message might have some positive feelings and some negative feelings. Maybe the intent of the message writer is not clear. Maybe his words are ambigous. @mp3=p001_04
+
+So, there is a related problem type to classification problem: It is called as scoring or class probability estimation. This method does not clearly decides whether a message is positive or negative. Instead it assigns a probability to each class. For example, it says that some message is positive with 50% probability and negative with 20% probability. This is actually called as score. It somehow represents the probability or likelihood. @mp3=p001_05
+
+Classification and scoring methods are very close to each other. Same model can be used in both cases.  @mp3=p001_06
+</div>
+
+## Regression
+
+- Regression: How much?
+- Classification: Which class?
+- Predicting future events
+	- How much will the customer buy from your market?
+	- Will the customer leave his subscription service?
+
+<div class="notes">
+Regression is another very common problem type. For example, you want to know how much sales are you going to make next year. Or you want to predict how many people will come to visit your site. 
+
+If you try to estimate or predict the quantity of a variable, then this is a regression problem. @mp3=p002_01
+
+Both regression and classification problems can be used for predicting future events. For example, if you ask whether a customer will leave his subscription, this is a classification problem. If you ask whether how much a customer will pay for some service, this is a regression problem.  @mp3=p002_02
+
+The difference is here: Classification problems ask whether something will happen. Regression problems ask how something will happen. @mp3=p002_03
+</div>
+
+
+## Similarity matching
+
+- Identify similar entities
+- Example
+	- Which customers are similar to current customer?
+		- Purchased similar items
+		- Liked similar items
+
+<div class="notes">
+Similarity matching tries to identify similar entities. For example, you have a shopping cart web site. Whenever a customer buys something, you want to present the customer some related products.  @mp3=p003_01
+
+This is called as recommendation. The recommendation software are usually based on similarity matching. This method finds customers who are similar to the current customer. For example, who are the customers that have liked or purchased similar items?  @mp3=p003_02
+
+Another example: You have lots of customers and you want to focus on customers based on their similarities. So that you can assign similar customers to the same sales representative. @mp3=p003_03
+</div>
+
+
+## Clustering
+
+- Clustering: Group similar entities in general
+- Similarity matching: similar entities to some specific entity
+
+<div class="notes">
+The key difference between clustering and similarity matching is here: Clustering tries to group entities. Similarity matching tries to identify similar entities to some specific entity. In similarity matching, you start with some entity. In clustering, you don't have a specific entity. You want to explore whether there are any natural groups in the set. @mp3=p004_01
+</div>
+
+
+## Co-occurrence grouping
+
+- Co-occurrence grouping: Group entities based on the actions done unto them
+- Clustering: Group entities based on their attributes
+- Example
+	- Market basket group: Tomato sauce and spaghetti
+	- Because people buy them together
+	- Although their attributes are not similar
+
+<div class="notes">
+Co-occurrence grouping. This is also called as frequent itemset mining, association rule discovery, and market-basket analysis.
+
+This method is similar to clustering because it also tries to group similar entities. The difference is that this method groups entities based on the actions done to them.  @mp3=p005_01
+
+For example, we have lots of products in a market. We can group the products in two ways:
+
+1. We can group objects based on their attributes, such as color, size, price etc. This is a clustering problem.
+
+2. We can group objects based on the purchasing actions. Which products are purchased together? Which products are put into the same basket? This is a co-occurrence grouping problem. @mp3=p005_02
+
+This is different than the attributes of the products. There is an action which is done by the customers. 
+
+The grouping of the products is not based on an inherent attribute of the product. The grouping is based on the purchasing action done by the customers. @mp3=p005_03
+
+For example, tomato sauce is purchased together with spaghetti. These two products don't have a similarity in their attributes. But the customers purchase them together because they are complementary products. @mp3=p005_04
+</div>
+
+
+## Profiling 
+
+- Describe the behavior of people
+- Example
+	- Credit Card fraud detection: 
+	- Does this transaction match the profile of the client?
+
+<div class="notes">
+Profiling. This is also called as behavior description.
+
+This method tries to describe the profile of a person or agent. For example, "What is the expected phone usage behavior of a certain group of people?" @mp3=p006_01
+
+Behavior description is not a simple statement of some statistical quantities such as mean or standard deviation. The profile of the users depends on several factors such as time of the day, day of the week, season of the year. Also there are several levels of user groups. Are we going to describe the behavior of all the phone users or just same subset of it? How specific is the subset? So, behavior profiling can be done based on such various factors. @mp3=p006_02
+
+Profiling can serve lots of different business use cases. For example, we might want to detect credit card frauds based on the profile of the customer. If the credit card of some user who has never purchased anything from abroad is being used in some foreign land shopping, then there is a high likelihood that the card is being used by some thieves. @mp3=p006_03
+</div>
+
+
+## Link prediction
+
+- Predict missing connections between entities
+- Example
+	- You have 10 common friends with Helen on Facebook.
+	- Do you want to add Helen as friend?
+
+<div class="notes">
+Link prediction tries to predict connections between entities.
+
+For example, Facebook suggests me everyday some friend connections. Or LinkedIn suggests me to connect with some people. How do they do it? They use link prediction methods. These methods study existing links and find out common groupings. For example, Rebecca and Helen share 10 connections. Then there is a high likelihood that Rebecca and Helen might know each other.  @mp3=p007_01
+</div>
+
+
+## Data reduction
+
+- Explain the general data by a subset of it
+
+<div class="notes">
+Data reduction problems try to replace some set of data with some smaller set of data. Most of the time we collect much more data than we actually need. Having too much data is not a bad thing per se. But when we want to gain some insight into the data, we usually need to separate useless data from useful data. @mp3=p008_01
+</div>
+
+
+## Causal modeling
+
+- Which variable causes some event?
+- Example
+	- Ice cream seller
+	- Suspected causes:
+		- Advertising
+		- Season
+
+<div class="notes">
+Causal modeling problems try to separate the cause and effect. 
+
+For example, let's assume that we are ice cream seller. We collect lots of data such as weather data, demographic data, advertisement data. We observe that there is an increase in sales in last one month. Why? What happened in the last month? Multiple events have occurred. First, the summer season started. Second, we started tv advertisements. Now the question is which of these two events is the actual cause of the sales increase? Are they both effective or are there any other reason that might have caused the increase in sales? @mp3=p009_01
+</div>
+
+
+## Conclusion
+
+- Too many different algorithms
+- But only a small number of problem types
+
+<div class="notes">
+These are the common classes of data mining problems. Each of these problems can be solved using various techniques. In fact the number of data mining techniques is much much higher than problem types. It is good to keep these common problem types on mind to obtain a high perspective in analytical problems. @mp3=p010_01
+</div>
+
+
+

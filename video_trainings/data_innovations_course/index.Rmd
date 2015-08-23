@@ -1,0 +1,221 @@
+---
+title: "Data Innovations"
+author: Mert Nuhoglu
+date: August 23, 2015
+output: ioslides_presentation
+---
+
+# Innovations and Applications of Data Mining
+
+## Trailer
+
+<div class="notes">
+Hello guys, 
+This is the applications of data mining course.
+
+Everybody talks about data mining and analytics. And it is a big area.
+It has so many applications. 
+You might be new or experienced in data mining discipline.
+This course will navigate you through various different applications of data mining.
+We won't get into the techniques of the data mining methods.
+
+At the end of this course, you will have a holistic view for wide varying applications of data mining.
+You will be better informed in building your own path in data mining.
+</div>
+
+## Introduction
+
+- New and shiny
+- Widely varying applications
+- Different problems
+- Different domains
+- Marketing, healthcare, biotechnology, utilities
+
+<div class="notes">
+Data mining is a relatively new discipline. But it is big. There are too many methods and problems under data mining. In this course, you will rapidly navigate widely varying problems and applications in data mining. You will see applications form different domains such as marketing and healthcare.
+
+There are too many terms within data mining or related to data mining such as: clustering, real time analytics, online learning, regression, web mining, nlp, naive bayes. You will learn the meanings of most important concepts.
+</div>
+
+## Table of Contents
+
+- Classification
+- Regression
+- Clustering
+- Affinity
+- Profiling
+- Dimension reduction
+- Graph mining
+- Text mining
+
+<div class="notes">
+We have 8 modules to cover. 
+The first module is the classification applications. This is probably the most common and known subarea of data mining. It has a wide array of problems such as customer retention or churn, campaign design, outlier or anomaly detection.
+
+The second module is regression applications. Regression has several applications such as demand forecasting, production level prediction.
+
+The third module is clustering or segmentation applications. Clustering is similar to classification. Both methods classify some entities. But clustering does classification without any prior information about the classes. Most common application of clustering is customer segmentation problems.
+
+The fourth module is affinity analysis. Most common application of association rules is market basket problems. It is the problem to find out which products are bought from a store together?
+
+The fifth module is profiling. 
+@towrite
+
+The sixth module is data reduction or dimension reduction. Data reduction is used to understand the factors underlying some complex thing. For example, to discover the different tastes of the customers. 
+
+These modules are about more conventional uses of data mining. There are also some more recent uses of data mining such as text mining and graph mining. Although they are not explicitly referred as data mining methods, they are also subfields of data mining in reality. The definition of data mining is: examining pre-existing databases in order to discover new information. Mining refers to examining. Data mining examines databases. It has very closed relationship with machine learning. Machine learning also extracts new knowledge from existing data. But data mining requires pre-existing database in contrast to machine learning. You are literally mining some data to find some gems. 
+
+Seventh module is about applications of graph mining. A very common example is link prediction used in social network web sites such as LinkedIn or Facebook. They recommend you some new people to add as friend by using link prediction methods.
+
+Eight module is about applications of text mining. A very common example of text mining is sentiment analysis used in twitter based intelligence software. Sentiment analysis software examine the twitter messages and answers the question whether it has positive or negative sentiment about some brand.
+
+As you see there are too many different data mining tasks. Each task has different applications. In addition to this complexity, the data mining tasks are not very clearly separated from each other. Most of the these tasks overlap in a specific application. Therefore, using different terms for the same underlying concept is common in data mining.
+
+</div>
+
+# Classification Applications
+
+## Customer Churn Prediction
+
+- Customer churn prediction
+	- Which customers will churn?
+
+| customer | will churn |
+|----------|------------|
+| John     | ?          |
+| Lisa     | ?          |
+
+-> classification ->
+
+| customer | will churn |
+|----------|------------|
+| John     | Yes        |
+| Lisa     | No         |
+
+
+<div class="notes">
+Classification is the most common application area of data mining. There are too many interesting cases of classification applications from all domains.
+
+A very common classification problem in business domain is the customer churn problem. It is also called customer retention or attrition problem. The essence of this problem is to predict whether some existing customer will leave or not. 
+
+Which customers will cancel their subscription or service from us? This is very important for most businesses because getting a new customer is much more costly than retaining an existing one. The companies spend lots of money into customer acquisition using advertising, discounts, and oll sorts of marketing campaigns. 
+
+</div>
+
+## Classification: Customer Churn
+
+- Existing customer database
+
+| name       | city | age | sex | profession | edu         |
+|------------|------|-----|-----|------------|-------------|
+| Adams John | NY   | 30  | M   | programmer | undergrad   |
+| Lisa Meyer | LA   | 40  | F   | pianist    | high school |
+| Bruce Elm  | SF   | 20  | M   | teacher    | undergrad   |
+
+- Use this as input to classification model
+
+<div class="notes">
+How does classification of customer churn work? The company has a database of all existing customers. The customer databases contain usually lots of different types of information about customer
+
+- Demographic information such as age, sex, address, city of the customer
+- Spending information such as monthly amount of spending, total number of purchases.
+- Life style information such as community affiliation, hobbies of the customer.
+- Education information 
+- Industry and work information such as the profession and company name of the customer
+
+Most companies try to get as much information as possible about customers because no one knows exactly before which information is going to be valuable in data mining. 
+
+The classification algorithms predict which customers are more likely to leave the company using input information about customers.
+
+</div>
+
+## How do classification algorithms know in advance?
+
+- Needs historical data
+- Historical data is already labeled
+
+Historical data:
+
+| name       | city | age | sex | profession | churned |
+|------------|------|-----|-----|------------|---------|
+| Adams John | NY   | 30  | M   | programmer | No      |
+| Lisa Meyer | LA   | 40  | F   | pianist    | Yes     |
+| Bruce Elm  | SF   | 20  | M   | teacher    | No      |
+
+- "churned" is the label/class
+
+<div class="notes">
+You might ask how the classification algorithms know in advance from these variables which customers will churn. In fact, it cannot know if we had only these information. 
+
+There is one crucial information in addition to the above ones: It is called label or class variable in data mining terminology. It stores historical data of churned customers. The algorithms predict based on historical data. Whenever a customer churns, this information is added to the database as a case of churned customer. 
+
+In historical data, we have already the information about whether our old customers have churned or not. In this example, the column "churned" is called label or class. 
+Each row in the historical data is already labeled. 
+
+By the way, you might say that a customer that has not yet churned might churn tomorrow. This is of course possible. For now, assume that for the scope of the problem at hand we can safely assume that those customers will not churn.
+</div>
+
+## Terminology of learning 
+
+- Learning from labeled historical data 
+	- Existing data: Training data and test data
+	- Output: Model for classification
+	- Train the model
+- Use the model to predict the class of new data
+
+<div class="notes">
+Let's learn some terminology in order to simplify communication. 
+
+We said that the classification algorithms learn from historical data. This is usually called model training. The output of this learning process is a model that is already trained. 
+
+After training a model using existing data, we can start predicting customer churn using the model and new data.
+
+What does new data mean? By new data, I mean data that is not used during model training. We don't know the labels of new data. The classification model will predict it. 
+
+</div>
+
+## How does classification work in whole?
+
+- Learn from historical data (rules/model)
+- Apply those rules to new data
+
+<div class="notes">
+We can summarize the process into two steps:
+
+First step is learning from historical data. The output is a classification model.
+
+Second step is applying this trained model to new data to predict whether the customers in this new data set will churn or not.
+
+</div>
+
+## What is a model?
+
+- Model = set of rules
+- Rules?
+	- If the customer is female and younger than 30, she will churn.
+
+<div class="notes">
+We use the concept "model" a lot in data mining. It is the most central term. So let's try to define it very clearly.
+
+What is a model? A model is nothing more than a set of rules. 
+
+For example, in the customer churn problem a rule might be something like this: "If the customer is female and younger than 30, she will churn."
+
+The models usually consist of multiple rules. Moreover, the rules are not always as simple as this one. This rule is very simple because we can specify in easy to understand words. This is not always the case. There are complex mathematical formulas that no one understands but that can work in classification problems. But regardless of how complicated a rule is, they are basically the same.
+</div>
+
+## Why is it called classification?
+
+| customer | will churn |
+|----------|------------|
+| John     | ?          |
+| Lisa     | ?          |
+
+<div class="notes">
+You might ask why is this customer churn problem put under classification applications. 
+
+Our goal is to predict whether a customer will churn or not in near future. There are two answers to this question: Yes or no. So, we are in fact classifying customers into two groups: Customers that will churn and customers that will not churn.
+
+In this problem, we have only two classes. In general there can be any number of classes. The basic logic is the same.
+</div>
+
