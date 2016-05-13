@@ -1,5 +1,5 @@
 ---
-title: "Guided Quiz: Sorting Data Frames and Tables By Columns"
+title: "Video Quiz for R: Sorting Data Frames and Tables By Columns"
 author: Mert Nuhoglu
 date: July 22, 2015
 output: ioslides_presentation
@@ -7,9 +7,15 @@ output: ioslides_presentation
 
 ```{r load_packages, include=FALSE}
 library("dplyr")
+library("data.table")
 ```
 
-# Introduction
+## Guided Quiz: Sorting Data Frames and Tables By Columns
+
+- What is guided quiz?
+	- Question
+	- Answer
+	- Explanation
 
 <div class="notes">
 Welcome. This is a new style for me to teach. I am trying to experiment different styles in order to get some insight on what works better.  @mp3=p001_01
@@ -43,7 +49,7 @@ Let's assume we have a dataframe as this. The dataframe has 3 columns: name, age
 We want to sort this dataframe by its columns. There are alternative ways to sort a dataframe. I will ask about some of these alternatives not all of them. @mp3=p002_03
 </div>
 
-### Sort by one column
+## Sort by one column
 
 - Sort the dataframe by its name column
 - Ascending order
@@ -63,7 +69,7 @@ First question:
 How do you sort this dataframe by its name column? The letter A should come first. That is the order should be ascending order. @mp3=p003_01
 </div>
 
-### Solution
+## Solution
 
 ```{r }
 	df[ order(df$name), ]
@@ -75,7 +81,7 @@ Here is the answer.
 You use the order function. The order function is inside the base or standard R library. The function expects a vector. The function orders this vector. The input argument can be of any primitive data type such as character, numeric or factor. The returned value is an integer vector that corresponds to the indices of the input vector. @mp3=p004_01
 </div>
 
-### order() function
+## order() function
 
 ```{r }
 	order( c("Apple", "IBM", "Microsoft") )
@@ -95,7 +101,7 @@ This time we obtained the result: 3, 1, 2. What do these numbers mean? @mp3=p005
 3 is the first element in resulting vector. So this means that 3. element of input argument should be the first element when it is ordered. 1. element of input argument should be second element when it is ordered. @mp3=p005_04
 </div>
 
-### Solution
+## Solution
 
 ```{r }
 	df[ order(df$name), ]
@@ -115,7 +121,7 @@ This expression is passed as the first argument to df object's bracket operator.
 Since, the expression order() is passed to the first argument, the result of it orders the rows of dataframe object according to the name column's order. @mp3=p006_05
 </div>
 
-### Question: Sort using datatable 
+## Question: Sort using datatable 
 
 - Use datatable instead of dataframe
 
@@ -128,7 +134,7 @@ Since, the expression order() is passed to the first argument, the result of it 
 Next question: Sort the same way by name column but this time use a datatable instead of dataframe. @mp3=p007_01
 </div>
 
-### Solution
+## Solution
 
 ```{r }
 	dt[ order(dt$name) ]
@@ -146,7 +152,7 @@ Why don't we put comma? Because datatable's bracket operator assumes that the fi
 I always prefer to use datatables instead of dataframes. Because indexing style is more intuitive and also it is much faster than dataframe. @mp3=p008_03
 </div>
 
-### Question: Reverse the order
+## Question: Reverse the order
 
 - Descending order instead of ascending order
 - That is: Letter Z should come first
@@ -157,7 +163,7 @@ Next question: Reverse the order.
 Sort in the same way by using the name column of the data frame or table, but this time the letter Z should come first. Thus use descending order not ascending order. @mp3=p009_01
 </div>
 
-### Solution
+## Solution
 
 ```{r }
 	df[ order(-df$name), ]
@@ -171,7 +177,7 @@ Sort in the same way by using the name column of the data frame or table, but th
 This is very simple. Just put "minus" sign in front of the column that you want to be in descending order. @mp3=p010_01
 </div>
 
-### Solution 2
+## Solution 2
 
 - Which one is first?
 
@@ -196,7 +202,7 @@ The smallest one is the first one. And the smallest one is -20. So taking the ne
 </div>
 
 
-### Question: Sort using dplyr style
+## Question: Sort using dplyr style
 
 - Sort using dplyr style
 - Use pipes `%>%` and `arrange` functions
@@ -208,7 +214,7 @@ If you have not used dplyr till now, I highly recommend you to check tutorials o
 
 </div>
 
-### Solution
+## Solution
 
 ```{r }
 	dt %>%
@@ -228,7 +234,7 @@ We pass the data object dt or df as first argument using pipe operator. @mp3=p01
 Then we pass the criteria of ordering as second argument to the arrange function. You might wonder why did I say second argument. There is just one argument inside the parantheses of arrange function. Where is the second argument? @mp3=p013_03
 </div>
 
-### Solution 2
+## Solution 2
 
 - With pipes
 
@@ -251,7 +257,7 @@ Here we pass to "arrange" function two arguments, as it is clear: dt and name ex
 Thus, pipe passes "dt" object as the first argument of "arrange" function. So, "name" becomes the second argument of arrange function. @mp3=p014_03
 </div>
 
-### Solution
+## Solution
 
 ```{r }
 	dt %>%
@@ -278,7 +284,7 @@ The intuitivity of the interface is very important for effective programming bec
 </div>
 
 
-### Question: Using with and base order functions
+## Question: Using with and base order functions
 
 - Use with() function
 - Use base::order function
@@ -290,7 +296,7 @@ Next question. Using with and base order functions. @mp3=p016_01
 There is a function called "with()" that lets the programmer to specify the column names without prepending them with their data containers. This might be used in order to make order() function to work a little bit like dplyr. How to use it to sort the dataframe? @mp3=p016_02
 </div>
 
-### Solution
+## Solution
 
 ```{r }
 	df[ with(df, order(name)), ]
@@ -310,7 +316,7 @@ You have to repeat the data container object inside with. But you don't need to 
 Putting a new function like with() increases the burden on the programmer because now we need to check the order of the parameters and parantheses. This is more difficult to write and read.  @mp3=p017_03
 </div>
 
-### Reverse the order in dplyr style
+## Reverse the order in dplyr style
 
 Sort using dplyr style. Reverse the order.
 
@@ -320,7 +326,7 @@ Next question: Reverse the order. Use dplyr style. @mp3=p018_01
 Remember in base order() function, we need to put "minus" operator in front of the column expressions that should be in descending order. How to reverse the order in dplyr? @mp3=p018_02
 </div>
 
-### Solution
+## Solution
 
 ```{r }
 	dt %>%
@@ -378,7 +384,7 @@ Now, do the same sorting but use datatable instead of dataframes.  @mp3=p022_01
 Again a very similar solution as before. The only difference is that datatable does not have a comma after order() expression. @mp3=p023_01
 </div>
 
-### Use dplyr functions
+## Use dplyr functions
 
 - Same question
 - Use dplyr style
@@ -401,7 +407,7 @@ Solution is here. We pass two arguments to arrange() function. First argument is
 The code is still pretty clear to read and write. @mp3=p025_01
 </div>
 
-### Conclusion
+## Conclusion
 
 - Which style is better?
 - Personal tastes

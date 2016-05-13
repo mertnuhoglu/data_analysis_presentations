@@ -2,25 +2,24 @@
 title: "Data Innovations"
 author: Mert Nuhoglu
 date: August 23, 2015
-output: ioslides_presentation
+output: beamer_presentation
 ---
-
-# Innovations and Applications of Data Mining
 
 ## Trailer
 
 <div class="notes">
 Hello guys, 
-This is the applications of data mining course.
+This is the applications of data mining course. p005_05
 
-Everybody talks about data mining and analytics. And it is a big area.
+Everybody talks about data mining and analytics. It is a big area.
 It has so many applications. 
-You might be new or experienced in data mining discipline.
+You might be new or experienced in data mining discipline. p005_10
+
 This course will navigate you through various different applications of data mining.
-We won't get into the techniques of the data mining methods.
+We won't get into the techniques of the data mining methods. p005_15
 
 At the end of this course, you will have a holistic view for wide varying applications of data mining.
-You will be better informed in building your own path in data mining.
+You will be better informed in building your own path in data mining. p005_20
 </div>
 
 ## Introduction
@@ -32,9 +31,9 @@ You will be better informed in building your own path in data mining.
 - Marketing, healthcare, biotechnology, utilities
 
 <div class="notes">
-Data mining is a relatively new discipline. But it is big. There are too many methods and problems under data mining. In this course, you will rapidly navigate widely varying problems and applications in data mining. You will see applications form different domains such as marketing and healthcare.
+Data mining is a relatively new discipline. But it is big. There are too many methods and problems under data mining. In this course, you will rapidly navigate widely varying problems and applications in data mining. You will see applications form different domains such as marketing, production and healthcare. p010_05
 
-There are too many terms within data mining or related to data mining such as: clustering, real time analytics, online learning, regression, web mining, nlp, naive bayes. You will learn the meanings of most important concepts.
+There are too many terms related to data mining such as: clustering, real time analytics, online learning, regression, web mining, nlp, naive bayes. At the end of this course, you will learn the meanings of most important concepts in data mining. p010_10
 </div>
 
 ## Table of Contents
@@ -49,31 +48,35 @@ There are too many terms within data mining or related to data mining such as: c
 - Text mining
 
 <div class="notes">
-We have 8 modules to cover. 
-The first module is the classification applications. This is probably the most common and known subarea of data mining. It has a wide array of problems such as customer retention or churn, campaign design, outlier or anomaly detection.
+We have 8 sections to cover. 
+The first section is classification applications. This is probably the most common and known subarea of data mining. It has a wide array of problems such as customer retention or churn, campaign design, outlier or anomaly detection. p015_05
 
-The second module is regression applications. Regression has several applications such as demand forecasting, production level prediction.
+The second section is regression applications. Regression has several applications such as demand forecasting, production level prediction. p015_10
 
-The third module is clustering or segmentation applications. Clustering is similar to classification. Both methods classify some entities. But clustering does classification without any prior information about the classes. Most common application of clustering is customer segmentation problems.
+The third section is clustering or segmentation applications. Clustering is similar to classification. Both methods classify some entities. But clustering does classification without any prior information about the classes. Most common application of clustering is customer segmentation problems. p015_15
 
-The fourth module is affinity analysis. Most common application of association rules is market basket problems. It is the problem to find out which products are bought from a store together?
+The fourth section is affinity analysis. Most common application of affinity analysis is market basket problem. It is the problem to find out which products are bought from a store together? p015_20
 
-The fifth module is profiling. 
+The fifth section is profiling.  p015_25
 @towrite
 
-The sixth module is data reduction or dimension reduction. Data reduction is used to understand the factors underlying some complex thing. For example, to discover the different tastes of the customers. 
+The sixth section is data reduction or dimension reduction. Data reduction is used to understand the factors underlying some complex thing. For example, to discover the different tastes of the customers.  p015_30
 
-These modules are about more conventional uses of data mining. There are also some more recent uses of data mining such as text mining and graph mining. Although they are not explicitly referred as data mining methods, they are also subfields of data mining in reality. The definition of data mining is: examining pre-existing databases in order to discover new information. Mining refers to examining. Data mining examines databases. It has very closed relationship with machine learning. Machine learning also extracts new knowledge from existing data. But data mining requires pre-existing database in contrast to machine learning. You are literally mining some data to find some gems. 
+These sections are about more conventional uses of data mining. There are also some more recent uses of data mining such as text mining and graph mining. Although they are not explicitly referred as data mining methods, they are also subfields of data mining in reality. p015_35
 
-Seventh module is about applications of graph mining. A very common example is link prediction used in social network web sites such as LinkedIn or Facebook. They recommend you some new people to add as friend by using link prediction methods.
+The definition of data mining is: examining pre-existing databases in order to discover new information. Mining refers to examining. Data mining examines databases. It has very closed relationship with machine learning.                                 p015_40
 
-Eight module is about applications of text mining. A very common example of text mining is sentiment analysis used in twitter based intelligence software. Sentiment analysis software examine the twitter messages and answers the question whether it has positive or negative sentiment about some brand.
+Machine learning also extracts new knowledge from existing data. But data mining requires pre-existing database in contrast to machine learning. You are literally mining some data to find some gems.  p015_45
 
-As you see there are too many different data mining tasks. Each task has different applications. In addition to this complexity, the data mining tasks are not very clearly separated from each other. Most of the these tasks overlap in a specific application. Therefore, using different terms for the same underlying concept is common in data mining.
+Seventh section is about applications of graph mining. A very common example is link prediction used in social network web sites such as LinkedIn or Facebook. They recommend you some new people to add as friend by using link prediction methods. p015_50
+
+Eight section is about applications of text mining. A very common example of text mining is sentiment analysis used in twitter based intelligence software. Sentiment analysis software examine the twitter messages and answers the question whether it has positive or negative sentiment about some brand. p015_55
+
+As you see there are too many different data mining tasks. Each task has different applications. In addition to this complexity, the data mining tasks are not very clearly separated from each other. Most of the these tasks overlap in a specific application. Therefore, using different terms for the same underlying concept is common in data mining. p015_60
+
+--# Classification Models
 
 </div>
-
-# Classification Applications
 
 ## Customer Churn Prediction
 
@@ -94,11 +97,11 @@ As you see there are too many different data mining tasks. Each task has differe
 
 
 <div class="notes">
-Classification is the most common application area of data mining. There are too many interesting cases of classification applications from all domains.
+Classification is the most common application area of data mining. There are too many interesting cases of classification applications from all domains. p020_05
 
-A very common classification problem in business domain is the customer churn problem. It is also called customer retention or attrition problem. The essence of this problem is to predict whether some existing customer will leave or not. 
+A very common classification problem in business domain is the customer churn problem. It is also called customer retention or attrition problem. The essence of this problem is to predict whether some existing customer will leave or not.  p020_10
 
-Which customers will cancel their subscription or service from us? This is very important for most businesses because getting a new customer is much more costly than retaining an existing one. The companies spend lots of money into customer acquisition using advertising, discounts, and oll sorts of marketing campaigns. 
+Which customers will cancel their subscription or service from a company? This is very important for most businesses because getting a new customer is much more costly than retaining an existing one. The companies spend lots of money into customer acquisition using advertising, discounts, and all sorts of marketing campaigns.  p020_15
 
 </div>
 
@@ -115,17 +118,17 @@ Which customers will cancel their subscription or service from us? This is very 
 - Use this as input to classification model
 
 <div class="notes">
-How does classification of customer churn work? The company has a database of all existing customers. The customer databases contain usually lots of different types of information about customer
+How does classification of customer churn work? The company has a database of all existing customers. The customer databases contain usually lots of different types of information about customer. p025_05
 
 - Demographic information such as age, sex, address, city of the customer
 - Spending information such as monthly amount of spending, total number of purchases.
 - Life style information such as community affiliation, hobbies of the customer.
 - Education information 
-- Industry and work information such as the profession and company name of the customer
+- Industry and work information such as the profession and company name of the customer p025_10
 
-Most companies try to get as much information as possible about customers because no one knows exactly before which information is going to be valuable in data mining. 
+Most companies try to get as much information as possible about customers because no one knows exactly which information is going to be valuable in data mining. p025_15
 
-The classification algorithms predict which customers are more likely to leave the company using input information about customers.
+The classification algorithms predict which customers are more likely to leave the company using existing information about customers.                                     p025_20
 
 </div>
 
@@ -145,14 +148,13 @@ Historical data:
 - "churned" is the label/class
 
 <div class="notes">
-You might ask how the classification algorithms know in advance from these variables which customers will churn. In fact, it cannot know if we had only these information. 
+You might ask how the classification algorithms know in advance from these variables which customers will churn. In fact, it cannot know if we had only these information. p030_05
 
-There is one crucial information in addition to the above ones: It is called label or class variable in data mining terminology. It stores historical data of churned customers. The algorithms predict based on historical data. Whenever a customer churns, this information is added to the database as a case of churned customer. 
+There is one crucial information in addition to the above ones: It is called label or class variable in data mining terminology. It stores historical data of churned customers. The algorithms predict based on historical data. Whenever a customer churns, this information is added to the database as a case of churned customer. p030_10
 
-In historical data, we have already the information about whether our old customers have churned or not. In this example, the column "churned" is called label or class. 
-Each row in the historical data is already labeled. 
+In historical data, we have already the information about whether our old customers have churned or not. In this example, the column "churned" is called label or class.  Each row in the historical data is already labeled. p030_15
 
-By the way, you might say that a customer that has not yet churned might churn tomorrow. This is of course possible. For now, assume that for the scope of the problem at hand we can safely assume that those customers will not churn.
+By the way, you might say that a customer that has not yet churned might churn tomorrow. This is of course possible. For now, assume that for the scope of the problem at hand we can safely assume that those customers will not churn. p030_20
 </div>
 
 ## Terminology of learning 
@@ -166,11 +168,11 @@ By the way, you might say that a customer that has not yet churned might churn t
 <div class="notes">
 Let's learn some terminology in order to simplify communication. 
 
-We said that the classification algorithms learn from historical data. This is usually called model training. The output of this learning process is a model that is already trained. 
+We said that the classification algorithms learn from historical data. This is usually called model training. The output of this learning process is a model that is already trained. p035_05
 
-After training a model using existing data, we can start predicting customer churn using the model and new data.
+After training a model using existing data, we can start predicting customer churn using the model and new data. p035_10
 
-What does new data mean? By new data, I mean data that is not used during model training. We don't know the labels of new data. The classification model will predict it. 
+What does new data mean? By new data, I mean data that is not used during model training. We don't know the labels of new data. The classification model will predict it. p035_15
 
 </div>
 
@@ -182,9 +184,9 @@ What does new data mean? By new data, I mean data that is not used during model 
 <div class="notes">
 We can summarize the process into two steps:
 
-First step is learning from historical data. The output is a classification model.
+First step is learning from historical data. The output is a classification model. p040_05
 
-Second step is applying this trained model to new data to predict whether the customers in this new data set will churn or not.
+Second step is applying this trained model to new data to predict whether the customers in this new data set will churn or not. p040_10
 
 </div>
 
@@ -195,13 +197,15 @@ Second step is applying this trained model to new data to predict whether the cu
 	- If the customer is female and younger than 30, she will churn.
 
 <div class="notes">
-We use the concept "model" a lot in data mining. It is the most central term. So let's try to define it very clearly.
+We use the concept "model" a lot in data mining. It is the most central term. So let's try to define it very clearly. p045_05
 
 What is a model? A model is nothing more than a set of rules. 
 
-For example, in the customer churn problem a rule might be something like this: "If the customer is female and younger than 30, she will churn."
+For example, in the customer churn problem a rule might be something like this: "If the customer is female and younger than 30, she will churn." p045_10
 
-The models usually consist of multiple rules. Moreover, the rules are not always as simple as this one. This rule is very simple because we can specify in easy to understand words. This is not always the case. There are complex mathematical formulas that no one understands but that can work in classification problems. But regardless of how complicated a rule is, they are basically the same.
+The models usually consist of multiple rules. Moreover, the rules are not always as simple as this one. p045_15
+
+This rule is very simple because we can specify in easy to understand words. This is not always the case. There are complex mathematical formulas that no one understands but that can work in classification problems. But regardless of how complicated a rule is, they are basically the same. p045_20
 </div>
 
 ## Why is it called classification?
@@ -212,10 +216,631 @@ The models usually consist of multiple rules. Moreover, the rules are not always
 | Lisa     | ?          |
 
 <div class="notes">
-You might ask why is this customer churn problem put under classification applications. 
+You might ask why is this customer churn problem put under classification applications. p050_05
 
-Our goal is to predict whether a customer will churn or not in near future. There are two answers to this question: Yes or no. So, we are in fact classifying customers into two groups: Customers that will churn and customers that will not churn.
+Our goal is to predict whether a customer will churn or not in near future. There are two answers to this question: Yes or no. So, we are in fact classifying customers into two groups: Customers that will churn and customers that will not churn. p050_10
 
-In this problem, we have only two classes. In general there can be any number of classes. The basic logic is the same.
+In this problem, we have only two classes. In general there can be any number of classes. The basic logic is the same in all these problems. p050_15
+</div>
+
+## Other Churn Problems
+
+- Which customers will cancel their subscription?
+- Which gamers won't buy the game?
+- Which web visitors will end session?
+- MegaTelco: telecom company
+	- 20% of customers leave when contracts expire
+
+<div class="notes">
+Let's see other churn problems. For companies that provide subscription based services, what is the churn event? Whenever a customer cancels his subscription is churn case. p055_05
+
+</div>
+
+## Which gamers won't buy the game?
+
+- Gaming company
+- Uses paid marketing campaigns in several channels
+- Wants to improve efficiency in real time
+
+<div class="notes">
+Take a gaming company. Many games today have a freemium model. p060_05
+
+The gaming companies acquire visitors using several costly marketing campaigns. But not all visitors buy the game after trying the game a few times. p060_10
+
+What if the gaming company could predict which gamers won't buy the game in real time? Then the company would focus into marketing campaigns that bring gamers that buy game more. The company would increase the budget of campaigns that work well and decrease the budgets of campaigns that don't work well in real time. p060_15
+
+</div>
+
+## Which web visitors will end session?
+
+- News web site
+- Wants to keep visitors on site
+- Show interesting stuff to visitors that will end session
+
+<div class="notes">
+Take a news web site similar to msnbc dot com. The news site wants to keep their visitors as long as possible because this lets the visitors to click more advertising banners on the web site.  p065_05
+
+The longer visitors stay at the news site, the more likely it is for them to click an advertising banner on the web site. So, the news site owners want to know in advance which visitors will end their session in real time.  p065_10
+
+Then they can show in real time maybe some interesting stuff to keep those visitors on site longer. p065_15
+
+</div>
+
+## Real time vs. batch classification
+
+- Real time classification
+	- Classify entities at the moment
+- Batch classification
+	- Classify entities at every night
+
+<div class="notes">
+Note that, the last two examples are real time use cases for classification tasks. All data mining tasks can be used in real time or in batch. It is good for you to learn different use cases in order to get inspired for your own problems. p070_05
+
+When looking at data problems, it is good to have real time perspective always. Some data problems are more relevant in real time.  p070_10
+</div>
+
+## MegaTelco: telecom company
+
+- 20% of customers leave when contracts expire
+- Attractive offers to customers who will churn
+
+<div class="notes">
+MegaTelco is a telecom company. 20% of its customers leave when their contracts expire. p075_05
+
+Acquiring new customers is very costly. Preventing churn is much more cost effective than new customer acquisition. p075_10
+
+Therefore the company builds a big database about customers to predict the customers that are likely to churn.  p075_15
+
+When a customer's contract expiration comes close, the company calculates the likelihood of the customer to churn. p075_20
+
+If it is high, then the company offers attractive subscription package to these customers. If the likelihood of the customer to churn is low, then the company does not offer these benefits to the customer because those packages have additional cost to the company. p075_25
+</div>
+
+## Classification uses in marketing campaigns
+
+- Which customers will respond to an offer
+	- Direct marketing campaigns
+	- Select people who are likely to respond
+
+<div class="notes">
+All marketing campaigns have some costs. To keep the costs low, one wants to focus the campaigns to the target people only.  p080_05
+
+For example, take a women clothing company. The company sells big size clothes for middle age women to wear at home. The company wants to publicise its new line of products to its target market.  p080_10
+
+The company will use direct marketing to do this. It will send special offers to potential customer. The question is who are the customers who will likely respond to the offers.  p080_15
+
+To predict them, the company uses its historical data and produces a model for classifying response behaviour of customers according to their demographic and life style features. p080_20
+</div>
+
+## Classification uses in anomaly detection
+
+- Detecting diseases
+- Detecting frauds
+	- Credit card
+	- Intrusions to computer networks
+	- Spam emails
+- Detecting life style change
+	- Expecting a baby?
+
+<div class="notes">
+Anomaly (or outlier) detection is one of the most common uses of classification. It has applications in all kinds of domains. p085_05
+
+Detecting or preventing diseases, detecting frauds in credit card transactions, detecting spams in email messages, detecting intrusions to computer networks, detecting changes in life styles of customers are all examples of anomaly detection. p085_10
+</div>
+
+## Detecting or preventing diseases
+
+- Quanttus: Preventing heart attacks
+- Growsafe: Detecting sick cattle
+
+<div class="notes">
+Quanttus is a Boston based medical technology startup that develops wearable sensors to prevent cardiovascular diseases. Heart attacks are number one killer in most of the countries. p090_05
+
+The small wearable devices of Quanttus measure lots of data such as blood pressure, respiration, and heart rate. Cardiovascular diseases develop slowly. The devices track the signals and detect if there is an anomaly in the data that is a possible sign for cardiovascular disease. p090_10
+
+Growsafe Systems is a company that produce sensors used in cattle farms. They use lots of sensors to track movements of cattle. Some of the sensors are put into water troughs and feedlots. They detect animals that don't behave like healthy animals. This helps the farmers to keep sick animals away from healthy ones and cure them before an epidemic occurs. p090_15
+</div>
+
+## Detecting fraud
+
+- Credit card fraud
+- Fraud in public social help
+
+<div class="notes">
+Detecting credit card fraud is one of the mostly used applications of data mining. Data about credit card transactions are collected cleanly in databases. The labeling of transactions are reliable because most people report whenever they see some illegal payment done by their credit cards in their monthly statement of purchases.  p095_05
+
+Using this historical data, the banks can determine whether a new transaction belongs to the legitimate customer or not. p095_10
+
+Another example of fraud detection is fraudelent form submissions in public social help payments. In many countries, the state provides benefits to its citizens that need help. But to be eligible for these benefits, the citizens must satisfy certain conditions. For example, the monthly income should be lower than a specific amount.  p095_15
+
+How to detect a social help application that contains wrong information? Classification algorithms in data mining can help in detecting fraudelent applications. p095_20
+</div>
+
+## Detecting fraud in computer networks
+
+- Network intrusion
+
+<div class="notes">
+Detecting network intrusions is another successful application of classification methods. Before data mining intrusion detection was mostly manual and very costly.  p100_05
+
+In computer networks there are sensors that monitor the network traffic continuously and collect several data regarding the connections and requests. The classification algorithms predict whether a particular connection and request is suspicious or not. p100_10
+</div>
+
+## Detecting life style change
+
+- Target stores: Predicting pregnant customers 
+
+<div class="notes">
+The merchandise store chain Target wants to know whether their customers expect a baby. When a woman becomes pregnant her purchasing behavior change dramatically.  p105_05
+
+They spend lots of money to new dietary products, new clothing and vitamin products. Having this information gives competitive advantage to Target because it can offer customized coupons to pregnant women.  p105_10
+
+How do they predict whether a woman is pregnant or not? They did lots of tests to predict it reliably. They already had lots of data about their customers.  p105_15
+
+Each customer has an id number that is matched to their credit card, name and email address. They also have historical records of what they have purchased before.  p105_20
+
+They bought demographic information from different sources. Using all these data together, they developed classification models that can reliably predict whether a woman is pregnant or not using her purchases and demographic information. p105_25
+</div>
+
+## Risk classification in insurance
+
+- Dynamic risk management
+
+<div class="notes">
+Measuring the risk is the most fundamental problem in insurance industry. Before data mining era, risk assessment of a customer was not changing too much depending on the personal characteristics of the customer.  p110_05
+
+Now, many insurance companies use dynamic risk management methods. For example, in automobile insurance, there are new insurance products that depends on the usage patterns of the customers. p110_10
+
+The price of the insurance changes dynamically by how much the customer drives her car. The car sensors track the driving behavior of the customer. p110_15
+
+If the customer drives well, next premium becomes lower. This is good both for insurance company and customer. The insurance company can correctly assess the risk of each customer. The customer gets benefit if he acts in low risky way. p110_20
+</div>
+
+## Risk classification in insurance
+
+- Probability of a claim
+
+<div class="notes">
+Not all risk classifications are dynamic in insurance industry. Most common insurance products are still static that is they don't change depending on the behavior of the customer during insured period. But still insurance companies benefit from data mining a lot. p115_05
+
+Using risk classification methods, they can assess the risk if a policy will incur a claim within a specific time period. The insurance companies have already historical data of their previous customers.  p115_10
+
+This data set contains features such as policy holder's personal profile, policy type, open date, mautrity date, premium amount etc. Using this historical data, they build a risk classification model to assess the probability of a claim. p115_15
+</div>
+
+## Risk classification in consumer credits
+
+- Signet Bank 1990s
+- The risk level of a consumer credit to default
+- Customize the credit conditions by risk level
+
+<div class="notes">
+A breakthrough innovation in consumer credits was pioneered by Signet Bank during 1990s. Signet Bank started modeling the probability of defaulting of a consumer credit using predictive models.  p120_05
+
+They had already lots of historical data of defaulted credits. They wanted to predict whether a credit is likely to default based on customer's demographic, income, and past behavior data.  p120_10
+
+Classifying risks of different customers using reliable analytic models gave Signet Bank a competitive advantage. Before data mining, they were offering uniform pricing, credit limits, and conditions to all customers.  p120_15
+
+After risk classification they could customize their prices, credit limits, transfer rates and other conditions according to the risk level of the customer. This let the bank to offer better conditions than the competition to customers with low default risk.  p120_20
+</div>
+
+## Risk classification in buildings
+
+- NYC Fire Department: risk score of buildings
+
+<div class="notes">
+New York City Fire Department identifies factors that put buildings at risk for fire. They already have lots of data regarding different features of buildings such as number of storeys, age of building, materials in the building.  p125_05
+
+They also have historical data regarding the previous fires. They built a risk classification model using these data. Now, they can assess the risk score for buildings.  p125_10
+</div>
+
+## Risk classification in healthcare
+
+- Efficacy of treatments
+
+<div class="notes">
+Hospitals want to track and improve the efficacy of the treatments. To do this they need to know the probability that a emergency patient will be back in next three months. p130_05
+
+They already have historical emergency data that contains personal health information of patients such as age, gender, profession, marital status, procedures applied, drugs used, previous diagnoses. p130_10
+</div>
+
+## Risk classification in higher education
+
+- University admissions
+- Will the admitted student accept the offer or not?
+
+<div class="notes">
+In many countries such as Canada and USA, students apply to each university for admission. Most students apply to multiple universities in order to maximise their likelihood of admission.  p135_05
+
+The problem is that a university that offers admission to a student doesn't know in advance whether the student will accept it and join the school. So, if the student gets multiple admissions, naturally the student rejects all admissions except one.  p135_10
+
+This makes a big risk for the universities because they need to fill their capacities. They don't want to offer neither too much nor too little admissions to possible students.  p135_15
+
+Risk classification models help universities to assess whether a student that is offered admission will accept it and join the school or will reject it.  p135_20
+
+The universities have historical data of previous applications that include data of several features such as SAT score, essay score, interview score, economic background, ethnicity, personal profile, high school, school distance, siblings, financial aid requested.  p135_25
+
+Using this historical data set, the universities build classification models to assess whether a new student will accept the admission or not. p135_30
+
+</div>
+
+## Risk classification in product manufacturing
+
+- Manufacturing companies
+- Will the next product lead to warranty claim?
+
+<div class="notes">
+What is the probability that next product coming from production line will lead to a warranty claim? The manufacturing companies have historical data of previous warranty claims such as product specifications, production schedule, employees that worked in production, customer information.  p140_05
+
+Using this historical data set, the company can build a risk classification model to assess whether there is a high likelihood for the next to lead to a warranty claim. p140_10
+
+--# Regression Models
+
+</div>
+
+## Predicting demand level
+
+- What will be the demand for our clothes next season?
+- What will be the demand for our cars next season?
+- Classification: qualitative variable
+- Regression: quantitative variable
+
+<div class="notes">
+Most big companies need to predict the demand level for their services or products in order to prepare for the demand. This is especially a big deal for manufacturing companies where product development life cycle is long.  p145_05
+
+Once a product is designed and prepared for manufacturing, it is very costly to change product specifications. So the companies want to predict demand level for their products before starting manufacturing them.  p145_10
+
+Predicting demand level cannot be done using classification models because the predicted variable here is a quantitative variable. The classification models predict qualititative variables such as customer churn risk. Predicting quantitative variables such as demand level requires using regression models.  p145_15
+
+Apart of the type of the predicted variable, basic logic is the same between regression models and classification models. The model training requires historical data in both methods.  p145_20
+
+Historical data should contain class/label variable in both cases. In regression models class variable is called target or output variable. All variables are quantitative in regression models. Both output and input variables.  p145_25
+</div>
+
+## Predicting production level
+
+- Potato yield prediction
+	- The crop is underground
+- Groundcover
+
+<div class="notes">
+In industrial manufacturing, the production level does not depend on unknown factors usually. The most important unknown is the demand level.  p150_05
+
+But in farming, the production level depends on lots of unknown factors such as weather, diseases. In potato farming, predicting the production level has a further difficulty because the crop is underground.  p150_10
+
+Data mining helps in predicting potato yield. The historical data that is needed contains variables such as groundcover, time, irrigation, previous yield levels, soil qualities. Groundcover means the ratio of ground covered by green leaf. It can be measured using images from air. p150_15
+</div>
+
+## Predicting customer's purchase level
+
+- How much calls will a telecom customer make?
+- How much payment will a consumer make with his credit card?
+- How much virtual products will a gamer buy?
+
+<div class="notes">
+Predicting whether a customer will churn or not is a classification problem. The target variable is a so called categorical or nominal variable called "churn" that has values such as "yes" or "no".  Most companies want to predict the level of service usage of a customer. For example, a telecom company wants to know how much call will a customer make? How much data will a customer use? p155_05
+
+A bank company wants to know how much credit will a customer use? How much will a customer pay using a credit card? A gaming company wants to know how much a gamer will play? How much virtual products will a gamer buy? p155_10
+
+--# Clustering Applications
+
+</div>
+
+## Customer Segmentation Problems
+
+| name | spending |  
+|------|----------|
+| john | 100      |
+| lisa | 200      |
+| eva  | 180      |
+| ...  | ...      |
+
+-> clustering ->
+
+| cluster         | range         |
+|-----------------|---------------|
+| high spenders   | > 500         |
+| middle spenders | 100 < x < 500 |
+| low spenders    | < 100         |
+
+<div class="notes">
+What are the typical groups or so called segments of the customers? A company has data for their customers.  p160_05
+
+For example, the company wants to see what different groups of customers exist according to their spendings. If there are only a few dozen of customers, you can check all the numbers by yourself and make a reasonable clustering intuitively.  p160_10
+
+But this is not feasible if there are thousands or millions of rows of data. Clustering algorithms solve this problem. p160_15
+
+</div>
+
+## Customer Segmentation Based on Profile
+
+- Similarity of customer profiles
+- Features from demographics, location, purchases
+
+<div class="notes">
+Usually customer segmentation is based on customer's profiles. Profiles are not based on just one simple variable such as customer spending. It contains lots of features such as age, gender, children number, income level, profession, education, luxury car ownership, zip code, number of products purchased, distance from store etc.
+</div>
+
+## Call Usage Patterns
+
+- Different groups of customers by 
+	- Calls
+	- Sms messages
+	- Data utilization
+
+<div class="notes">
+Telecom companies need to know different groups of customers by their call usage and related variables. The variables of interest are: calls, sms messages, data utilization, bill payment, demgoraphics.  p165_05
+
+The result of the clustering will be different groups of customers that have similar data in those variables. p165_10
+</div>
+
+## Common patterns among patients
+
+- Root causes of diseases
+- Is the disease related to some location?
+- Is the disease related to some specific range of values in different variables?
+
+<div class="notes">
+Sometimes the root causes of the diseases lie in very unexpected places. For example, the water source can be contaminated.
+People who drink from that water source become sick. p170_05
+
+Clustering algorithms help the doctors to identify this kind of root causes of some illnesses. The doctors collect lots of data regarding the patients such as age, gender, economic status, zip code, children, medical conditions.  p170_10
+
+They feed this data into a clustering algorithm. Clustering algorithm produces different groups of patients by these data. p170_15
+
+If the cause of the illness is related to some specific neighborhood location, then the output will show that sick people can be grouped by their zip code. p170_20
+</div>
+
+## Defect segmentation
+
+- Defect problems are concentrated usually
+- Example:
+	- 30 % of problems occur in a specific production line
+	- 20 % of problems occur in a specific group of customers
+
+<div class="notes">
+For production companies, increasing quality is one of the fundamental problems. They want to decrease defects as much as possible. For a company that produces thousands of products every day, it is very difficult to track all defects that customers have found. Usually, the defects are not random. Pareto principle says that 80% of all defects are concentrated in 20% of all causes. You want to find out where the defects are concentrated. 
+
+Clustering similar warranty claims helps to solve this problem. Clustering similar claims groups defect problems into chunks. The groupings of defect problems might be related to a specific production schedule or product specification. 
+
+The variables that can be used for such a clustering analysis might be related to product detail information, product specifications, customer details, production schedules, line workers, sales channels, defect information etc.
+
+</div>
+
+## Context mining in Telecom
+
+<div class="notes">
+An interesting use case for clustering models is called "context mining". Take a Telecom company. The company wants to know more about their customers. It wants to know their life styles, their brand preferences and loyalties.
+
+For example, there might be a specific group of customers that have common features such as: They are business men. They like to party. They are in A+ socio-economic group. They visit university campuses regularly. They frequently work with banks. 
+
+The company wants to find such specific information about different customer groups. This is called context mining because you are actually describing the context of your customers. 
+
+Getting this type of information is not straight forward always. You have to make some assumptions along the way. For example, the Telecom company has data about tv channels their subscribers watch. If their customers watch baby tv channels, then you can safely assume that that customer has a baby in household. 
+</div>
+
+## Affinity analysis
+
+- Market basket analysis
+- Similarity matching
+- Co-occurence grouping
+
+<div class="notes">
+Affinity analysis is about similarity between different entities. 
+
+There are some related terms with affinity analysis such as market basket analysis, similarity matching or co-occurrence analysis.
+
+Most common applications is called market basket problem. This is mostly used in super markets or ecommerce web sites. Market basket analysis tries to find out which items are bought together by customers. 
+
+</div>
+
+## Market basket analysis
+
+- Baby diapers with wipes
+- Sting with
+- 
+<div class="notes">
+In a super market, when a customer buys baby diapers, she buys wipes too. In Amazon, a customer who buys music cds of Sting, buys also music cds of U2. 
+
+These items co-occur in shopping baskets usually. Finding such items is what market basket analysis does. 
+
+The output of this analysis is presented to customers on online shopping sites as "Customers who bought this item also bought those items". This is done by recommendation engine software in ecommerce web sites.
+
+</div>
+
+## Difference from clustering 
+
+- Clustering: similarity based on product features
+- Affinity: similarity based on people's actions
+
+<div class="notes">
+Clustering models also analyze the similarities between entities. But in clustering analysis, the similarity is measured on the attributes of entities. In affinity analysis, the similarity is measured on the appearing of entities together in a transaction.
+
+For example, if two items are together in market basket then they are found as similar in affinity analysis. In clustering, the similarity is measured by attributes such as price, size and other features of products. It is not dependent on whether people buy them together or not.
+</div>
+
+## Product network analysis
+
+- Define categories from the perspective of customers
+- What are the products that
+	- are most purchased
+	- first product in a category to buy
+	- don't create cross-selling opportunity
+	- very frequent but independent of any micro category
+
+<div class="notes">
+There is a very interesting use case for affinity analysis. It is called as "product network analysis". This analysis is used to identify which products belong to the same category. 
+
+For example, you have point of sales data in a store. You want to know which products form a category from the perspective of the customer. Normally, the product categories are defined by the store owners. But the problem is the categories that a company defines might not be always compatible with the categories that customers have in their minds. 
+
+Using product network analysis, you group products that are bought together similar to market basket analysis. In market basket analysis, you don't categorize the products that occur together. In product network analysis you categorize them. Also in market basket analysis, competitor products are rarely seen in the same basket. PNA overcomes this problem. 
+
+The end product of the analysis is a set of product types such as: products that are most purchased. Products that are the first product in a category to buy. Products that don't create cross-selling opportunities. Products that are very frequent in all baskets but that are independent of any micro category. 
+</div>
+
+## Finding similar customers
+
+- Are there other customers similar to my best customers?
+
+<div class="notes">
+Another interesting use case in affinity analysis is to identify similar individuals such as customers or companies. For example, you are a software service provider. You have lots of customers. But not all of your customers are the same. Some of them are very good. They give good feedback. They pay on time. They have reasonable requirements. You can learn from them lots of new insights. You want to know whether there are any other companies that have these features. 
+
+You need to have lots of data regarding companies in the market such as The industry they work in. Their size. Their location. Their company structure. Their products.
+
+These are called firmographic data. Then based on these features you develop a model using similarity matching algorithms and find companies that are similar to the ones that you look for. 
+
+</div>
+
+## Profiling 
+
+- What are the natural groups based on attributes?
+- What are the typical values of those attributes in a specific group?
+
+<div class="notes">
+Profiling means defining typical characteristics of some individuals. Profiling is used together with other data mining methods in applications such as anomaly detection or customer segmentation.
+
+For example, in customer segmentation you want to know two things:
+
+First, are there any natural groups of customers based on their attributes?
+
+Second, if there are, what are the profiles of those groups? For example, what is the average age in a group? What is the average monthy cell phone usage of the group?  What is its standard deviation? What is the probability distribution of the data in the group?
+
+The answers to these questions give the profile of a typical individual in a specific group.
+</div>
+
+## Profiling application in anomaly detection
+
+- Build a profile of the customer
+- Is there any transaction that doesn't fit the profile of the customer?
+
+<div class="notes">
+Anomaly detection is a typical use case for profiling. For example, you want to determine whether a new credit card transaction is legitimate or not. How to decide this?
+
+First, you need to build profiles of each credit card user. The profiles can include information such as:
+
+- What is the average value of credit card usages of that user?
+- What are the maximum and minimum values?
+- What is the frequency of credit card usage?
+- What are the locations where the credit card is used?
+- Are there any pattern in date or time of credit card usage?
+
+For example, assume that our credit card customer uses his card only in a few specific cities. The maximum amount of payment is 100 USD. When there is a new transaction that is much higher than 100 USD and where the location of payment is outside those few cities, then we should be alerted. It might be an illegitimate use. This is an anomaly detection use case. Profiling is a part of this process.
+
+Not all anomaly detection use cases require profiling. But many of them require it.
+</div>
+
+## Dimension reduction or feature selection 
+
+- Filtering out non-critical features from the data set
+- Producing simpler models to gain insight
+
+<div class="notes">
+Dimension reduction or feature selection means selecting a subset of features among all features. That means instead of tracking all the different features of some entity, we select the ones that are most critical for our goal.
+
+Dimension reduction is essentially removing some of the features in the data set. What is the benefit of removing some part of the data? 
+
+There are several benefits in doing this. First, it simplifies all the models. Making simplified models help the people to understand them better. 
+
+Normally, we always use data mining models in order to get some outputs from them. But actually there is also some hidden benefits in these models such as gaining insight from the model itself. 
+
+For example, you are a product development company. You want to understand what are the different tastes of users are. This insight will help you to design better products. Normally, you collect lots of data about products and consumer preferences. Take a gaming company. There are different genres of games. In each genre, there are different styles and themes. You collect data about these kinds of characteristics of the games, also you collect data about interactions of the gamers with the games, personal information about gamers, channels of the games etc. 
+
+There is never too much data for data mining. All the data mining models work better when there is more data. But understanding the models become more difficult for humans. 
+
+At the end of the day, you want to get better insight about what your customers need. So sometimes you need to understand the inner structures of the models as well. Dimension reduction helps you understand models better because it filters out features that don't have a big influence.
+</div>
+
+## Graph Mining
+
+| person | friend |
+|--------|--------|
+| John   | Lisa   |
+| John   | Mel    |
+| John   | Bill   |
+
+<div class="notes">
+Traditionally, data mining methods were developed in flat data sets. By flat data sets, I mean common table like data sets that we use in Excel. A table is a set of rows. Every row has the same number of columns. And remember in data mining it is a convention to refer to columns as features and to rows as instances.
+
+But not all entities in real life can be described in common tables easily. For example, consider a social network. In a social network, what do we need to store? The basic information that we need to store is the relationships between people. For example, who are friends of John? Can we keep this data in rows? Of course, we can. But it would not be very efficient and easy to use because it would contain lots of duplicate data. 
+
+When the network is the essential core or when the core feature of something is the connections it has, then most probably its data should be stored as a graph. And when this is the case, then using graph mining methods work better than conventional data mining methods.
+
+Graphs are very important in social networks, web, workflows. Conventional data mining tasks such as classification or cluster analysis are also used in graph mining. But their usage is a little different. 
+</div>
+
+## Social network analysis applications
+
+- Not necessarily social
+- Electrical power grids
+- Phone calls
+- Spread of computer virus
+- Web
+
+<div class="notes">
+Most studied networks are social networks. Therefore it is common to refer all network analysis problems as social network analysis. 
+
+Social network analysis is also called as link analysis or link mining. 
+
+Social networks are used to represent several real world phenomena such as: eletrical power grids, phone calls, spread of computer virus, web.
+
+</div>
+
+## Link mining (social network analysis) tasks
+
+- Link based object classification
+- Link type prediction
+- Predicting link existence
+- Group detection
+- Subgraph detection
+
+<div class="notes">
+Link based object classification corresponds to classification in conventional data mining. In conventional data mining, we classify entities using data. Link based object classification does the same. But in addition to the attributes of the entity, it also uses the attributes of the link and linked entity as well.
+
+Link type prediction is prediction of link type. For example, predicting if a link between two web pages is an advertising link or not. Or, predicting if two Facebook friends are relatives or not.
+
+Predicting link existence is about the existence of a link between two entities. For example, Facebook or LinkedIn recommends you that you might know some person. This is an example of link existence prediction. They predict that there should be a link between two people. They ask the people whether they know each other.
+
+Group detection means clustering of entities in graphs based on their attributes and links. It corresponds to conventional clustering in data mining. 
+
+Subgraph detection means discovering specific charateristic subgraphs inside networks. This is used in detecting anomalies in graphs. 
+</div>
+
+
+## Classification in graphs: Link based object classification
+
+- Predicting category of a web page
+- Predicting topic of a science paper
+
+<div class="notes">
+In conventional data mining, classification is done based on the attributes of the instances. 
+
+In graphs, we have attributes of instances. But additionally we have links between instances and attributes of linked instances. So, the data is richer in graphs. Which is good in order to make better classification. 
+
+</div>
+
+## Link based object classification applications
+
+- Web page classification
+- What is the category of a web page?
+- Based on
+	- Attributes of page
+	- Links between pages
+	- Attributes of links
+	- Attributes of linked pages
+
+<div class="notes">
+Web page classification is a popular example of link-based classification. It predicts the category of a web page based on 4 types of information:
+
+Attributes of page such as words that occur on the page or hyperlink words that is words used as a link. Links between pages, attributes of links and attributes of linked pages are used to categorize a web page. 
+</div>
+
+## Detecting money laundering and financial crimes
+
+- Network analysis: Detecting crime activities 
+
+<div class="notes">
+We already talked about using data mining tasks such as profiling and classification in detecting credit card frauds. In addition to them, there are multiple graph mining tasks that are used in detecting several different financial crimes.
+
+For example, network analysis is used to identify links among crime activities. Link based object classification is used to filter unrelated attributes. Sequential pattern analysis is used to find out unusual accesses. Anomaly detection is used to find out unusual amounts of fund transfers and other activities related to crime.
 </div>
 

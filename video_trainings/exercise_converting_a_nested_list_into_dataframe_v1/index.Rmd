@@ -7,9 +7,8 @@ output: ioslides_presentation
 
 ```{r load_packages, include=FALSE}
 library("dplyr")
+library("data.table")
 ```
-
-# Problem
 
 ## Problem Definition
 
@@ -76,9 +75,9 @@ rbindlist(f)
 ```
 
 <div class="notes">
-In this case, we can use the function rbind or rbindlist because each element of the list f are lists that have the same structure. So each nested list corresponds to a row and we are actually rbinding these rows together. @mp3=p006_01
+In this case, we can use the function rbind or rbindlist because each element of the list f are lists that have the same structure. So each nested list corresponds to a row and we are actually rbinding these rows together. @mp3=p005_01
 
-Note that there is a difference in the results of rbind and rbindlist. rbind returns a matrix whereas rbindlist returns a data.table. So, when we use rbind, we have to convert this matrix into a data.table with an additional operation. @mp3=p006_02
+Note that there is a difference in the results of rbind and rbindlist. rbind returns a matrix whereas rbindlist returns a data.table. So, when we use rbind, we have to convert this matrix into a data.table with an additional operation. @mp3=p005_02
 </div>
 
 ## Converting matrix to data.table
@@ -94,7 +93,7 @@ do.call(rbind, f) %>%
 ```
 
 <div class="notes">
-To convert the matrix into a dataframe or datatable, we need to use as.data.table or as.data.frame functions. @mp3=p007_01
+To convert the matrix into a dataframe or datatable, we need to use as.data.table or as.data.frame functions. @mp3=p006_01
 </div>
 
 ## List of dataframe
@@ -108,11 +107,11 @@ str(g)
 ```
 
 <div class="notes">
-Let's take another example. @mp3=p005_01
+Let's take another example. @mp3=p007_01
 
-Note that, the elements of the list g are dataframes. There is no nested list structure in this object. g is list of two elements where each element is a dataframe. @mp3=p005_02
+Note that, the elements of the list g are dataframes. There is no nested list structure in this object. g is list of two elements where each element is a dataframe. @mp3=p007_02
 
-Whereas in the previous case, the elements of list f are again lists themselves. (@code compare f and g in console) @mp3=p005_03
+Whereas in the previous case, the elements of list f are again lists themselves. (@code compare f and g in console) @mp3=p007_03
 
 </div>
 

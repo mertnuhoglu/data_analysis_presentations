@@ -1,5 +1,5 @@
 ---
-title: "Data Analysis Applications using R v1"
+title: "Data Analysis Applications using R: Conversion Optimization in Content Marketing"
 author: Mert Nuhoglu
 date: July 16, 2015
 output: ioslides_presentation
@@ -28,17 +28,19 @@ output: ioslides_presentation
 	keyword = 'kw003'
 	setkey(kpv, keyword)
 	visits = kpv[keyword]$visit
-	page = kpv[keyword]$page
+	p = kpv[keyword]$page
 	setkey(pc, page)
-	conversion_ratio = pc[page]$conversion
+	conversion_ratio = pc[p]$conversion
 	conversions = visits * conversion_ratio
 
 	# calculate conversion numbers for all keywords
 	r = kpv %>%
 		inner_join(pc, by="page") %>%
 		mutate( conversion_per_keyword = visit * conversion ) %>%
-		group_by(page) %>%
-		summarise(total_conversion = sum(conversion_per_keyword)) %>%
+		group_by(page) 
+		%>%
+		summarise(total_conversion = sum(conversion_per_keyword)) 
+		%>%
 		select(page, total_conversion) %>%
 		arrange(total_conversion) 
 	
