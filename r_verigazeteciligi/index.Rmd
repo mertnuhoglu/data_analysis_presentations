@@ -2,16 +2,7 @@
 title       : R ile Veri Analizi 
 subtitle    : Veri Gazeteciliği Atölye Programı
 author      : Mert Nuhoglu
-job         : 
-framework   : deckjs        # {io2012, html5slides, shower, dzslides, ...}
-deckjs:
-  theme: web-2.0
-  extensions: [goto, hash, menu, navigation, scale, status, automatic]
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : solarized_light # 
-widgets     : []            # {mathjax, quiz, bootstrap}
-mode        : selfcontained # {standalone, draft}
-knit        : slidify::knit2slides
+output      :  ioslides_presentation
 ---
 
 ```{r load_packages, include=FALSE}
@@ -20,6 +11,7 @@ knit        : slidify::knit2slides
 
 ## Giriş
 
+- http://mertnuhoglu.github.io/data_analysis_presentations/r_verigazeteciligi/
 - Örneklere dayalı dil öğrenme
 	- Yabancı dil
 	- Gramer kurallarını zihin kendisi çıkartır
@@ -500,34 +492,11 @@ knit        : slidify::knit2slides
 
 ## Karmaşık içiçe işlemler
 
-```{r }
-	hourly_delay <- filter(
-		summarise(
-			group_by(
-				filter(flights, !is.na(dep_delay)), 
-				date, hour), 
-			delay = mean(dep_delay), 
-			n = n()), 
-		n > 10
-	)
-	 hourly_delay
-```
 
 --- .class #id 
 
 ## Pipeline ile sadeleştirme
 
-```{r }
-hourly_delay <- flights %>% 
-	filter(!is.na(dep_delay)) %>%
-	group_by(date, hour) %>%
-	summarise(
-		delay = mean(dep_delay),
-		n = n()
-	) %>% 
-	filter(n > 10)
-hourly_delay
-```
 
 --- .class #id 
 
@@ -535,12 +504,6 @@ hourly_delay
 
 - Ortalama varış gecikmesi en fazla olan uçuş destinasyonları nelerdir?
 
-```{r }
-flights %>%
-  group_by(dest) %>%
-  summarise(arr_delay = mean(arr_delay, na.rm = TRUE), n = n()) %>%
-  arrange(desc(arr_delay))
-```
 
 --- .class #id 
 
@@ -762,7 +725,7 @@ ggplot(early_ones, aes(long, lat)) +
 ```{r }
 	i = 1
 	url = sprintf( "http://www.memurlar.net/secim/genel/default.aspx?City=tr-%s", 1)
-	filename = sprintf("memurlarnet/%02s.html", i)
+	filename = sprintf("data/memurlarnet/genel/%02s.html", i)
 	url
 	filename
 ```
@@ -818,7 +781,7 @@ ggplot(early_ones, aes(long, lat)) +
 ```
 	for (i in 1:81) {
 		url = sprintf( "http://www.memurlar.net/secim/data/genel/tr-%02s.js", i)
-		filename = sprintf("memurlarnet/%02s.json", i)
+		filename = sprintf("data/memurlarnet/genel/raw/%02s.json", i)
 		download.file( url, destfile = filename, method="wget" )
 	}
 ```
@@ -827,13 +790,9 @@ ggplot(early_ones, aes(long, lat)) +
 
 ## Veriyi okuma
 
-```
-	package.install("rlist")
+```{r error=TRUE}
 	library("rlist")
-```
-
-```{r }
-	filename = sprintf("memurlarnet/raw/%02s.json", 1)
+	filename = sprintf("data/memurlarnet/genel/raw/%02s.json", 1)
 	data = list.load(filename)
 ```
 
@@ -843,7 +802,7 @@ ggplot(early_ones, aes(long, lat)) +
 
 - json dosyasının içeriği:
 
-```{js }
+```
 	var secimVerisi = [
 	{
 ```
@@ -851,8 +810,8 @@ ggplot(early_ones, aes(long, lat)) +
 - json sentaksıyla ilgili bir sorun
 - şöyle olmalıydı:
 
-```{js }
-	{ "secim" : [
+```
+	{ "secimVerisi" = [
 	{
 ```
 
@@ -894,12 +853,12 @@ ggplot(early_ones, aes(long, lat)) +
 	- vim
 - En kolayı: sed
 
-```{sh }
-sed '1 d' raw/01.json | sed '1 i\
+```
+sed '1 d' data/memurlarnet/genel/raw/01.json | sed '1 i\
 { "secim": [
 ' | sed "$ a\
 }
-" > clean/01.json
+" > data/memurlarnet/genel/clean/01.json
 ```
 
 --- .class #id 
@@ -920,9 +879,9 @@ sed '1 d' raw/01.json | sed '1 i\
 - R içinden shell scriptlerini çağırabiliriz
 
 
-```{r }
+```
 	i = 6
-	filename = sprintf("memurlarnet/raw/%02s.json", i)
+	filename = sprintf("data/memurlarnet/genel/raw/%02s.json", i)
 	cmd = sprintf("./clean_memurlarnet_json.sh %s", filename)
 	cmd
 ```
@@ -938,7 +897,7 @@ sed '1 d' raw/01.json | sed '1 i\
 ```
 clean_memurlarnet_json_files = function() {
 	for (i in 1:81) {
-		filename = sprintf("memurlarnet/raw/%02s.json", i)
+		filename = sprintf("data/memurlarnet/genel/raw/%02s.json", i)
 		cmd = sprintf("./clean_memurlarnet_json.sh %s", filename)
 		system(cmd)
 	}
@@ -949,8 +908,8 @@ clean_memurlarnet_json_files = function() {
 
 ## Dosyadaki veriyi yükleme
 
-```{r }
-	filename = sprintf("memurlarnet/clean/%02s.json", 1)
+```{r}
+	filename = sprintf("data/memurlarnet/genel/clean/%02s.json", 1)
 	data = list.load(filename)
 ```
 
@@ -1050,7 +1009,7 @@ list.select(d2011, ilce) %>% unlist
 ```
 
 ```{r }
-	filename = sprintf("memurlarnet/clean/%02su.json", 1)
+	filename = sprintf("data/memurlarnet/genel/clean/%02su.json", 1)
 	data = list.load(filename)
 	d2011 = data$secim %>%
 		list.filter("2011" %in% yil)
@@ -1087,7 +1046,7 @@ head(df)
 ## Tüm şehirlere ait dosyaları toplayıp yapalım
 
 ```{r }
-	filenames = sprintf("memurlarnet/clean/%02s.json", 1:81)
+	filenames = sprintf("data/memurlarnet/genel/clean/%02s.json", 1:81)
 	head(filenames)
 ```
 
@@ -1242,6 +1201,19 @@ pl[[1]][[1]] %>% str
 ```
 
 --- .class #id 
+
+- Etkileşimli deneme yanılmaya dayalı öğrenme ortamları
+	- DataCamp: 
+			https://www.datacamp.com/
+	- Swirl
+			http://swirlstats.com/
+- Stackoverflow: forum
+		http://stackoverflow.com
+- Upwork
+- Advanced R, Hadley Wickham
+		http://adv-r.had.co.nz/
+- Yuml
+		http://yuml.me
 
 ## Linkler
 

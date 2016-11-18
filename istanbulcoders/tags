@@ -2,10 +2,10 @@
 ./test_data.R,215
 ggrapefruit_telecom_campaign_offers15,235
 bballorange_conversion_optimization27,487
-sstudy_test_data80,1925
-sstudy_sample_fun118,2844
-sstudy_dataframe_apply140,3298
-sstudy_dataframe_convert_list156,3635
+sstudy_test_data81,1939
+sstudy_sample_fun119,2858
+sstudy_dataframe_apply141,3312
+sstudy_dataframe_convert_list157,3649
 
 ./utils_base.R,982
 ssample_with_replace7,101
